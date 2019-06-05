@@ -1,9 +1,13 @@
 package com.mygdx.theafrica;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.sun.corba.se.impl.orbutil.closure.Constant;
 
 import java.util.Iterator;
 
@@ -13,7 +17,7 @@ public class WorldRenderer {
     public WorldController controller;
     public String TAG_TIME = "TIMES";
     public float elapsedTime;
-    Viewport viewport;
+    public ShapeRenderer shapeRender;
 
     public WorldRenderer(WorldController wc){
         this.controller = wc;
@@ -22,27 +26,25 @@ public class WorldRenderer {
 
     public void init(){
         batch = new SpriteBatch();
-        viewport = new FitViewport(50,75, controller.ch.camera);
-        viewport.apply();
-        //controller.ch.camera.position.set(controller.ch.camera.viewportWidth/2, controller.ch.camera.viewportHeight/2,0);
-        controller.ch.camera.position.set(0,0,0);
-        controller.ch.camera.update();
+        shapeRender = new ShapeRenderer();
+        controller.helper.camera.position.set(0,0,0);
+        controller.helper.camera.update();
     }
 
     public void render(){
 
-        batch.setProjectionMatrix(controller.ch.camera.combined);
-
+        batch.setProjectionMatrix(controller.helper.camera.combined);
         elapsedTime += Gdx.graphics.getDeltaTime();
         long t0 = System.nanoTime();
 
+        controller.level.render(batch, elapsedTime);
 
-        batch.begin();
+        shapeRender.setProjectionMatrix(controller.helper.camera.combined);
+        shapeRender.begin(ShapeRenderer.ShapeType.Line);
 
-        updateArrays();
+        //controller.level.drawDebug(shapeRender);
 
-
-        batch.end();
+        shapeRender.end();
 
         long elapsed = System.nanoTime() - t0;
 
@@ -53,23 +55,7 @@ public class WorldRenderer {
 
     }
 
-    void updateArrays()
-    {
-        for(int i = 0; i<WorldController.instance.getCurrentLevel().Layers.size(); i++)
-        {
-            for(int j = 0; j<WorldController.instance.getCurrentLevel().Layers.get(i).list.size(); j++)
-            {
-                WorldController.instance.getCurrentLevel().Layers.get(i).list.get(j).draw(batch);
-            }
-        }
-    }
-
     public void resize(int width, int height){
-        viewport.update(width,height);
-        //controller.ch.camera.viewportWidth = (Constants.VIEWPORT_HEIGHT/height)*width;
-        //controller.ch.camera.position.set(controller.ch.camera.viewportWidth/2, controller.ch.camera.viewportHeight/2,0);
-        controller.ch.camera.update();
-        System.out.println("ViewportW: "+controller.ch.camera.viewportWidth + " - ViewportH: "+controller.ch.camera.viewportHeight);
-
+        controller.helper.resize(width,height);
     }
 }

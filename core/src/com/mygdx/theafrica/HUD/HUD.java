@@ -1,4 +1,4 @@
-package com.mygdx.sandbox.HUD;
+package com.mygdx.theafrica.HUD;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 

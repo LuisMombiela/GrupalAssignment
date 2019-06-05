@@ -1,8 +1,10 @@
 package com.mygdx.theafrica;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
@@ -11,6 +13,11 @@ public class Assets {
 
     public Texture bg;
     public TextureRegion tiledBg;
+
+
+    //HUD
+    public Texture button;
+    public BitmapFont font;
 
     public TextureAtlas icons;
 
@@ -24,8 +31,21 @@ public class Assets {
     public TextureRegion[] dice;
 
 
+    //MENU
+    public Texture bgMenu;
+    public TextureRegion bgMenuTR;
+
 
     private Assets() {
+
+        //HUD
+        button = createButtonTexture();
+        font = new BitmapFont();
+        font.getData().setScale(2);
+
+        //MENU
+        bgMenu = new Texture("Africa.jpg");
+        bgMenu.setWrap(Texture.TextureWrap.Repeat,Texture.TextureWrap.Repeat);
 
         //BACKGROUND---------------------------------------------------------------------------------------------------------------------
         bg = new Texture (Gdx.files.internal("bg.png"));
@@ -69,6 +89,15 @@ public class Assets {
             cardsReg[i] = SpriteHelper.textureFromTextureAtlas("cards"+(i), icons);
         }
 
+    }
+
+    private Texture createButtonTexture() {
+        Pixmap pm = new Pixmap(10,10, Pixmap.Format.RGBA8888);
+        pm.setColor(0,0,0,1);
+        pm.drawRectangle(0,0,10,10);
+        pm.setColor(0,1,0,1);
+        pm.fillRectangle(1,1,8,8);
+        return new Texture(pm);
     }
 
     public static Assets getInstance() {

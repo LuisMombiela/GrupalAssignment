@@ -1,6 +1,13 @@
 package com.mygdx.theafrica;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
+import com.mygdx.theafrica.HUD.HUD;
+import com.mygdx.theafrica.HUD.TextButton;
 
 import java.util.ArrayList;
 
@@ -15,8 +22,17 @@ public class Level {
 
     public float currentTime;
 
-    public Level(GameObject bg)
+
+    public Background bg;
+    public CameraHelper helper;
+
+    //HUD THINGS
+    public OrthographicCamera hudCamera;
+    HUD hud;
+
+    public Level(CameraHelper helper)
     {
+        this.helper=helper;
         Layers = new ArrayList<Layer>();
         Layers.add(new Layer(Layer.LayerNames.BACKGROUND)); //0 BG
         Layers.add(new Layer(Layer.LayerNames.PLAYER));     //1 PLAYER
@@ -30,7 +46,15 @@ public class Level {
         toAdd = new ArrayList<GameObject>();
         currentTime = 0f;
 
+        //HUD THINGS
+        hudCamera = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 
+        hud = new HUD();
+        TextButton b1 = new TextButton("Hacer algo",10,10,240,50);
+
+        hud.add(b1);
+
+        //
 
 
     }
@@ -54,6 +78,20 @@ public class Level {
         updateLists(delta);
         removeGos();
         addGos();
+    }
+
+    public void render(SpriteBatch batch, float staTime) {
+
+
+        batch.begin();
+        batch.setColor(1,1,1,1);
+       // bg.draw(batch, staTime);
+
+        batch.setProjectionMatrix(hudCamera.combined);
+        batch.begin();
+        hud.render(batch);
+        batch.end();
+
     }
 
     void updateLists(float delta)
@@ -119,8 +157,11 @@ public class Level {
     {
         toAdd.add(gameObject);
         //Center new object:
-        toAdd.get(toAdd.size()-1).position = new Vector2(toAdd.get(toAdd.size()-1).position.x-toAdd.get(toAdd.size()-1).width/2,
-                                                         toAdd.get(toAdd.size()-1).position.y-toAdd.get(toAdd.size()-1).width/2);
+        toAdd.get(toAdd.size()-1).x = toAdd.get(toAdd.size()-1).x-toAdd.get(toAdd.size()-1).width/2;
+        toAdd.get(toAdd.size()-1).y = toAdd.get(toAdd.size()-1).y-toAdd.get(toAdd.size()-1).width/2;
+
+        /*new Vector2(toAdd.get(toAdd.size()-1).position.x-toAdd.get(toAdd.size()-1).width/2,
+                                                         toAdd.get(toAdd.size()-1).position.y-toAdd.get(toAdd.size()-1).width/2);*/
     }
 
     public void Despawn(GameObject gameObject)//Use this to remove a gameObject from the scene
@@ -133,7 +174,10 @@ public class Level {
 
         if(index < arr.size())
         {
-            arr.get(index).position = new Vector2(arr.get(index).position.x-arr.get(index).width/2,arr.get(index).position.y-arr.get(index).width/2);
+            arr.get(index).x = arr.get(index).x-arr.get(index).width/2;
+            arr.get(index).y = arr.get(index).y-arr.get(index).width/2;
+
+            //arr.get(index).position = new Vector2(arr.get(index).position.x-arr.get(index).width/2,arr.get(index).position.y-arr.get(index).width/2);
         }
         else
             System.out.println("The index is out of bounds");
@@ -164,6 +208,11 @@ public class Level {
         }
         if(go==null) System.out.println("There is no background object");
         return go;
+    }
+
+    public void drawDebug(ShapeRenderer shapeRender) {
+
+
     }
 
 }

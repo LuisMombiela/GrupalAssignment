@@ -1,3 +1,5 @@
+package com.mygdx.theafrica;
+
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
@@ -35,7 +37,7 @@ public class GOFactory {
     public static BackgroundMenu generateBRMenu(float x, float y, float width, float height)
     {
         float bgFactorWidth = Assets.getInstance().bgMenu.getWidth() * 1/100f;
-        float bgFactorHeight = Assets.getInstance().bgMenu.getHeight() * 1/280f;
+        float bgFactorHeight = Assets.getInstance().bgMenu.getHeight() * 1/118f;
         Assets.getInstance().bgMenuTR = new TextureRegion(Assets.getInstance().bgMenu,(int)(bgFactorWidth*width),(int)(bgFactorHeight* height));
         BackgroundMenu generatedBgMenu = new BackgroundMenu(x,y,width,height);
 

@@ -1,53 +1,59 @@
 package com.mygdx.theafrica;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.controllers.Controllers;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class WorldController extends InputAdapter {
 
-    public CameraHelper ch;
+    public Sprite spr;
+    //   public Sprite[] sprites;
+    public String TAG_KEYS = "KEYS";
+    public int selectedSprite;
+    public ArrayList<GameObject> objects;
+    public CameraHelper helper;
+    public Level level;
 
-    public static WorldController instance;
-    public ArrayList<Level> levels = new ArrayList<Level>();
-    public int currentLevel = 0;//Set to 0 when the menu is done
-    public InputManager inputMgr = new InputManager();
 
+    public WorldController(Level level){
+        Gdx.input.setInputProcessor(this);
+        //objects = new ArrayList<GameObject>();
+        this.level=level;
+        this.helper=this.level.helper;
 
-
-    public WorldController(){
-        if(WorldController.instance ==null)
-        {
-            instance = this;
-        }
-        else if(WorldController.instance != this)
-        {
-            WorldController.instance = null;
-        }
-        Gdx.input.setInputProcessor(inputMgr);
-        ch = new CameraHelper();
+        ArcadeHandler arcade = new ArcadeHandler(this.level);
+        Controllers.addListener(arcade);
         init();
+
     }
 
     public void init()
     {
-        levels.add(new Level(new Background()));//Level 0
-    }
-
-    public void update(float deltaTime){
-
-        levels.get(currentLevel).update(deltaTime);
-
-
-        ch.followGO(levels.get(currentLevel).getPlayer());
 
     }
 
-    public Level getCurrentLevel()
-    {
-        return levels.get(currentLevel);
+    public void update(float delta){
+
+        level.update(delta);
+        //helper.followGO(level.player, level.bg);
+        helper.moveCamera(delta);
+
     }
 
-
+    @Override
+    public boolean keyDown (int keycode){
+        //Gdx.app.debug(TAG_KEYS, keycode+" has been pressed");
+        if(keycode==Input.Keys.I)
+        {
+            Gdx.app.debug("SPRITE", spr.getBoundingRectangle()+"");
+        }
+        return false;
+    }
 }

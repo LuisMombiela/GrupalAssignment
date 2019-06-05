@@ -7,19 +7,13 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Background extends GameObject {
 
-    public Background()
+    public Background(Level level, float posX, float posY, float width, float height)
     {
-        rotation = 0;
-
-        width = 50;
-        height = 75;
-
-        position = new Vector2(-width/2, -height/2);
-
-        scale = new Vector2(1,1);
-
-
-
+        super(level);
+        x=posX;
+        y=posY;
+        this.width=width;
+        this.height=height;
     }
 
     public void update(float delta)
@@ -44,10 +38,15 @@ public class Background extends GameObject {
         tr.setRegionHeight(tr.getRegionHeight()+amountY);
     }
 
+    @Override
+    public void draw(SpriteBatch batch, float staTime) {
+
+    }
+
     public void draw(SpriteBatch batch)
     {
 
-        batch.draw(Assets.getInstance().tiledBg,position.x,position.y,width,height);
+        batch.draw(Assets.getInstance().tiledBg,x,y,width,height);
     }
 
 

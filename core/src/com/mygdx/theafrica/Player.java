@@ -15,7 +15,9 @@ public class Player extends GameObject {
 
 
     public Player(float posX, float posY, int num) {
-        position = new Vector2(posX, posY);
+       // position = new Vector2(posX, posY);
+        x=posX;
+        y=posY;
         rotation = 0;
 
         width= 7;
@@ -35,7 +37,7 @@ public class Player extends GameObject {
     @Override
     public void draw(SpriteBatch batch) {
 
-        batch.draw(texRegionToDraw(number),position.x,position.y,0,0,width,height,scale.x,scale.y,rotation);
+        batch.draw(texRegionToDraw(number),x,y,0,0,width,height,scale.x,scale.y,rotation);
 
     }
 
@@ -45,7 +47,12 @@ public class Player extends GameObject {
 
 
     }
-    
+
+    @Override
+    public void draw(SpriteBatch batch, float staTime) {
+
+    }
+
     TextureRegion texRegionToDraw(int i)
     {
         return Assets.getInstance().player[i-1];
