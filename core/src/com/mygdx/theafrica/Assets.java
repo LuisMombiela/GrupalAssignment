@@ -28,7 +28,7 @@ public class Assets {
     private Assets() {
 
         //BACKGROUND---------------------------------------------------------------------------------------------------------------------
-        bg = new Texture (Gdx.files.internal("Background.png"));
+        bg = new Texture (Gdx.files.internal("bg.png"));
         bg.setWrap(Texture.TextureWrap.Repeat,Texture.TextureWrap.Repeat);
         float bgFactorWidth = bg.getWidth() * 1;        //this means that my Texture should cover 1 world unit width.
 
@@ -43,6 +43,7 @@ public class Assets {
         //ICONS--------------------------------------------------------------------------------------------------------------------------
         icons = new TextureAtlas("Icons.atlas");
         player = new TextureRegion[2];
+        dice = new TextureRegion[5];
 
         for(int i = 0; i<2; i++)
         {
@@ -50,7 +51,7 @@ public class Assets {
         }
         for(int i = 2; i<7; i++)
         {
-            dice[i] = SpriteHelper.textureFromTextureAtlas("icon"+(i), icons);
+            dice[i-2] = SpriteHelper.textureFromTextureAtlas("icon"+(i), icons);
         }
 
         hospital = SpriteHelper.textureFromTextureAtlas("icon"+(7), icons).getTexture();
