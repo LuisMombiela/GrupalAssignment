@@ -45,10 +45,7 @@ public class Player extends GameObject {
 
 
     }
-
- 
-
-
+    
     TextureRegion texRegionToDraw(int i)
     {
         return Assets.getInstance().player[i-1];
