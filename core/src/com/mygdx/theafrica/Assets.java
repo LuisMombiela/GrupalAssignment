@@ -34,13 +34,13 @@ public class Assets {
 
         float bgFactorHeight = bg.getHeight() * 1;   //this means that my Texture should cover 1 world unit height.
 
-        float widthInWorldUnits = 20;                        //I am creating a world of 40 units width (my viewport width is around 10)
+        float widthInWorldUnits = 20;                        //I am creating a world of 20 units width (my viewport width is around 10)
 
         float heightInWorldUnits = 20;                     //I am creating a world of 20 units height (my viewport height is fixed to 10)
 
         tiledBg = new TextureRegion(bg, Math.round(widthInWorldUnits*bgFactorWidth),Math.round(heightInWorldUnits*bgFactorHeight));
 
-        //ICONS---------------------------------------------------------------------------------------------------------------------------
+        //ICONS--------------------------------------------------------------------------------------------------------------------------
         icons = new TextureAtlas("Icons.atlas");
         player = new TextureRegion[2];
 
@@ -57,6 +57,8 @@ public class Assets {
         greenhouse = SpriteHelper.textureFromTextureAtlas("icon"+(8), icons).getTexture();
         school = SpriteHelper.textureFromTextureAtlas("icon"+(9), icons).getTexture();
 
+
+        //CARDS--------------------------------------------------------------------------------------------------------------------------
         cards = new TextureAtlas("Cards.atlas");
         int cardsNumber = cards.getRegions().size;
         cardsReg = new TextureRegion[cardsNumber];
