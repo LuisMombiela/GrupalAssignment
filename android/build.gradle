@@ -17,7 +17,7 @@ android {
         exclude 'META-INF/robovm/ios/robovm.xml'
     }
     defaultConfig {
-        applicationId "com.jfont.hello"
+        applicationId "com.mygdx.theafrica"
         minSdkVersion 9
         targetSdkVersion 28
         versionCode 1
@@ -86,7 +86,7 @@ task run(type: Exec) {
     }
 
     def adb = path + "/platform-tools/adb"
-    commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.jfont.hello/com.jfont.hello.AndroidLauncher'
+    commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.mygdx.theafrica/com.mygdx.theafrica.AndroidLauncher'
 }
 
 // sets up the Android Eclipse project, using the old Ant based build.
@@ -105,8 +105,8 @@ eclipse {
     }
 
     classpath {
-        plusConfigurations += [ project.configurations.compile ]
-        containers 'com.android.ide.eclipse.adt.ANDROID_FRAMEWORK', 'com.android.ide.eclipse.adt.LIBRARIES'
+        plusConfigurations += [ project.configurations.compile ]        
+        containers 'com.android.ide.eclipse.adt.ANDROID_FRAMEWORK', 'com.android.ide.eclipse.adt.LIBRARIES'       
     }
 
     project {
@@ -124,7 +124,7 @@ eclipse {
 idea {
     module {
         sourceDirs += file("src");
-        scopes = [ COMPILE: [plus:[project.configurations.compile]]]
+        scopes = [ COMPILE: [plus:[project.configurations.compile]]]        
 
         iml {
             withXml {
