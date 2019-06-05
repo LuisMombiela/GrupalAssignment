@@ -24,7 +24,7 @@ public class Level {
         Layers.add(new Layer(Layer.LayerNames.DEFAULT));    //3 DEFAULT
 
         Layers.get(0).list.add(bg);
-        Layers.get(1).list.add(new Player(-4.5f,-4.5f, 1));//Replace this with a spawnPlayers function
+        spawnPlayers();
 
         toRemove = new ArrayList<GameObject>();
         toAdd = new ArrayList<GameObject>();
@@ -32,6 +32,18 @@ public class Level {
 
 
 
+
+    }
+
+    void spawnPlayers()
+    {
+        Layers.get(1).list.add(new Player(0,0, 1));//REPLACE THESE POSITION LATER WITH EACH PLAYER'S BOX FOR PLAYERS IN THE BASE CARDS
+        Layers.get(1).list.add(new Player(0,0, 1));
+        Layers.get(1).list.add(new Player(0,0, 1));
+
+        Layers.get(1).list.add(new Player(0,0, 2));
+        Layers.get(1).list.add(new Player(0f,0, 2));
+        Layers.get(1).list.add(new Player(0,0, 2));
 
     }
 
