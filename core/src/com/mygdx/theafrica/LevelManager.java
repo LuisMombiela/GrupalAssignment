@@ -13,8 +13,6 @@ import java.util.ArrayList;
 
 public class LevelManager {
 
-
-
     public ArrayList<Layer>Layers;
 
     public ArrayList<GameObject> toRemove;
@@ -26,7 +24,7 @@ public class LevelManager {
     public Background bg;
     public Grid grid;
 
-    public BackgroundMenu bgWall;
+    public Background bgWall;
 
     public CameraHelper helper;
 

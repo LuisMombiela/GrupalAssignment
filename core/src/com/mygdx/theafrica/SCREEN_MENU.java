@@ -3,6 +3,7 @@ package com.mygdx.theafrica;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.controllers.Controllers;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -45,6 +46,8 @@ public class SCREEN_MENU implements Screen {
                 game.setScreen(game.gameScreen);
             }
         };
+
+
         hud.add(b1);
 
         //

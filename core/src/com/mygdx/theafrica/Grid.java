@@ -1,6 +1,7 @@
 package com.mygdx.theafrica;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 
 public class Grid extends GameObject{
@@ -12,7 +13,7 @@ public class Grid extends GameObject{
 
     public Vector2[][] positions;
     public boolean[][] isOcuppied;
-
+    
     public Grid()
     {
         size = 4;
