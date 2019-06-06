@@ -4,8 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 import com.mygdx.theafrica.HUD.HUD;
 import com.mygdx.theafrica.HUD.TextButton;
 
@@ -28,18 +26,18 @@ public class LevelManager {
 
     public BackgroundMenu bgWall;
 
-    public CameraHelper helper;
+    public CameraHelper cameraHelper;
 
     //HUD THINGS
     public OrthographicCamera hudCamera;
     HUD hud;
 
-    public LevelManager(CameraHelper helper)
+    public LevelManager(CameraHelper cameraHelper)
     {
-        this.helper=helper;
+        this.cameraHelper = cameraHelper;
         Layers = new ArrayList<Layer>();
         Layers.add(new Layer(Layer.LayerNames.BACKGROUND)); //0 BG
-        Layers.add(new Layer(Layer.LayerNames.PLAYER));     //1 PLAYER
+        Layers.add(new Layer(Layer.LayerNames.CARD));       //1 CARD
         Layers.add(new Layer(Layer.LayerNames.ICONS));      //2 ICONS
         Layers.add(new Layer(Layer.LayerNames.DEFAULT));    //3 DEFAULT
 
@@ -78,14 +76,8 @@ public class LevelManager {
 
     void spawnPlayers()
     {
-        Layers.get(1).list.add(new Player(0,0, 1));//REPLACE THESE POSITION LATER WITH EACH PLAYER'S BOX FOR PLAYERS IN THE BASE CARDS
         Layers.get(1).list.add(new Player(0,0, 1));
-        Layers.get(1).list.add(new Player(0,0, 1));
-
         Layers.get(1).list.add(new Player(0,0, 2));
-        Layers.get(1).list.add(new Player(0f,0, 2));
-        Layers.get(1).list.add(new Player(0,0, 2));
-
     }
 
     public void update(float delta)
@@ -207,7 +199,7 @@ public class LevelManager {
         GameObject go = null;
         for (Layer L: Layers)
         {
-            if(L.name == Layer.LayerNames.PLAYER)
+            if(L.name == Layer.LayerNames.CARD)
             {
                 go = L.list.get(0);
             }
