@@ -40,7 +40,7 @@ public class Player extends GameObject {
 
         scale = new Vector2(1,1);
 
-        isTurn = true;
+        isTurn = false;
         number = num; //1 or 2
         layerTag = Layer.LayerNames.CARD;
         rectangle = new Rectangle();
@@ -70,7 +70,7 @@ public class Player extends GameObject {
     {
         if(inputs.keySelectCard)
         {
-            Gdx.app.debug("PLAYER", "WORKER PUT");
+            Gdx.app.debug("PLAYER", "WORKER PUT by Player "+number);
             SoundManager.reproduceSounds(1);
             actionNumber -= 1;
         }
