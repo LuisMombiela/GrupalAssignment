@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Grid extends GameObject{
 
-    int size = 4;
+    int size;
     int cardSize;
     int originalX;
     int originalY;
@@ -15,7 +15,11 @@ public class Grid extends GameObject{
 
     public Grid()
     {
+        size = 4;
+
         positions = new Vector2[size][size];
+        isOcuppied = new boolean[size][size];
+
         cardSize = 96;
         originalX = 400;
         originalY = 800;
@@ -24,6 +28,7 @@ public class Grid extends GameObject{
         {
             for (int j = 0; j < size; j++)
             {
+                positions[i][j] = new Vector2();
                 positions[i][j].x = originalX + cardSize * j;
                 positions[i][j].y = originalY - cardSize * i;
                 isOcuppied[i][j] = false;
