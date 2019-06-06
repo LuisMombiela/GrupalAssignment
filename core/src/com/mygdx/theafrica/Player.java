@@ -48,7 +48,7 @@ public class Player extends GameObject {
 
         scale = new Vector2(1,1);
 
-        isTurn = false;
+        isTurn = true;
         number = num; //1 or 2
         layerTag = Layer.LayerNames.CARD;
         rectangle = new Rectangle();

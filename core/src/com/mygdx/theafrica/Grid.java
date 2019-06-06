@@ -16,6 +16,7 @@ public class Grid extends GameObject{
 
     public Vector2[][] positions;
     public boolean[][] hasCard;
+    public float probability = 15f;
 
     public Grid()
     {
@@ -29,6 +30,10 @@ public class Grid extends GameObject{
         originalX = - size/2*cardSize;
         originalY = - cardSize;
         int index = 0;
+
+        Player player1 = new Player(1,0,0);
+        Player player2 = new Player(2,0,0);
+
         for(int i = 0; i < size; i++)
         {
             for (int j = 0; j < size; j++)
@@ -42,12 +47,14 @@ public class Grid extends GameObject{
                 if(i==0 && j==0)
                 {
                     name = "player 1";
-                    WorldController.instance.levelManager.Instantiate(new PlayerBase(1, positions[i][j].x, positions[i][j].y));
+                    player1 = new Player(1, positions[i][j].x, positions[i][j].y);
+                    WorldController.instance.levelManager.Instantiate(player1);
                 }
                 else if(i==size-1 && j==size-1)
                 {
                     name = "player 2";
-                    WorldController.instance.levelManager.Instantiate(new PlayerBase(2, positions[i][j].x, positions[i][j].y));
+                    player2 = new Player(2, positions[i][j].x, positions[i][j].y);
+                    WorldController.instance.levelManager.Instantiate(player2);
                 }
                 else if((i!=0 && j!=0) || (i!=size && j!=size))
                 {
@@ -56,7 +63,7 @@ public class Grid extends GameObject{
                 }
 
                 hasCard[i][j] = true;
-
+                WorldController.instance.levelManager.Instantiate(new TurningSystem(player1,player2));
                 Gdx.app.debug("GRID","Position: " + positions[i][j].x + ", "+ positions[i][j].y + ", Index: " + index + ", Name: "+ name);
                 index ++;
             }
@@ -66,31 +73,51 @@ public class Grid extends GameObject{
 
     CardType GetCardType()
     {
-        int randomCard = (int)(Math.random()*100 * 6 )/100;// lol esto funciona
+        float randomizer = (float)Math.random()*100;
+        if(randomizer >= probability)
+        {
+            int randomCard = (int)(Math.random()*100 * 3 )/100;// lol esto funciona
+            switch(randomCard)
+            {
+                case 0:
+                    return CardType.WHEAT;
 
+                case 1:
+                    return CardType.WOOD;
 
-        switch(randomCard){
-            case 0:
-                return CardType.WHEAT;
+                case 2:
+                    return CardType.IRON;
 
-            case 1:
-                return CardType.WOOD;
-
-            case 2:
-                return CardType.IRON;
-
-            case 3:
-                return CardType.BOOK;
-
-            case 4:
-                return CardType.BANDAGE;
-
-            case 5:
-                return CardType.SEED;
-
-            default:
-                return CardType.BOOK;
+                default:
+                    return CardType.WHEAT;
+            }
         }
+        else
+        {
+            int randomCard = (int)(Math.random()*100 * 3 )/100;
+            switch(randomCard)
+            {
+                case 0:
+                    return CardType.BOOK;
+
+                case 1:
+                    return CardType.BANDAGE;
+
+                case 2:
+                    return CardType.SEED;
+
+                default:
+                    return CardType.BOOK;
+            }
+        }
+
+
+
+
+
+
+
+
 
     }
 
