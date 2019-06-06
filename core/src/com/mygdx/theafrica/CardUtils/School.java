@@ -8,5 +8,10 @@ public class School extends Upgrades {
         requiredBooks = 10;
     }
 
+    @Override
+    public void build() {
+
+    }
+
 
 }

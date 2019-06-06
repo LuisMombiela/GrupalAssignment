@@ -11,8 +11,7 @@ public class PlayerBase {
     public boolean hasHospital;
     public boolean hasSchool;
 
-    public PlayerBase(int index)
-    {
+    public PlayerBase(int index) {
         this.baseIndex = index;
 
         //lo que falta
@@ -20,12 +19,14 @@ public class PlayerBase {
 
     public boolean canBuild(Hospital h)
     {
-        if(myPlayer.currentWood >= h.requiredWood && myPlayer.currentIron >= h.requiredIron && myPlayer.currentBandages >= h.requiredBandages)
-            Hospital.build();
+        if (myPlayer.currentWood >= h.requiredWood && myPlayer.currentIron >= h.requiredIron && myPlayer.currentBandages >= h.requiredBandages)
+        {
+            h.build();
+        }
+
+
+        //Funciones de añadir las mejoras
+        return true; //CAMBIA ESTO
+
     }
-
-    //Funciones de añadir las mejoras
-    if
-
-
 }

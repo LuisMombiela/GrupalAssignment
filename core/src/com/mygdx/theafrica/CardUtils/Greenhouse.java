@@ -6,4 +6,9 @@ public class Greenhouse extends Upgrades{
         requiredWheat = 5;
         requiredSeeds = 10;
     }
+
+    @Override
+    public void build() {
+
+    }
 }

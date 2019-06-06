@@ -24,15 +24,12 @@ public class LevelManager {
 
     public Background bgWall;
 
-    public CameraHelper cameraHelper;
 
-    //HUD THINGS
-    public OrthographicCamera hudCamera;
-    HUD hud;
 
-    public LevelManager(CameraHelper cameraHelper)
+
+    public LevelManager()
     {
-        this.cameraHelper = cameraHelper;
+
         Layers = new ArrayList<Layer>();
         Layers.add(new Layer(Layer.LayerNames.BACKGROUND)); //0 BG
         Layers.add(new Layer(Layer.LayerNames.CARD));       //1 CARD
@@ -43,6 +40,8 @@ public class LevelManager {
 
         //bg= GOFactory.generateBG(-Gdx.graphics.getWidth()/2,-Gdx.graphics.getHeight()/2,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
         bgWall = GOFactory.generateBGWall(-Gdx.graphics.getWidth()/2,-Gdx.graphics.getHeight()/2,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+
+        Layers.get(0).list.add(bgWall);
 
 
         //ARREGLAR LO DE LOS PLAYERS
@@ -59,17 +58,9 @@ public class LevelManager {
         currentTime = 0f;
 
         //HUD THINGS |||||SACAR ESTO DE AQUI Y PONER CADA HUD Y BACKGROUND EN EL SCREEN QUE CORRESPONDA
-        hudCamera = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 
-        hud = new HUD();
-        TextButton b1 = new TextButton("Hacer algo",10,10,240,50){
-            @Override
-            public void click() {
-                //Aqui iria lo que quisieses meter como nueva accion
-            }
-        };
 
-        hud.add(b1);
+
 
         //
 
@@ -101,10 +92,7 @@ public class LevelManager {
         bgWall.draw(batch,staTime);
         batch.end();
 
-        batch.setProjectionMatrix(hudCamera.combined);
-        batch.begin();
-        hud.render(batch);
-        batch.end();
+
 
     }
 
