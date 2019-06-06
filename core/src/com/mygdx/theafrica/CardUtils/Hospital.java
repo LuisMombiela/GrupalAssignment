@@ -7,4 +7,8 @@ public class Hospital extends Upgrades {
         requiredBandages = 10;
     }
 
+    @Override
+    public void build() {
+
+    }
 }

@@ -11,6 +11,7 @@ import com.badlogic.gdx.math.Rectangle;
 public class CameraHelper {
 
     public OrthographicCamera camera;
+    public OrthographicCamera hudCamera;
     public String TAG_CAMERA = "CAMERA";
     public Rectangle rectangle;
     public boolean canMove=true;
@@ -18,6 +19,7 @@ public class CameraHelper {
     public CameraHelper(){
 
         camera = new OrthographicCamera(Constants.VIEWPORT_WIDTH, Constants.VIEWPORT_HEIGHT);
+        hudCamera = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
         rectangle=new Rectangle();
     }
 
