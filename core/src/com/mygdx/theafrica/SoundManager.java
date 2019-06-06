@@ -8,6 +8,9 @@ public class SoundManager {
 
     //FOR MUSIC THEME
     public static Music principalTheme = Gdx.audio.newMusic(Gdx.files.internal("Africa.mp3"));
+    public static Sound actionDone = Gdx.audio.newSound(Gdx.files.internal("ActionDone.mp3"));
+    public static Sound accelProcess = Gdx.audio.newSound(Gdx.files.internal("accelSound.mp3"));
+    public static Sound endTurn = Gdx.audio.newSound(Gdx.files.internal("endTurn.mp3"));
 
     //FOR SIMPLE SOUNDS
     //public static Sound Shoot = Gdx.audio.newSound(Gdx.files.internal(""));
@@ -17,10 +20,13 @@ public class SoundManager {
     public static void reproduceSounds(int soundID){
         switch (soundID){
             case 1:
+                actionDone.play();
                 break;
             case 2:
+                accelProcess.play();
                 break;
             case 3:
+                endTurn.play();
                 break;
             case 4:
                 break;

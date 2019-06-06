@@ -71,18 +71,21 @@ public class Player extends GameObject {
         if(inputs.keySelectCard)
         {
             Gdx.app.debug("PLAYER", "WORKER PUT");
+            SoundManager.reproduceSounds(1);
             actionNumber -= 1;
         }
 
         if(inputs.keyAccelerateWorker)
         {
             Gdx.app.debug("PLAYER", "WORKER ACCELERATED");
+            SoundManager.reproduceSounds(2);
             actionNumber -= 2;
         }
 
         if(inputs.keyEndTurn)
         {
             Gdx.app.debug("PLAYER", "TURN ENDED");
+            SoundManager.reproduceSounds(3);
             actionNumber = 0;
         }
     }
