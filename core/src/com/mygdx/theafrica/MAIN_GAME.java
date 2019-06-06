@@ -13,7 +13,6 @@ public class MAIN_GAME extends Game {
     @Override
     public void create() {
         mainScreen = new SCREEN_MENU(this);
-        gameScreen = new SCREEN_MAIN(this);
 
         if(Gdx.app.getType() == Application.ApplicationType.Android)
             System.out.println("Estoy en android");
@@ -25,5 +24,10 @@ public class MAIN_GAME extends Game {
         }
 
         setScreen(mainScreen);
+    }
+
+    public void InitializeGame()
+    {
+        gameScreen = new SCREEN_MAIN(this);
     }
 }

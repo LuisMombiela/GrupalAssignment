@@ -12,7 +12,7 @@ public class BackgroundMenu extends GameObject{
         this.width=_width;
         this.height=_height;
 
-        Assets.getInstance().bgMenuTR = new TextureRegion(Assets.getInstance().bgMenu);//,(int)(bgFactorWidth*_width),(int)(bgFactorHeight* _height));
+        Assets.getInstance().bgMenuTR = new TextureRegion(Assets.getInstance().bgMenu);
 
     }
 

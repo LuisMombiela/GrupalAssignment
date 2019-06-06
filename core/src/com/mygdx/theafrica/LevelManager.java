@@ -11,8 +11,6 @@ import java.util.ArrayList;
 
 public class LevelManager {
 
-
-
     public ArrayList<Layer>Layers;
 
     public ArrayList<GameObject> toRemove;
@@ -24,7 +22,7 @@ public class LevelManager {
     public Background bg;
     public Grid grid;
 
-    public BackgroundMenu bgWall;
+    public Background bgWall;
 
     public CameraHelper cameraHelper;
 
@@ -45,9 +43,13 @@ public class LevelManager {
 
         //bg= GOFactory.generateBG(-Gdx.graphics.getWidth()/2,-Gdx.graphics.getHeight()/2,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
         bgWall = GOFactory.generateBGWall(-Gdx.graphics.getWidth()/2,-Gdx.graphics.getHeight()/2,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
-        spawnPlayers();
+
+
+        //ARREGLAR LO DE LOS PLAYERS
+        //spawnPlayers();
 
         grid = new Grid();
+
         Layers.get(0).list.add(grid);
 
 
@@ -83,6 +85,7 @@ public class LevelManager {
     public void update(float delta)
     {
         currentTime += delta;
+        grid.update(delta);
 
         //updateLists(delta);
         removeGos();

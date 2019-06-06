@@ -57,6 +57,7 @@ public class Assets {
         //BACKGROUND---------------------------------------------------------------------------------------------------------------------
         bg = new Texture (Gdx.files.internal("bg.png"));
         bg.setWrap(Texture.TextureWrap.Repeat,Texture.TextureWrap.Repeat);
+
         float bgFactorWidth = bg.getWidth() * 1;        //this means that my Texture should cover 1 world unit width.
 
         float bgFactorHeight = bg.getHeight() * 1;   //this means that my Texture should cover 1 world unit height.
