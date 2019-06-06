@@ -1,6 +1,6 @@
 package com.mygdx.theafrica.CardUtils;
 
-public enum ResourceType {
+public enum CardType {
 
     WHEAT(0),
     WOOD(1),
@@ -12,7 +12,7 @@ public enum ResourceType {
 
     private int value;
 
-    ResourceType(int value){this.value = value;}
+    CardType(int value){this.value = value;}
     public int getValue(){return value;}
 
 }

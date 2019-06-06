@@ -24,21 +24,21 @@ public class PlayerBase {
     public void canBuild(Hospital h)
     {
         if(myPlayer.currentWood >= h.requiredWood && myPlayer.currentIron >= h.requiredIron && myPlayer.currentBandages >= h.requiredBandages)
-            Hospital.build();
+            h.build();
         hasHospital = true;
         System.out.println("Player tal hospital has been built");
     }
     public void canBuild(School s)
     {
         if(myPlayer.currentWood >= s.requiredWood && myPlayer.currentIron >= s.requiredIron && myPlayer.currentBooks >= s.requiredBooks)
-            School.build();
+            s.build();
         hasSchool = true;
         System.out.println("Player tal School has been built");
     }
     public void canBuild(Greenhouse gh)
     {
         if(myPlayer.currentWood >= gh.requiredWood && myPlayer.currentIron >= gh.requiredIron && myPlayer.currentBandages >= gh.requiredBandages)
-            Greenhouse.build();
+            gh.build();
         hasGreenHouse = true;
         System.out.println("Player tal Greenhouse has been built");
     }

@@ -25,8 +25,8 @@ public class SCREEN_MAIN implements Screen {
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
 		Gdx.app.debug(TAG_LIFECYCLE, "Created");
 		CameraHelper helper = new CameraHelper();
-		levelManager = new LevelManager();
 		controller = new WorldController();
+		levelManager = new LevelManager();
 		renderer = new WorldRenderer(controller);
 
 	}

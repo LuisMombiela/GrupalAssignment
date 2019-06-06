@@ -35,7 +35,7 @@ public class WorldController extends InputAdapter {
         {
             WorldController.instance = null;
         }
-        levelManager = new LevelManager();
+
         inputMgr = new InputManager();
         Gdx.input.setInputProcessor(inputMgr);
 
@@ -55,6 +55,7 @@ public class WorldController extends InputAdapter {
         Controllers.addListener(arcade);
         init();
 
+        levelManager = new LevelManager();
     }
 
     public void init()
