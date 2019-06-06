@@ -14,6 +14,10 @@ public class GameWorker extends GameObject{
         pNumber = number;
     }
 
+    public void checkWorkerState()
+    {
+        if()
+    }
     @Override
     public void draw(SpriteBatch batch) {
         batch.draw(texRegionToDraw(pNumber),x,y,0,0,width,height,scale.x,scale.y,rotation);
@@ -32,5 +36,7 @@ public class GameWorker extends GameObject{
     {
         return Assets.getInstance().player[i-1];
     }
+
+
 }
 

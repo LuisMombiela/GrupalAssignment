@@ -1,5 +1,7 @@
 package com.mygdx.theafrica.CardUtils;
 
+import com.mygdx.theafrica.Player;
+
 public abstract class Upgrades {
 
     public int requiredWood;
@@ -9,6 +11,6 @@ public abstract class Upgrades {
     public int requiredBooks;
     public int requiredSeeds;
 
-     public abstract void build();
+     public abstract void build(Player p);
 
 }

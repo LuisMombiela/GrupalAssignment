@@ -17,7 +17,8 @@ public class Player extends GameObject {
     public int currentIron;
     public int currentBandages;
     public int currentBooks;
-    public int currentpawns;
+    public int currentSeeds;
+    public int currentWorkers;
 
     public boolean isTurn;
     public Player(float posX, float posY, int num) {
