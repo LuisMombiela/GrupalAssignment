@@ -13,6 +13,7 @@ public class TurnManager extends GameObject {
         p1 = null;
         p2 = null;
 
+        layerTag = Layer.LayerNames.DEFAULT;
     }
 
     public void giveActions(Player p){
@@ -38,9 +39,11 @@ public class TurnManager extends GameObject {
         }
     }
 
+
     @Override
     public void update(float delta)
     {
+
         if(p1 == null && p2 == null) {
             p1 = WorldController.instance.levelManager.getPlayer(1);
             p2 = WorldController.instance.levelManager.getPlayer(2);

@@ -78,7 +78,7 @@ public class Player extends GameObject {
 
     public void Actions()
     {
-        if(inputs.keySelectCard == true)
+        if(inputs.keySelectCard)
         {
             Gdx.app.debug("PLAYER", "WORKER PUT by Player "+number);
             SoundManager.reproduceSounds(1);

@@ -60,12 +60,6 @@ public class LevelManager {
 
 
 
-    void ManageGameState()
-    {
-
-    }
-
-
     void updateLists(float delta)
     {
 
