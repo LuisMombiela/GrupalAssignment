@@ -46,7 +46,6 @@ public class InputManager implements InputProcessor {
                 break;
             case Input.Keys.ENTER: keyEndTurn = true;
                 break;
-
             case Input.Keys.ESCAPE: keyDeny = true;
                 break;
         }

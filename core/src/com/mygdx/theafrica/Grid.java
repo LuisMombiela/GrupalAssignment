@@ -30,6 +30,10 @@ public class Grid extends GameObject{
         originalX = - size/2*cardSize;
         originalY = - cardSize;
         int index = 0;
+
+        Player player1 = new Player(1,0,0);
+        Player player2 = new Player(2,0,0);
+
         for(int i = 0; i < size; i++)
         {
             for (int j = 0; j < size; j++)
@@ -43,12 +47,14 @@ public class Grid extends GameObject{
                 if(i==0 && j==0)
                 {
                     name = "player 1";
-                    WorldController.instance.levelManager.Instantiate(new Player(1, positions[i][j].x, positions[i][j].y));
+                    player1 = new Player(1, positions[i][j].x, positions[i][j].y);
+                    WorldController.instance.levelManager.Instantiate(player1);
                 }
                 else if(i==size-1 && j==size-1)
                 {
                     name = "player 2";
-                    WorldController.instance.levelManager.Instantiate(new Player(2, positions[i][j].x, positions[i][j].y));
+                    player2 = new Player(2, positions[i][j].x, positions[i][j].y);
+                    WorldController.instance.levelManager.Instantiate(player2);
                 }
                 else if((i!=0 && j!=0) || (i!=size && j!=size))
                 {
@@ -57,7 +63,7 @@ public class Grid extends GameObject{
                 }
 
                 hasCard[i][j] = true;
-
+                WorldController.instance.levelManager.Instantiate(new TurningSystem(player1,player2));
                 Gdx.app.debug("GRID","Position: " + positions[i][j].x + ", "+ positions[i][j].y + ", Index: " + index + ", Name: "+ name);
                 index ++;
             }

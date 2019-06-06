@@ -1,6 +1,9 @@
 package com.mygdx.theafrica;
 
-public class TurningSystem {
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+public class TurningSystem extends GameObject {
 
     Player p1, p2;
     int turnsToGive;
@@ -25,7 +28,8 @@ public class TurningSystem {
             p2.isTurn=true;
         }
     }
-    //Que jugador empeiza hacer
+
+    @Override
     public void update(float delta)
     {
         if(p1.isTurn==true)
@@ -47,4 +51,14 @@ public class TurningSystem {
         }
     }
 
+    @Override
+    public void draw(SpriteBatch batch, float staTime) {
+
+    }
+
+    @Override
+    public void draw(SpriteBatch batch) {
+
+    }
 }
+
