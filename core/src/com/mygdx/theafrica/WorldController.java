@@ -6,6 +6,8 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.controllers.Controllers;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.mygdx.theafrica.HUD.HUD;
+import com.mygdx.theafrica.HUD.TextButton;
 
 import java.util.ArrayList;
 
@@ -17,13 +19,14 @@ public class WorldController extends InputAdapter {
     public int selectedSprite;
     public ArrayList<GameObject> objects;
     public CameraHelper ch;
+    HUD hud;
     public LevelManager levelManager;
     public Background background;
     public InputManager inputMgr;
     public static WorldController instance;
 
 
-    public WorldController(LevelManager levelManager){
+    public WorldController(){
         if(WorldController.instance ==null)
         {
             instance = this;
@@ -32,12 +35,21 @@ public class WorldController extends InputAdapter {
         {
             WorldController.instance = null;
         }
+        levelManager = new LevelManager();
+        inputMgr = new InputManager();
         Gdx.input.setInputProcessor(inputMgr);
+
         ch = new CameraHelper();
-        init();
-        //objects = new ArrayList<GameObject>();
-        this.levelManager = levelManager;
-        this.ch =this.levelManager.cameraHelper;
+
+        hud = new HUD();
+        TextButton b1 = new TextButton("Hacer algo",10,10,240,50){
+            @Override
+            public void click() {
+                //Aqui iria lo que quisieses meter como nueva accion
+            }
+        };
+
+        hud.add(b1);
 
         ArcadeHandler arcade = new ArcadeHandler(this.levelManager);
         Controllers.addListener(arcade);

@@ -39,6 +39,16 @@ public class WorldRenderer {
 
         shapeRender.end();
 
+        batch.begin();
+        updateArrays();
+        batch.end();
+
+        batch.setProjectionMatrix(controller.ch.hudCamera.combined);
+        batch.begin();
+        controller.hud.render(batch);;
+        batch.end();
+
+
         long elapsed = System.nanoTime() - t0;
 
         float elapsedMs = elapsed / 1000000;
@@ -46,6 +56,16 @@ public class WorldRenderer {
         //Gdx.app.debug(TAG_TIME, elapsedMs + "ms - " + batch.maxSpritesInBatch + " - " + batch.renderCalls);
 
 
+    }
+    void updateArrays()
+    {
+        for(int i = 0; i<WorldController.instance.levelManager.Layers.size(); i++)
+        {
+            for(int j = 0; j<WorldController.instance.levelManager.Layers.get(i).list.size(); j++)
+            {
+                WorldController.instance.levelManager.Layers.get(i).list.get(j).draw(batch);
+            }
+        }
     }
 
     public void resize(int width, int height){

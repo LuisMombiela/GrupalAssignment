@@ -10,8 +10,7 @@ public class SCREEN_MAIN implements Screen {
 	String TAG_LIFECYCLE = "LIFECYCLE";
 	public WorldController controller;
 	public WorldRenderer renderer;
-	public InputManager iProcessor;
-	public Screen screen;
+
 	public MAIN_GAME gameMain;
 	public LevelManager levelManager;
 	public int numPlayers;
@@ -26,13 +25,10 @@ public class SCREEN_MAIN implements Screen {
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
 		Gdx.app.debug(TAG_LIFECYCLE, "Created");
 		CameraHelper helper = new CameraHelper();
-		levelManager = new LevelManager(helper);
-		controller = new WorldController(levelManager);
-		iProcessor = new InputManager();
-		Gdx.input.setInputProcessor(iProcessor);
+		levelManager = new LevelManager();
+		controller = new WorldController();
 		renderer = new WorldRenderer(controller);
 
-		Controllers c;
 	}
 
 	@Override
@@ -49,12 +45,12 @@ public class SCREEN_MAIN implements Screen {
 	public void resize(int width, int height) {
 		renderer.resize(width,height);
 		Gdx.app.debug(TAG_LIFECYCLE, "Resized to: "+ height + "x" + width);
-		levelManager.hudCamera.viewportWidth = width;
-		levelManager.hudCamera.viewportHeight = height;
+		controller.ch.hudCamera.viewportWidth = width;
+		controller.ch.hudCamera.viewportHeight = height;
 		//0,0 in the lower left corner
-		levelManager.hudCamera.position.x = width/2;
-		levelManager.hudCamera.position.y = height/4;
-		levelManager.hudCamera.update();
+		controller.ch.hudCamera.position.x = width/2;
+		controller.ch.hudCamera.position.y = height/4;
+		controller.ch.hudCamera.update();
 
 
 	}
