@@ -70,16 +70,19 @@ public class Player extends GameObject {
         if(inputs.keySelectCard)
         {
             Gdx.app.debug("PLAYER", "WORKER PUT");
+            actionNumber -= 1;
         }
 
         if(inputs.keyAccelerateWorker)
         {
             Gdx.app.debug("PLAYER", "WORKER ACCELERATED");
+            actionNumber -= 2;
         }
 
         if(inputs.keyEndTurn)
         {
             Gdx.app.debug("PLAYER", "TURN ENDED");
+            actionNumber = 0;
         }
     }
 
