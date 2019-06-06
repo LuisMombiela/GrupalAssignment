@@ -10,11 +10,11 @@ import com.badlogic.gdx.math.Vector3;
 
 public class ArcadeHandler implements ControllerListener {
 
-    public Level lvl;
+    public LevelManager lvl;
 
-    public  ArcadeHandler(Level level)
+    public  ArcadeHandler(LevelManager levelManager)
     {
-        lvl=level;
+        lvl= levelManager;
     }
 
     @Override

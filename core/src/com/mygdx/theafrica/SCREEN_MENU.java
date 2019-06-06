@@ -1,7 +1,6 @@
 package com.mygdx.theafrica;
 
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -12,9 +11,9 @@ import com.badlogic.gdx.utils.Align;
 import com.mygdx.theafrica.HUD.HUD;
 import com.mygdx.theafrica.HUD.TextButton;
 
-public class MenuScreen implements Screen {
+public class SCREEN_MENU implements Screen {
 
-    MyGame game;
+    MAIN_GAME game;
     BitmapFont font;
     SpriteBatch batch;
     OrthographicCamera camera;
@@ -27,7 +26,7 @@ public class MenuScreen implements Screen {
     public OrthographicCamera hudCamera;
     HUD hud;
 
-    public MenuScreen(final MyGame game) {
+    public SCREEN_MENU(final MAIN_GAME game) {
         SoundManager.reproduceMusic();
         bg = GOFactory.generateBRMenu(-Gdx.graphics.getWidth()/2,-Gdx.graphics.getHeight()/2,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
         SoundManager.reproduceMusic();
@@ -95,7 +94,7 @@ public class MenuScreen implements Screen {
         hudCamera.viewportHeight = height;
         //0,0 in the lower left corner
         hudCamera.position.x = width/2;
-        hudCamera.position.y = height/4;
+        hudCamera.position.y = height/2;
         hudCamera.update();
     }
 

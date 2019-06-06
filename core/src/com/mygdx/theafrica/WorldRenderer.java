@@ -1,15 +1,8 @@
 package com.mygdx.theafrica;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.sun.corba.se.impl.orbutil.closure.Constant;
-
-import java.util.Iterator;
 
 public class WorldRenderer {
 
@@ -37,12 +30,12 @@ public class WorldRenderer {
         elapsedTime += Gdx.graphics.getDeltaTime();
         long t0 = System.nanoTime();
 
-        controller.level.render(batch, elapsedTime);
+        controller.levelManager.render(batch, elapsedTime);
 
         shapeRender.setProjectionMatrix(controller.helper.camera.combined);
         shapeRender.begin(ShapeRenderer.ShapeType.Line);
 
-        //controller.level.drawDebug(shapeRender);
+        //controller.levelManager.drawDebug(shapeRender);
 
         shapeRender.end();
 

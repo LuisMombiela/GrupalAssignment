@@ -7,10 +7,7 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.controllers.Controllers;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class WorldController extends InputAdapter {
 
@@ -20,17 +17,17 @@ public class WorldController extends InputAdapter {
     public int selectedSprite;
     public ArrayList<GameObject> objects;
     public CameraHelper helper;
-    public Level level;
+    public LevelManager levelManager;
     public Background background;
 
 
-    public WorldController(Level level){
+    public WorldController(LevelManager levelManager){
         Gdx.input.setInputProcessor(this);
         //objects = new ArrayList<GameObject>();
-        this.level=level;
-        this.helper=this.level.helper;
+        this.levelManager = levelManager;
+        this.helper=this.levelManager.helper;
 
-        ArcadeHandler arcade = new ArcadeHandler(this.level);
+        ArcadeHandler arcade = new ArcadeHandler(this.levelManager);
         Controllers.addListener(arcade);
         init();
 
@@ -43,8 +40,8 @@ public class WorldController extends InputAdapter {
 
     public void update(float delta){
 
-        level.update(delta);
-        //helper.followGO(level.player, level.bg);
+        levelManager.update(delta);
+        //helper.followGO(levelManager.player, levelManager.bg);
         helper.moveCamera(delta);
 
     }

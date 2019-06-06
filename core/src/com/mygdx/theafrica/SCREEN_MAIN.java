@@ -3,22 +3,21 @@ package com.mygdx.theafrica;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.controllers.Controllers;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 
 
-public class TheAfricaMain implements Screen {
+public class SCREEN_MAIN implements Screen {
 
 	String TAG_LIFECYCLE = "LIFECYCLE";
 	public WorldController controller;
 	public WorldRenderer renderer;
 	public InputManager iProcessor;
 	public Screen screen;
-	public MyGame gameMain;
-	public Level level;
+	public MAIN_GAME gameMain;
+	public LevelManager levelManager;
 	public int numPlayers;
 
 
-	public TheAfricaMain(MyGame gameMain) {
+	public SCREEN_MAIN(MAIN_GAME gameMain) {
 		this.gameMain= gameMain;
 	}
 
@@ -27,8 +26,8 @@ public class TheAfricaMain implements Screen {
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
 		Gdx.app.debug(TAG_LIFECYCLE, "Created");
 		CameraHelper helper = new CameraHelper();
-		level = new Level(helper);
-		controller = new WorldController(level);
+		levelManager = new LevelManager(helper);
+		controller = new WorldController(levelManager);
 		iProcessor = new InputManager();
 		Gdx.input.setInputProcessor(iProcessor);
 		renderer = new WorldRenderer(controller);
@@ -50,12 +49,12 @@ public class TheAfricaMain implements Screen {
 	public void resize(int width, int height) {
 		renderer.resize(width,height);
 		Gdx.app.debug(TAG_LIFECYCLE, "Resized to: "+ height + "x" + width);
-		level.hudCamera.viewportWidth = width;
-		level.hudCamera.viewportHeight = height;
+		levelManager.hudCamera.viewportWidth = width;
+		levelManager.hudCamera.viewportHeight = height;
 		//0,0 in the lower left corner
-		level.hudCamera.position.x = width/2;
-		level.hudCamera.position.y = height/4;
-		level.hudCamera.update();
+		levelManager.hudCamera.position.x = width/2;
+		levelManager.hudCamera.position.y = height/4;
+		levelManager.hudCamera.update();
 
 
 	}

@@ -3,18 +3,17 @@ package com.mygdx.theafrica;
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.controllers.Controller;
 import com.badlogic.gdx.controllers.Controllers;
 
-public class MyGame extends Game {
+public class MAIN_GAME extends Game {
 
-    MenuScreen mainScreen;
-    TheAfricaMain gameScreen;
+    SCREEN_MENU mainScreen;
+    SCREEN_MAIN gameScreen;
 
     @Override
     public void create() {
-        mainScreen = new MenuScreen(this);
-        gameScreen = new TheAfricaMain(this);
+        mainScreen = new SCREEN_MENU(this);
+        gameScreen = new SCREEN_MAIN(this);
 
         if(Gdx.app.getType() == Application.ApplicationType.Android)
             System.out.println("Estoy en android");

@@ -1,15 +1,14 @@
 package com.mygdx.theafrica;
 
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector3;
 
 public class InputMenu implements InputProcessor {
 
-    public MenuScreen menu;
+    public SCREEN_MENU menu;
 
-    public  InputMenu(MenuScreen mn)
+    public  InputMenu(SCREEN_MENU mn)
     {
         menu=mn;
     }

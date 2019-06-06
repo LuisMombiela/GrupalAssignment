@@ -15,7 +15,7 @@ abstract public class GameObject {
     public float width, height;
     public Layer.LayerNames layerTag;
     public Rectangle rectangle;
-    Level lvl;
+    LevelManager lvl;
 
     public GameObject()
     {
@@ -26,9 +26,9 @@ abstract public class GameObject {
         rectangle=new Rectangle();
     }
 
-    public GameObject(Level level)
+    public GameObject(LevelManager levelManager)
     {
-        lvl=level;
+        lvl= levelManager;
         x=0;
         y=0;
         width=1;

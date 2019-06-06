@@ -11,7 +11,7 @@ import com.mygdx.theafrica.HUD.TextButton;
 
 import java.util.ArrayList;
 
-public class Level {
+public class LevelManager {
 
 
 
@@ -33,7 +33,7 @@ public class Level {
     public OrthographicCamera hudCamera;
     HUD hud;
 
-    public Level(CameraHelper helper)
+    public LevelManager(CameraHelper helper)
     {
         this.helper=helper;
         Layers = new ArrayList<Layer>();
@@ -52,7 +52,7 @@ public class Level {
         toAdd = new ArrayList<GameObject>();
         currentTime = 0f;
 
-        //HUD THINGS
+        //HUD THINGS |||||SACAR ESTO DE AQUI Y PONER CADA HUD Y BACKGROUND EN EL SCREEN QUE CORRESPONDA
         hudCamera = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 
         hud = new HUD();
