@@ -192,7 +192,7 @@ public class LevelManager {
                 go = (Grid)L.list.get(1);
             }
         }
-        if(go==null) System.out.println("There is no background object");
+        if(go==null) System.out.println("There is no Grid object");
         return go;
     }
 
@@ -206,7 +206,7 @@ public class LevelManager {
                 go = (Mark)L.list.get(1);
             }
         }
-        if(go==null) System.out.println("There is no background object");
+        if(go==null) System.out.println("There is no Mark object");
         return go;
     }
 
