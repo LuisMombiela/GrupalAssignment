@@ -11,6 +11,7 @@ public class InputManager implements InputProcessor {
     public boolean keyDown = false;
     public boolean keySelectCard = false;
     public boolean keyAccelerateWorker = false;
+    public boolean keyEndTurn = false;
     public boolean keyDeny = false;
 
 
@@ -23,6 +24,7 @@ public class InputManager implements InputProcessor {
         keyDown = false;
         keySelectCard = false;
         keyAccelerateWorker = false;
+        keyEndTurn = false;
         keyDeny = false;
     }
 
@@ -42,6 +44,9 @@ public class InputManager implements InputProcessor {
                 break;
             case Input.Keys.SHIFT_RIGHT: keyAccelerateWorker = true;
                 break;
+            case Input.Keys.ENTER: keyEndTurn = true;
+                break;
+
             case Input.Keys.ESCAPE: keyDeny = true;
                 break;
         }

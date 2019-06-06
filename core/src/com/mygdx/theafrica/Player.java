@@ -1,6 +1,7 @@
 package com.mygdx.theafrica;
 
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
@@ -18,6 +19,7 @@ public class Player extends GameObject {
     public int currentBandages;
     public int currentBooks;
     public int currentSeeds;
+
     public int currentWorkers;
 
     public int actionNumber;
@@ -38,7 +40,7 @@ public class Player extends GameObject {
 
         scale = new Vector2(1,1);
 
-
+        isTurn = false;
         number = num; //1 or 2
         layerTag = Layer.LayerNames.CARD;
         rectangle = new Rectangle();
@@ -68,12 +70,20 @@ public class Player extends GameObject {
     {
         if(inputs.keySelectCard)
         {
-            //
+            Gdx.app.debug("PLAYER", "WORKER PUT");
+            actionNumber -= 1;
         }
 
         if(inputs.keyAccelerateWorker)
         {
-            //
+            Gdx.app.debug("PLAYER", "WORKER ACCELERATED");
+            actionNumber -= 2;
+        }
+
+        if(inputs.keyEndTurn)
+        {
+            Gdx.app.debug("PLAYER", "TURN ENDED");
+            actionNumber = 0;
         }
     }
 
