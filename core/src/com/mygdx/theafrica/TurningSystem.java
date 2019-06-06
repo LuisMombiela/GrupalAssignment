@@ -12,6 +12,7 @@ public class TurningSystem extends GameObject {
     {
         p1=player1;
         p2=player2;
+        chooseInitialTurn();
     }
 
     public void giveActions(Player p){
@@ -23,12 +24,16 @@ public class TurningSystem extends GameObject {
         if(randomNum==1)
         {
             p1.actionNumber= (int) (Math.random()*6+0);
-            p1.isTurn=true;
+            p1.isTurn = true;
+            p2.isTurn = false;
 
-        }else
+        }
+
+        else
         {
             p2.actionNumber= (int) (Math.random()*6+0);
-            p2.isTurn=true;
+            p2.isTurn = true;
+            p1.isTurn = false;
 
         }
     }

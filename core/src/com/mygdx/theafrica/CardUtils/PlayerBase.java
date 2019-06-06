@@ -62,7 +62,6 @@ public class PlayerBase extends GameObject {
     @Override
     public void draw(SpriteBatch batch) {
         batch.draw(texRegionToDraw(5+baseIndex),x,y,0,0,width,height,scale.x,scale.y,rotation);
-        System.out.println("it's fuckin drawin");
     }
     TextureRegion texRegionToDraw(int i)
     {
