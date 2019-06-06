@@ -11,7 +11,6 @@ public class GameWorker extends GameObject{
     public int pNumber;
     public Player p;
     public boolean working; //Defines the current state of the worker
-    public Vector2 initialPos;//Position given by the
 
     public Vector2 targetPos;
     public GameCard gameCard; //The card that the worker receives as the place he needs to go, later obtained
@@ -54,14 +53,15 @@ public class GameWorker extends GameObject{
     }
     public void getBackToBase()
     {
-        x = initialPos.x;
-        y = initialPos.y;
+        
         working = false;
     }
 
-    public void getToWork(GameCard gc)
+    public void goToCard(GameCard gc)
     {
 
+        x= gc.playerPosition.x;
+        y= gc.playerPosition.y;
 
         working = true;
 
