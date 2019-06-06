@@ -14,10 +14,10 @@ public class Mark extends GameObject {
     public int row;
     InputManager inputs;
     Grid grid;
+    int padding = 15;
 
     public Mark(Grid gr)
     {
-
         inputs=WorldController.instance.inputMgr;
         column=1;
         row=0;
@@ -26,8 +26,8 @@ public class Mark extends GameObject {
         y = gr.positions[0][1].y;
 
         layerTag = Layer.LayerNames.CARD;
-        width = 96;
-        height = 96;
+        width = 106;
+        height = 106;
         scale = new Vector2(2.5f,2.5f);
 
     }
@@ -42,8 +42,8 @@ public class Mark extends GameObject {
     @Override
     public void update(float delta) {
         moveMark();
-        x = grid.positions[row][column].x;
-        y = grid.positions[row][column].y;
+        x = grid.positions[row][column].x-padding;
+        y = grid.positions[row][column].y-padding;
     }
 
 
@@ -105,7 +105,6 @@ public class Mark extends GameObject {
                 column+=1;
             }
         }
-
 
     }
     @Override
