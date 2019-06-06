@@ -47,8 +47,8 @@ public class Assets {
         font.getData().setScale(2);
 
         //MENU
-        bgMenu = new Texture("Africa.jpg");
-        bgMenu.setWrap(Texture.TextureWrap.Repeat,Texture.TextureWrap.Repeat);
+        bgMenu = new Texture("Africa2.png");
+        //bgMenu.setWrap(Texture.TextureWrap.Repeat,Texture.TextureWrap.Repeat);
 
         //Wallpaper
         bgWall = new Texture("wallpaperNormal.jpg");

@@ -12,9 +12,7 @@ public class BackgroundMenu extends GameObject{
         this.width=_width;
         this.height=_height;
 
-        float bgFactorWidth = Assets.getInstance().bgMenu.getWidth() * 1/100f;
-        float bgFactorHeight = Assets.getInstance().bgMenu.getHeight() * 1/118f;
-        Assets.getInstance().bgMenuTR = new TextureRegion(Assets.getInstance().bgMenu,(int)(bgFactorWidth*_width),(int)(bgFactorHeight* _height));
+        Assets.getInstance().bgMenuTR = new TextureRegion(Assets.getInstance().bgMenu);//,(int)(bgFactorWidth*_width),(int)(bgFactorHeight* _height));
 
     }
 
@@ -25,7 +23,7 @@ public class BackgroundMenu extends GameObject{
 
     @Override
     public void draw(SpriteBatch batch, float staTime) {
-        batch.draw(Assets.getInstance().bgMenuTR,x,y,width*10,height*10);
+        batch.draw(Assets.getInstance().bgMenuTR,x,y,width,height);
     }
 
     @Override
