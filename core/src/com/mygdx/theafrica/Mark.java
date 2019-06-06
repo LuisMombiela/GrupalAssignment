@@ -17,7 +17,6 @@ public class Mark extends GameObject {
 
     public Mark(Grid gr)
     {
-
         inputs=WorldController.instance.inputMgr;
         column=1;
         row=0;
@@ -105,7 +104,6 @@ public class Mark extends GameObject {
                 column+=1;
             }
         }
-
 
     }
     @Override

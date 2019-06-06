@@ -20,8 +20,12 @@ public class Player extends GameObject {
     public int currentSeeds;
     public int currentWorkers;
 
+    public InputManager inputs;
+
     public boolean isTurn;
+
     public Player(int num, float posX, float posY) {
+        inputs  = WorldController.instance.inputMgr;
 
         x=posX;
         y=posY;
@@ -51,8 +55,24 @@ public class Player extends GameObject {
     @Override
     public void update(float delta) {
 
+        if(isTurn)
+        {
+            Actions();
+        }
 
+    }
 
+    public void Actions()
+    {
+        if(inputs.keySelectCard)
+        {
+            //
+        }
+
+        if(inputs.keyAccelerateWorker)
+        {
+            //
+        }
     }
 
     @Override
