@@ -14,7 +14,6 @@ public class Grid extends GameObject{
     public Vector2[][] positions;
     public boolean[][] isOcuppied;
 
-
     public Grid()
     {
         size = 4;

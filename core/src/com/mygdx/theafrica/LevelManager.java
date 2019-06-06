@@ -49,6 +49,7 @@ public class LevelManager {
         //spawnPlayers();
 
         grid = new Grid();
+
         Layers.get(0).list.add(grid);
 
 
@@ -84,6 +85,7 @@ public class LevelManager {
     public void update(float delta)
     {
         currentTime += delta;
+        grid.update(delta);
 
         //updateLists(delta);
         removeGos();

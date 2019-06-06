@@ -47,6 +47,8 @@ public class SCREEN_MENU implements Screen {
         {
             @Override
             public void click() {
+                Controllers.clearListeners();
+                game.InitializeGame();
                 game.setScreen(game.gameScreen);
             }
         };
@@ -68,7 +70,12 @@ public class SCREEN_MENU implements Screen {
                 public boolean buttonDown(Controller controller, int buttonCode) {
 
                     if(buttonCode == 0)
+                    {
+                        Controllers.clearListeners();
+                        game.InitializeGame();
                         game.setScreen(game.gameScreen);
+                    }
+
 
                     return false;
                 }
