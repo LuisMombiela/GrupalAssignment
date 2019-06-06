@@ -24,6 +24,7 @@ public class LevelManager {
 
 
     public Background bg;
+    public Grid grid;
 
     public BackgroundMenu bgWall;
 
@@ -47,6 +48,11 @@ public class LevelManager {
         //bg= GOFactory.generateBG(-Gdx.graphics.getWidth()/2,-Gdx.graphics.getHeight()/2,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
         bgWall = GOFactory.generateBGWall(-Gdx.graphics.getWidth()/2,-Gdx.graphics.getHeight()/2,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
         spawnPlayers();
+
+        grid = new Grid();
+        Layers.get(0).list.add(grid);
+
+
 
         toRemove = new ArrayList<GameObject>();
         toAdd = new ArrayList<GameObject>();

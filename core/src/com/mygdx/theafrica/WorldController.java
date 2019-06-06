@@ -41,6 +41,7 @@ public class WorldController extends InputAdapter {
     public void update(float delta){
 
         levelManager.update(delta);
+
         //helper.followGO(levelManager.player, levelManager.bg);
         helper.moveCamera(delta);
 

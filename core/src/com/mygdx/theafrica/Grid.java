@@ -1,8 +1,9 @@
 package com.mygdx.theafrica;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
-public class Grid {
+public class Grid extends GameObject{
 
     int size = 4;
     int cardSize;
@@ -30,4 +31,18 @@ public class Grid {
         }
     }
 
+    @Override
+    public void update(float delta) {
+
+    }
+
+    @Override
+    public void draw(SpriteBatch batch) {
+
+    }
+
+    @Override
+    public void draw(SpriteBatch batch, float staTime) {
+
+    }
 }
