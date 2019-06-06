@@ -11,6 +11,8 @@ public class SoundManager {
     public static Sound actionDone = Gdx.audio.newSound(Gdx.files.internal("ActionDone.mp3"));
     public static Sound accelProcess = Gdx.audio.newSound(Gdx.files.internal("accelSound.mp3"));
     public static Sound endTurn = Gdx.audio.newSound(Gdx.files.internal("endTurn.mp3"));
+    public static Sound resourceObtained = Gdx.audio.newSound(Gdx.files.internal("resourceObtained.mp3"));
+    public static Sound buildDone = Gdx.audio.newSound(Gdx.files.internal("buildDone.mp3"));
 
     //FOR SIMPLE SOUNDS
     //public static Sound Shoot = Gdx.audio.newSound(Gdx.files.internal(""));
@@ -29,8 +31,10 @@ public class SoundManager {
                 endTurn.play();
                 break;
             case 4:
+                resourceObtained.play();
                 break;
             case 5:
+                buildDone.play();
                 break;
             case 6:
                 break;
