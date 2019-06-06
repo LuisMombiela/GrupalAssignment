@@ -29,8 +29,9 @@ public class LevelManager {
         Layers = new ArrayList<Layer>();
         Layers.add(new Layer(Layer.LayerNames.BACKGROUND)); //0 BG
         Layers.add(new Layer(Layer.LayerNames.CARD));       //1 CARD
-        Layers.add(new Layer(Layer.LayerNames.ICONS));      //2 ICONS
-        Layers.add(new Layer(Layer.LayerNames.DEFAULT));    //3 DEFAULT
+        Layers.add(new Layer(Layer.LayerNames.PLAYER));     //2 PLAYER
+        Layers.add(new Layer(Layer.LayerNames.ICONS));      //3 ICONS
+        Layers.add(new Layer(Layer.LayerNames.DEFAULT));    //4 DEFAULT
 
 
         bgWall = GOFactory.generateBGWall(-Gdx.graphics.getWidth()/2,-Gdx.graphics.getHeight()/2,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
@@ -154,19 +155,6 @@ public class LevelManager {
             System.out.println("The index is out of bounds");
     }
 
-    public GameObject getPlayer()
-    {
-        GameObject go = null;
-        for (Layer L: Layers)
-        {
-            if(L.name == Layer.LayerNames.CARD)
-            {
-                go = L.list.get(0);
-            }
-        }
-        if(go==null) System.out.println("There is no player object");
-        return go;
-    }
 
     public GameObject getBg()
     {
@@ -210,6 +198,19 @@ public class LevelManager {
         return go;
     }
 
+    public Player getPlayer(int pNumber)
+    {
+        Player go = null;
+        for (Layer L: Layers)
+        {
+            if(L.name == Layer.LayerNames.PLAYER)
+            {
+                go = (Player)L.list.get(pNumber-1);
+            }
+        }
+        if(go==null) System.out.println("There is no Mark object");
+        return go;
+    }
 
 
     public void drawDebug(ShapeRenderer shapeRender) {

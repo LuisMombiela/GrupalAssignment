@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Layer {
 
     public ArrayList<GameObject> list;
-    public enum LayerNames{BACKGROUND, CARD, ICONS, DEFAULT};
+    public enum LayerNames{BACKGROUND, CARD, PLAYER, ICONS, DEFAULT};
     LayerNames name;
 
     public Layer (LayerNames _name)

@@ -3,16 +3,16 @@ package com.mygdx.theafrica;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class TurningSystem extends GameObject {
+public class TurnManager extends GameObject {
 
     Player p1, p2;
     int turnsToGive;
 
-    public TurningSystem(Player player1, Player player2)
+    public TurnManager()
     {
-        p1=player1;
-        p2=player2;
-        chooseInitialTurn();
+        p1 = null;
+        p2 = null;
+
     }
 
     public void giveActions(Player p){
@@ -41,18 +41,28 @@ public class TurningSystem extends GameObject {
     @Override
     public void update(float delta)
     {
+        if(p1 == null && p2 == null) {
+            p1 = WorldController.instance.levelManager.getPlayer(1);
+            p2 = WorldController.instance.levelManager.getPlayer(2);
+            chooseInitialTurn();
+        }
+
         if(p1.isTurn==true)
         {
-            if(p1.actionNumber<=0)
+            if(p1.actionNumber<=0 || p1.turnPassed)
             {
-                p1.isTurn=false;
+                p1.turnPassed = false;
+                p1.isTurn = false;
                 giveActions(p2);
-                p2.isTurn=true;
+                p2.isTurn = true;
             }
-        }else if(p2.isTurn==false)
+        }
+
+        else if(p2.isTurn==true)
         {
-            if(p2.actionNumber<=0)
+            if(p2.actionNumber<=0 || p2.turnPassed)
             {
+                p2.turnPassed = false;
                 p2.isTurn=false;
                 giveActions(p1);
                 p1.isTurn=true;

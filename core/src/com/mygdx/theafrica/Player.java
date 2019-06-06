@@ -21,6 +21,7 @@ public class Player extends GameObject {
     public int currentSeeds;
     public int maxWorkers = 3;
     public int actionNumber;
+
     public GameWorker[] gwArray;
 
     public void initializeWorkers()
@@ -34,6 +35,7 @@ public class Player extends GameObject {
 
     public InputManager inputs;
 
+    public boolean turnPassed;
     public boolean isTurn;
 
     public Player(int num, float posX, float posY) {
@@ -50,7 +52,7 @@ public class Player extends GameObject {
 
         isTurn = false;
         number = num; //1 or 2
-        layerTag = Layer.LayerNames.CARD;
+        layerTag = Layer.LayerNames.PLAYER;
         rectangle = new Rectangle();
         base = new PlayerBase(number, posX, posY);
         WorldController.instance.levelManager.Instantiate(base);
@@ -76,7 +78,7 @@ public class Player extends GameObject {
 
     public void Actions()
     {
-        if(inputs.keySelectCard)
+        if(inputs.keySelectCard == true)
         {
             Gdx.app.debug("PLAYER", "WORKER PUT by Player "+number);
             SoundManager.reproduceSounds(1);
@@ -95,6 +97,7 @@ public class Player extends GameObject {
             Gdx.app.debug("PLAYER", "TURN ENDED");
             SoundManager.reproduceSounds(3);
             actionNumber = 0;
+            turnPassed = true;
         }
     }
 

@@ -63,7 +63,7 @@ public class Grid extends GameObject{
                 }
 
                 hasCard[i][j] = true;
-                WorldController.instance.levelManager.Instantiate(new TurningSystem(player1,player2));
+
                 Gdx.app.debug("GRID","Position: " + positions[i][j].x + ", "+ positions[i][j].y + ", Index: " + index + ", Name: "+ name);
                 index ++;
             }
@@ -110,15 +110,6 @@ public class Grid extends GameObject{
                     return CardType.BOOK;
             }
         }
-
-
-
-
-
-
-
-
-
     }
 
     @Override
