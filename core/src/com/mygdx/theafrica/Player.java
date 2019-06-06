@@ -19,10 +19,18 @@ public class Player extends GameObject {
     public int currentBandages;
     public int currentBooks;
     public int currentSeeds;
-
-    public int currentWorkers;
-
+    public int maxWorkers = 3;
     public int actionNumber;
+    public GameWorker[] gwArray;
+
+    public void initializeWorkers()
+    {
+        for(int i=0; i<maxWorkers; i++)
+        {
+          GameWorker gw = new GameWorker(this.number);
+          gwArray[i] = gw;
+        }
+    }
 
     public InputManager inputs;
 
