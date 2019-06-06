@@ -20,7 +20,9 @@ public class LevelManager {
 
 
     public Background bg;
+
     public Grid grid;
+
 
     public Background bgWall;
 
@@ -36,34 +38,20 @@ public class LevelManager {
         Layers.add(new Layer(Layer.LayerNames.ICONS));      //2 ICONS
         Layers.add(new Layer(Layer.LayerNames.DEFAULT));    //3 DEFAULT
 
-        //Layers.get(0).list.add(bg);
 
-        //bg= GOFactory.generateBG(-Gdx.graphics.getWidth()/2,-Gdx.graphics.getHeight()/2,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
         bgWall = GOFactory.generateBGWall(-Gdx.graphics.getWidth()/2,-Gdx.graphics.getHeight()/2,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
-
         Layers.get(0).list.add(bgWall);
+
+
 
 
         //ARREGLAR LO DE LOS PLAYERS
         //spawnPlayers();
 
-        grid = new Grid();
-
-        Layers.get(0).list.add(grid);
-
-
 
         toRemove = new ArrayList<GameObject>();
         toAdd = new ArrayList<GameObject>();
         currentTime = 0f;
-
-        //HUD THINGS |||||SACAR ESTO DE AQUI Y PONER CADA HUD Y BACKGROUND EN EL SCREEN QUE CORRESPONDA
-
-
-
-
-        //
-
 
     }
 
@@ -76,27 +64,22 @@ public class LevelManager {
     public void update(float delta)
     {
         currentTime += delta;
-        grid.update(delta);
 
-        //updateLists(delta);
+
+        updateLists(delta);
         removeGos();
         addGos();
     }
 
-    public void render(SpriteBatch batch, float staTime) {
 
 
-        batch.begin();
-        batch.setColor(1,1,1,1);
-       // bg.draw(batch);
-        bgWall.draw(batch,staTime);
-        batch.end();
-
-
+    void ManageGameState()
+    {
 
     }
 
-    /*void updateLists(float delta)
+
+    void updateLists(float delta)
     {
 
         for(int i = 0; i<Layers.size(); i++)
@@ -106,7 +89,7 @@ public class LevelManager {
                 Layers.get(i).list.get(j).update(delta);
             }
         }
-    }*/
+    }
 
     void addGos()
     {
@@ -198,6 +181,7 @@ public class LevelManager {
         if(go==null) System.out.println("There is no player object");
         return go;
     }
+
     public GameObject getBg()
     {
         GameObject go = null;
@@ -211,6 +195,22 @@ public class LevelManager {
         if(go==null) System.out.println("There is no background object");
         return go;
     }
+
+    public GameObject getGrid()
+    {
+        GameObject go = null;
+        for (Layer L: Layers)
+        {
+            if(L.name == Layer.LayerNames.BACKGROUND)
+            {
+                go = L.list.get(1);
+            }
+        }
+        if(go==null) System.out.println("There is no background object");
+        return go;
+    }
+
+
 
     public void drawDebug(ShapeRenderer shapeRender) {
 

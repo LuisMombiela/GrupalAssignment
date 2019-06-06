@@ -28,6 +28,7 @@ public class Assets {
     public Texture hospital;
     public Texture greenhouse;
     public Texture school;
+    public Texture marker;
     public TextureRegion[] dice;
 
 
@@ -57,6 +58,9 @@ public class Assets {
         //BACKGROUND---------------------------------------------------------------------------------------------------------------------
         bg = new Texture (Gdx.files.internal("bg.png"));
         bg.setWrap(Texture.TextureWrap.Repeat,Texture.TextureWrap.Repeat);
+
+        //MARKER
+        marker = new Texture(Gdx.files.internal("marker.png"));
 
         float bgFactorWidth = bg.getWidth() * 1;        //this means that my Texture should cover 1 world unit width.
 
@@ -94,7 +98,7 @@ public class Assets {
 
         for(int i = 0; i<cardsNumber; i++)
         {
-            cardsReg[i] = SpriteHelper.textureFromTextureAtlas("cards"+(i), icons);
+            cardsReg[i] = SpriteHelper.textureFromTextureAtlas("cards"+(i), cards);
         }
 
     }

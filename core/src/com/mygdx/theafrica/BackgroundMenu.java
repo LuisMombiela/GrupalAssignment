@@ -18,12 +18,12 @@ public class BackgroundMenu extends GameObject{
 
     @Override
     public void draw(SpriteBatch batch) {
-
+        batch.draw(Assets.getInstance().bgMenuTR,x,y,width,height);
     }
 
     @Override
     public void draw(SpriteBatch batch, float staTime) {
-        batch.draw(Assets.getInstance().bgMenuTR,x,y,width,height);
+
     }
 
     @Override

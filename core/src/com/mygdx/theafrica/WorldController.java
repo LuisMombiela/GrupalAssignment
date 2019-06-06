@@ -20,7 +20,7 @@ public class WorldController extends InputAdapter {
     public ArrayList<GameObject> objects;
     public CameraHelper ch;
     HUD hud;
-    public LevelManager levelManager;
+    public LevelManager levelManager = new LevelManager();
     public Background background;
     public InputManager inputMgr;
     public static WorldController instance;
@@ -35,7 +35,7 @@ public class WorldController extends InputAdapter {
         {
             WorldController.instance = null;
         }
-        levelManager = new LevelManager();
+
         inputMgr = new InputManager();
         Gdx.input.setInputProcessor(inputMgr);
 
@@ -55,11 +55,12 @@ public class WorldController extends InputAdapter {
         Controllers.addListener(arcade);
         init();
 
+
     }
 
     public void init()
     {
-
+        levelManager.Instantiate(new Grid());
     }
 
     public void update(float delta){

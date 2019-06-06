@@ -11,7 +11,7 @@ abstract public class GameObject {
    // public Vector2 position;
     public float x, y;
     public float rotation;
-    public Vector2 scale;
+    public Vector2 scale = new Vector2(1,1);
     public float width, height;
     public Layer.LayerNames layerTag;
     public Rectangle rectangle;

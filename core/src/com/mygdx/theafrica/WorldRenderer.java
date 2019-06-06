@@ -26,26 +26,26 @@ public class WorldRenderer {
 
     public void render(){
 
-        batch.setProjectionMatrix(controller.ch.camera.combined);
+
         elapsedTime += Gdx.graphics.getDeltaTime();
         long t0 = System.nanoTime();
 
-        controller.levelManager.render(batch, elapsedTime);
 
-        shapeRender.setProjectionMatrix(controller.ch.camera.combined);
-        shapeRender.begin(ShapeRenderer.ShapeType.Line);
+
+        //shapeRender.setProjectionMatrix(controller.ch.camera.combined);
+        //shapeRender.begin(ShapeRenderer.ShapeType.Line);
 
         //controller.levelManager.drawDebug(shapeRender);
 
-        shapeRender.end();
-
+        //shapeRender.end();
+        batch.setProjectionMatrix(controller.ch.camera.combined);
         batch.begin();
         updateArrays();
         batch.end();
 
         batch.setProjectionMatrix(controller.ch.hudCamera.combined);
         batch.begin();
-        controller.hud.render(batch);;
+        controller.hud.render(batch);
         batch.end();
 
 
