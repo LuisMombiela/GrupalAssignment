@@ -23,6 +23,21 @@ public class GameWorker extends GameObject{
         pNumber = number;
     }
 
+    @Override
+    public void draw(SpriteBatch batch) {
+
+    }
+
+    @Override
+    public void update(float delta) {
+
+    }
+
+    @Override
+    public void draw(SpriteBatch batch, float staTime) {
+
+    }
+
    /* public void updateWorkerState()
     {
         if(!working && *//*player chooses a unoccupied card*//*)
@@ -35,6 +50,7 @@ public class GameWorker extends GameObject{
             this.getBackToBase();
         }
     }*/
+    /*
     public void getInitialPos()
     {
       for(int i = 0, i<3; p.workersArray[i++]
@@ -64,7 +80,7 @@ public class GameWorker extends GameObject{
         this.turnsLeftToWork = gc.turnsToComplete;
         this.working = true;
 
-    }*/
+    }
     @Override
     public void draw(SpriteBatch batch) {
         batch.draw(texRegionToDraw(pNumber),x,y,0,0,width,height,scale.x,scale.y,rotation);
@@ -83,7 +99,7 @@ public class GameWorker extends GameObject{
     {
         return Assets.getInstance().player[i-1];
     }
-
+*/
 
 }
 
