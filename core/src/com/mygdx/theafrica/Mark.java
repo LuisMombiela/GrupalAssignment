@@ -51,7 +51,11 @@ public class Mark extends GameObject {
     {
         if(inputs.keyUp)
         {
-            if((row-1)<0)
+            if(row-1<1 && column == 0)
+            {
+                return;
+            }
+            else if((row-1)<0)
             {
                 System.out.println("Que te vaaaas chaval!");
             }else
@@ -61,7 +65,11 @@ public class Mark extends GameObject {
         }
         else if(inputs.keyDown)
         {
-            if((row+1)>=4)
+            if(row+1>=3 && column == 3)
+            {
+                return;
+            }
+            else if((row+1)>=4)
             {
                 System.out.println("Que te vaaaas chaval!");
             }else
@@ -71,7 +79,11 @@ public class Mark extends GameObject {
         }
         else if(inputs.keyLeft)
         {
-            if((column-1)<0)
+            if((column-1)<1 && row == 0)
+            {
+                return;
+            }
+            else if((column-1)<0)
             {
                 System.out.println("Que te vaaaas chaval!");
             }else
@@ -81,6 +93,10 @@ public class Mark extends GameObject {
         }
         else if(inputs.keyRight)
         {
+            if((column+1)>=3 && row == 3)
+            {
+                return;
+            }
             if((column+1)>=4)
             {
                 System.out.println("Que te vaaaas chaval!");

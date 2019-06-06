@@ -15,6 +15,12 @@ public class GameWorker extends GameObject{
     public GameCard gameCard; //The card that the worker recieves as the place he needs to go, later obtained
     public int turnsLeft2Work; //The turns this worker needs to be workign in the
 
+    public GameWorker(int number)
+    {
+        super();
+        pNumber = number;
+    }
+
    /* public Vector2 getSelectedCard()
     {
         gameCard = selectedCard

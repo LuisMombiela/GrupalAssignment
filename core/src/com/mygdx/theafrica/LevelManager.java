@@ -18,12 +18,6 @@ public class LevelManager {
 
     public float currentTime;
 
-
-    public Background bg;
-
-    public Grid grid;
-
-
     public Background bgWall;
 
 
@@ -60,6 +54,7 @@ public class LevelManager {
         updateLists(delta);
         removeGos();
         addGos();
+        WorldController.instance.inputMgr.resetBools();
     }
 
 
