@@ -50,8 +50,6 @@ public class InputManager implements InputProcessor {
                 break;
         }
 
-
-
         return true;
     }
 
@@ -67,9 +65,11 @@ public class InputManager implements InputProcessor {
                 break;
             case Input.Keys.S: keyDown  = false;
                 break;
-            case Input.Keys.SPACE: keySelectCard = true;
+            case Input.Keys.SPACE: keySelectCard = false;
                 break;
-            case Input.Keys.SHIFT_RIGHT: keyAccelerateWorker = true;
+            case Input.Keys.SHIFT_RIGHT: keyAccelerateWorker = false;
+                break;
+            case Input.Keys.ENTER: keyEndTurn = false;
                 break;
             case Input.Keys.ESCAPE: keyDeny = false;
                 break;
