@@ -12,8 +12,8 @@ public class GameCard extends GameObject {
     public int index; //Lo adquiere del index de la casilla de la grid
     public boolean hasPlayer;
     public int usageTurns; //Numero de turnos que le queda a una carta que esta siendo usada
-    public Vector2 playerPosition;
-    public Vector2 turnPosition;
+    public Vector2 playerPosition; //Saves the position it shows either player 1 or 2 controls that casilla with the imagen of the jugador
+    public Vector2 turnPosition;//Saves the position of the image where the image of the turns that casilla has left
     public CardType ctype;
 
     public GameCard(CardType type, float posX, float posY)

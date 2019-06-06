@@ -11,7 +11,7 @@ import com.mygdx.theafrica.CardUtils.PlayerBase;
 public class Player extends GameObject {
     public int number;
     public PlayerBase base;
-
+    public GameWorker[] gwArray;
     public int currentWood;
     public int currentWheat;
     public int currentIron;
@@ -19,6 +19,18 @@ public class Player extends GameObject {
     public int currentBooks;
     public int currentSeeds;
     public int currentWorkers;
+
+
+    public void initiateWorkers(){
+
+        for(int i = 0; i<currentWorkers; i++)
+        {
+            GameWorker gw = new GameWorker(this.number);
+            gwArray[i] = gw;
+        }
+    }
+
+
 
     public boolean isTurn;
     public Player(int num, float posX, float posY) {

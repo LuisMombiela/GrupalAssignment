@@ -9,9 +9,11 @@ import javafx.concurrent.Worker;
 public class GameWorker extends GameObject{
 
     public int pNumber;
+    public Player p;
     public boolean working; //Defines the current state of the worker
     public Vector2 initialPos;//Position given by the
     public Vector2 currentPos;
+    public Vector2 targetPos;
     public GameCard gameCard; //The card that the worker recieves as the place he needs to go, later obtained
     public int turnsLeft2Work; //The turns this worker needs to be workign in the
 
@@ -21,17 +23,6 @@ public class GameWorker extends GameObject{
         pNumber = number;
     }
 
-   /* public Vector2 getSelectedCard()
-    {
-        gameCard = selectedCard
-        return selectedCard
-    }
-    gameCard = selectedCard
-    public GameWorker(int number)
-    {
-        pNumber = number;
-    }
-*/
    /* public void updateWorkerState()
     {
         if(!working && *//*player chooses a unoccupied card*//*)
@@ -43,22 +34,35 @@ public class GameWorker extends GameObject{
         {
             this.getBackToBase();
         }
-    }
+    }*/
     public void getInitialPos()
     {
-        this.currentPos =
-        Pillar la posición de los huecos de la playerBase
+      for(int i = 0, i<3; p.workersArray[i++]
+        if(p.number = 1)
+        {
+            targetPos.x =  WorldController.instance.LevelManager.getGrid().positions[0][0].x;
+            targetPos.y = WorldController.instance.LevelManager.getGrid().positions[0][0].y;
+        }
+
+        if(p.number = 2)
+        {
+           targetPos.x =  WorldController.instance.LevelManager.getGrid().positions[3][0].x;
+           targetPos.y = WorldController.instance.LevelManager.getGrid().positions[0][3].y;
+        }
+
     }
     public void getBackToBase()
     {
-        currentPos = initialPos;
+        this.currentPos = this.initialPos;
         working = false;
     }
 
     public void getToWork(GameCard gc)
     {
-       //Pillar la posición de la carta con respecto a la grid
-        // this.currentPos = gc.position;
+        this.currentPos.x + gc.width/2 = gc.x;
+        this.currentPos.y + gc.height/2= gc.y;
+        this.turnsLeftToWork = gc.turnsToComplete;
+        this.working = true;
 
     }*/
     @Override
