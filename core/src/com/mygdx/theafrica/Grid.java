@@ -16,6 +16,7 @@ public class Grid extends GameObject{
 
     public Vector2[][] positions;
     public boolean[][] hasCard;
+    public float probability = 15f;
 
     public Grid()
     {
@@ -42,12 +43,12 @@ public class Grid extends GameObject{
                 if(i==0 && j==0)
                 {
                     name = "player 1";
-                    WorldController.instance.levelManager.Instantiate(new PlayerBase(1, positions[i][j].x, positions[i][j].y));
+                    WorldController.instance.levelManager.Instantiate(new Player(1, positions[i][j].x, positions[i][j].y));
                 }
                 else if(i==size-1 && j==size-1)
                 {
                     name = "player 2";
-                    WorldController.instance.levelManager.Instantiate(new PlayerBase(2, positions[i][j].x, positions[i][j].y));
+                    WorldController.instance.levelManager.Instantiate(new Player(2, positions[i][j].x, positions[i][j].y));
                 }
                 else if((i!=0 && j!=0) || (i!=size && j!=size))
                 {
@@ -66,31 +67,51 @@ public class Grid extends GameObject{
 
     CardType GetCardType()
     {
-        int randomCard = (int)(Math.random()*100 * 6 )/100;// lol esto funciona
+        float randomizer = (float)Math.random()*100;
+        if(randomizer >= probability)
+        {
+            int randomCard = (int)(Math.random()*100 * 3 )/100;// lol esto funciona
+            switch(randomCard)
+            {
+                case 0:
+                    return CardType.WHEAT;
 
+                case 1:
+                    return CardType.WOOD;
 
-        switch(randomCard){
-            case 0:
-                return CardType.WHEAT;
+                case 2:
+                    return CardType.IRON;
 
-            case 1:
-                return CardType.WOOD;
-
-            case 2:
-                return CardType.IRON;
-
-            case 3:
-                return CardType.BOOK;
-
-            case 4:
-                return CardType.BANDAGE;
-
-            case 5:
-                return CardType.SEED;
-
-            default:
-                return CardType.BOOK;
+                default:
+                    return CardType.WHEAT;
+            }
         }
+        else
+        {
+            int randomCard = (int)(Math.random()*100 * 3 )/100;
+            switch(randomCard)
+            {
+                case 0:
+                    return CardType.BOOK;
+
+                case 1:
+                    return CardType.BANDAGE;
+
+                case 2:
+                    return CardType.SEED;
+
+                default:
+                    return CardType.BOOK;
+            }
+        }
+
+
+
+
+
+
+
+
 
     }
 
