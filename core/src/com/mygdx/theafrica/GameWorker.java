@@ -12,10 +12,9 @@ public class GameWorker extends GameObject{
     public Player p;
     public boolean working; //Defines the current state of the worker
     public Vector2 initialPos;//Position given by the
-    public Vector2 currentPos;
+
     public Vector2 targetPos;
-    public GameCard gameCard; //The card that the worker recieves as the place he needs to go, later obtained
-    public int turnsLeft2Work; //The turns this worker needs to be workign in the
+    public GameCard gameCard; //The card that the worker receives as the place he needs to go, later obtained
 
     public GameWorker(int number)
     {
@@ -37,34 +36,36 @@ public class GameWorker extends GameObject{
     }*/
     public void getInitialPos()
     {
-      for(int i = 0, i<3; p.workersArray[i++]
-        if(p.number = 1)
+      for(int i = 0; i<3; i++)
+      {
+        if(p.number == 1)
         {
-            targetPos.x =  WorldController.instance.LevelManager.getGrid().positions[0][0].x;
-            targetPos.y = WorldController.instance.LevelManager.getGrid().positions[0][0].y;
+            targetPos.x =  WorldController.instance.levelManager.getGrid().positions[0][0].x;
+            targetPos.y = WorldController.instance.levelManager.getGrid().positions[0][0].y;
         }
 
-        if(p.number = 2)
+        if(p.number == 2)
         {
-           targetPos.x =  WorldController.instance.LevelManager.getGrid().positions[3][0].x;
-           targetPos.y = WorldController.instance.LevelManager.getGrid().positions[0][3].y;
+           targetPos.x =  WorldController.instance.levelManager.getGrid().positions[3][0].x;
+           targetPos.y = WorldController.instance.levelManager.getGrid().positions[0][3].y;
         }
+      }
 
     }
     public void getBackToBase()
     {
-        this.currentPos = this.initialPos;
+        x = initialPos.x;
+        y = initialPos.y;
         working = false;
     }
 
     public void getToWork(GameCard gc)
     {
-        this.currentPos.x + gc.width/2 = gc.x;
-        this.currentPos.y + gc.height/2= gc.y;
-        this.turnsLeftToWork = gc.turnsToComplete;
-        this.working = true;
 
-    }*/
+
+        working = true;
+
+    }
     @Override
     public void draw(SpriteBatch batch) {
         batch.draw(texRegionToDraw(pNumber),x,y,0,0,width,height,scale.x,scale.y,rotation);
