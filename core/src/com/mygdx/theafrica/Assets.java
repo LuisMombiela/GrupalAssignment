@@ -35,6 +35,9 @@ public class Assets {
     public TextureRegion[] markerReg;
 
 
+    public TextureAtlas turns;
+    public TextureRegion[] turnsTR;
+
     //MENU
     public Texture bgMenu;
     public TextureRegion bgMenuTR;
@@ -106,6 +109,18 @@ public class Assets {
         {
             cardsReg[i] = SpriteHelper.textureFromTextureAtlas("cards"+(i), cards);
         }
+
+
+        //TURNS--------------------------------------------------------------------------------------------------------------------------
+        turns = new TextureAtlas("Turns.atlas");
+        int turnsNumber = turns.getRegions().size;
+        turnsTR = new TextureRegion[turnsNumber];
+
+        for(int i = 0; i<turnsNumber; i++)
+        {
+            turnsTR[i] = SpriteHelper.textureFromTextureAtlas("turn"+(i), turns);
+        }
+
 
     }
 
