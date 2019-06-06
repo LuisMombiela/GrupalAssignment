@@ -21,21 +21,21 @@ public class PlayerBase {
         //Necesito pillar la referencia del player
     }
 
-    public boolean canBuild(Hospital h)
+    public void canBuild(Hospital h)
     {
         if(myPlayer.currentWood >= h.requiredWood && myPlayer.currentIron >= h.requiredIron && myPlayer.currentBandages >= h.requiredBandages)
             Hospital.build();
         hasHospital = true;
         System.out.println("Player tal hospital has been built");
     }
-    public boolean canBuild(School s)
+    public void canBuild(School s)
     {
         if(myPlayer.currentWood >= s.requiredWood && myPlayer.currentIron >= s.requiredIron && myPlayer.currentBooks >= s.requiredBooks)
             School.build();
         hasSchool = true;
         System.out.println("Player tal School has been built");
     }
-    public boolean canBuild(Greenhouse gh)
+    public void canBuild(Greenhouse gh)
     {
         if(myPlayer.currentWood >= gh.requiredWood && myPlayer.currentIron >= gh.requiredIron && myPlayer.currentBandages >= gh.requiredBandages)
             Greenhouse.build();
