@@ -21,8 +21,8 @@ public class Player extends GameObject {
     public int currentWorkers;
 
     public boolean isTurn;
-    public Player(float posX, float posY, int num) {
-        // position = new Vector2(posX, posY);
+    public Player(int num, float posX, float posY) {
+
         x=posX;
         y=posY;
         rotation = 0;
@@ -36,8 +36,8 @@ public class Player extends GameObject {
         number = num; //1 or 2
         layerTag = Layer.LayerNames.CARD;
         rectangle = new Rectangle();
-        base = new PlayerBase(number);
-
+        base = new PlayerBase(number, posX, posY);
+        WorldController.instance.levelManager.Instantiate(base);
         spawnWorkers();
 
     }
