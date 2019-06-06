@@ -20,6 +20,8 @@ public class Player extends GameObject {
     public int currentSeeds;
     public int currentWorkers;
 
+    public int actionNumber;
+
     public InputManager inputs;
 
     public boolean isTurn;
