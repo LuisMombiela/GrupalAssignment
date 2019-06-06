@@ -24,6 +24,9 @@ public class Level {
 
 
     public Background bg;
+
+    public BackgroundMenu bgWall;
+
     public CameraHelper helper;
 
     //HUD THINGS
@@ -39,7 +42,10 @@ public class Level {
         Layers.add(new Layer(Layer.LayerNames.ICONS));      //2 ICONS
         Layers.add(new Layer(Layer.LayerNames.DEFAULT));    //3 DEFAULT
 
-        Layers.get(0).list.add(bg);
+        //Layers.get(0).list.add(bg);
+
+        //bg= GOFactory.generateBG(-Gdx.graphics.getWidth()/2,-Gdx.graphics.getHeight()/2,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+        bgWall = GOFactory.generateBGWall(-Gdx.graphics.getWidth()/2,-Gdx.graphics.getHeight()/2,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
         spawnPlayers();
 
         toRemove = new ArrayList<GameObject>();
@@ -50,7 +56,12 @@ public class Level {
         hudCamera = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 
         hud = new HUD();
-        TextButton b1 = new TextButton("Hacer algo",10,10,240,50);
+        TextButton b1 = new TextButton("Hacer algo",10,10,240,50){
+            @Override
+            public void click() {
+                //Aqui iria lo que quisieses meter como nueva accion
+            }
+        };
 
         hud.add(b1);
 
@@ -75,7 +86,7 @@ public class Level {
     {
         currentTime += delta;
 
-        updateLists(delta);
+        //updateLists(delta);
         removeGos();
         addGos();
     }
@@ -85,7 +96,9 @@ public class Level {
 
         batch.begin();
         batch.setColor(1,1,1,1);
-       // bg.draw(batch, staTime);
+       // bg.draw(batch);
+        bgWall.draw(batch,staTime);
+        batch.end();
 
         batch.setProjectionMatrix(hudCamera.combined);
         batch.begin();
@@ -94,7 +107,7 @@ public class Level {
 
     }
 
-    void updateLists(float delta)
+    /*void updateLists(float delta)
     {
 
         for(int i = 0; i<Layers.size(); i++)
@@ -104,7 +117,7 @@ public class Level {
                 Layers.get(i).list.get(j).update(delta);
             }
         }
-    }
+    }*/
 
     void addGos()
     {

@@ -1,5 +1,6 @@
 package com.mygdx.theafrica;
 
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
@@ -20,6 +21,7 @@ public class WorldController extends InputAdapter {
     public ArrayList<GameObject> objects;
     public CameraHelper helper;
     public Level level;
+    public Background background;
 
 
     public WorldController(Level level){

@@ -43,4 +43,14 @@ public class GOFactory {
 
         return generatedBgMenu;
     }
+
+    public static BackgroundMenu generateBGWall(float x, float y, float width, float height)
+    {
+        float bgFactorWidth = Assets.getInstance().bgWall.getWidth() * 1/100f;
+        float bgFactorHeight = Assets.getInstance().bgWall.getHeight() * 1/118f;
+        Assets.getInstance().bgWallTR = new TextureRegion(Assets.getInstance().bgWall,(int)(bgFactorWidth*width),(int)(bgFactorHeight* height));
+        BackgroundMenu generatedBGWall= new BackgroundMenu(x,y,width,height);
+
+        return generatedBGWall;
+    }
 }

@@ -35,6 +35,9 @@ public class Assets {
     public Texture bgMenu;
     public TextureRegion bgMenuTR;
 
+    //Wallpaper
+    public Texture bgWall;
+    public TextureRegion bgWallTR;
 
     private Assets() {
 
@@ -46,6 +49,10 @@ public class Assets {
         //MENU
         bgMenu = new Texture("Africa.jpg");
         bgMenu.setWrap(Texture.TextureWrap.Repeat,Texture.TextureWrap.Repeat);
+
+        //Wallpaper
+        bgWall = new Texture("wallpaperNormal.jpg");
+        bgWall.setWrap(Texture.TextureWrap.Repeat,Texture.TextureWrap.Repeat);
 
         //BACKGROUND---------------------------------------------------------------------------------------------------------------------
         bg = new Texture (Gdx.files.internal("bg.png"));
