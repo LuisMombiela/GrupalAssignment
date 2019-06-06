@@ -10,8 +10,8 @@ public class Mark extends GameObject {
     public int usageTurns; //Numero de turnos que le queda a una carta que esta siendo usada
     public Vector2 playerPosition;
     public Vector2 turnPosition;
-    int column;
-    int row;
+    public int column;
+    public int row;
     InputManager inputs;
     Grid grid;
 

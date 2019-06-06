@@ -196,6 +196,20 @@ public class LevelManager {
         return go;
     }
 
+    public Mark getMark()
+    {
+        Mark go = null;
+        for (Layer L: Layers)
+        {
+            if(L.name == Layer.LayerNames.CARD)
+            {
+                go = (Mark)L.list.get(1);
+            }
+        }
+        if(go==null) System.out.println("There is no background object");
+        return go;
+    }
+
 
 
     public void drawDebug(ShapeRenderer shapeRender) {
