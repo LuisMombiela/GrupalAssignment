@@ -28,8 +28,11 @@ public class Assets {
     public Texture hospital;
     public Texture greenhouse;
     public Texture school;
-    public Texture marker;
+
     public TextureRegion[] dice;
+    //Marker
+    public Texture marker;
+    public TextureRegion[] markerReg;
 
 
     //MENU
@@ -41,6 +44,7 @@ public class Assets {
     public TextureRegion bgWallTR;
 
     private Assets() {
+
 
         //HUD
         button = createButtonTexture();
@@ -61,6 +65,8 @@ public class Assets {
 
         //MARKER
         marker = new Texture(Gdx.files.internal("marker.png"));
+        markerReg = new TextureRegion[1];
+        markerReg[0]= new TextureRegion(marker);
 
         float bgFactorWidth = bg.getWidth() * 1;        //this means that my Texture should cover 1 world unit width.
 

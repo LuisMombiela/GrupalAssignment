@@ -44,22 +44,13 @@ public class LevelManager {
 
 
 
-
-        //ARREGLAR LO DE LOS PLAYERS
-        //spawnPlayers();
-
-
         toRemove = new ArrayList<GameObject>();
         toAdd = new ArrayList<GameObject>();
         currentTime = 0f;
 
     }
 
-    void spawnPlayers()
-    {
-        Layers.get(1).list.add(new Player(0,0, 1));
-        Layers.get(1).list.add(new Player(0,0, 2));
-    }
+
 
     public void update(float delta)
     {
@@ -142,8 +133,8 @@ public class LevelManager {
     {
         toAdd.add(gameObject);
         //Center new object:
-        toAdd.get(toAdd.size()-1).x = toAdd.get(toAdd.size()-1).x-toAdd.get(toAdd.size()-1).width/2;
-        toAdd.get(toAdd.size()-1).y = toAdd.get(toAdd.size()-1).y-toAdd.get(toAdd.size()-1).width/2;
+        //toAdd.get(toAdd.size()-1).x = toAdd.get(toAdd.size()-1).x-toAdd.get(toAdd.size()-1).width/2;
+        //toAdd.get(toAdd.size()-1).y = toAdd.get(toAdd.size()-1).y-toAdd.get(toAdd.size()-1).width/2;
 
         /*new Vector2(toAdd.get(toAdd.size()-1).position.x-toAdd.get(toAdd.size()-1).width/2,
                                                          toAdd.get(toAdd.size()-1).position.y-toAdd.get(toAdd.size()-1).width/2);*/
