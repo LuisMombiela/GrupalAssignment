@@ -60,7 +60,9 @@ public class WorldController extends InputAdapter {
 
     public void init()
     {
-        levelManager.Instantiate(new Grid());
+        Grid grid = new Grid();
+        levelManager.Instantiate(grid);
+        levelManager.Instantiate(new Mark(grid));
     }
 
     public void update(float delta){

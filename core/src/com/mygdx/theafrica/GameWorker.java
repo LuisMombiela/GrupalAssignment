@@ -16,7 +16,7 @@ public class GameWorker extends GameObject{
 
     public void checkWorkerState()
     {
-        if()
+        //if()
     }
     @Override
     public void draw(SpriteBatch batch) {

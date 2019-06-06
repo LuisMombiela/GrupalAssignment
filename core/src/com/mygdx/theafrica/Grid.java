@@ -43,6 +43,7 @@ public class Grid extends GameObject{
                 Gdx.app.debug("GRID","Position: " + positions[i][j].x + ", "+ positions[i][j].y);
             }
         }
+
     }
 
     CardType GetCardType()
