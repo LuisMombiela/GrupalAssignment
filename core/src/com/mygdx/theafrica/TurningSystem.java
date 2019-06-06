@@ -19,10 +19,14 @@ public class TurningSystem {
         int randomNum=(int) (Math.random()*2+0);
         if(randomNum==1)
         {
+            p1.actionNumber= (int) (Math.random()*6+0);
             p1.isTurn=true;
+
         }else
         {
+            p2.actionNumber= (int) (Math.random()*6+0);
             p2.isTurn=true;
+
         }
     }
     //Que jugador empeiza hacer
