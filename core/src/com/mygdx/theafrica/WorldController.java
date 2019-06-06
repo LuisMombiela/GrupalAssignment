@@ -16,16 +16,28 @@ public class WorldController extends InputAdapter {
     public String TAG_KEYS = "KEYS";
     public int selectedSprite;
     public ArrayList<GameObject> objects;
-    public CameraHelper helper;
+    public CameraHelper ch;
     public LevelManager levelManager;
     public Background background;
+    public InputManager inputMgr;
+    public static WorldController instance;
 
 
     public WorldController(LevelManager levelManager){
-        Gdx.input.setInputProcessor(this);
+        if(WorldController.instance ==null)
+        {
+            instance = this;
+        }
+        else if(WorldController.instance != this)
+        {
+            WorldController.instance = null;
+        }
+        Gdx.input.setInputProcessor(inputMgr);
+        ch = new CameraHelper();
+        init();
         //objects = new ArrayList<GameObject>();
         this.levelManager = levelManager;
-        this.helper=this.levelManager.helper;
+        this.ch =this.levelManager.cameraHelper;
 
         ArcadeHandler arcade = new ArcadeHandler(this.levelManager);
         Controllers.addListener(arcade);
@@ -42,8 +54,8 @@ public class WorldController extends InputAdapter {
 
         levelManager.update(delta);
 
-        //helper.followGO(levelManager.player, levelManager.bg);
-        helper.moveCamera(delta);
+        //ch.followGO(levelManager.player, levelManager.bg);
+        ch.moveCamera(delta);
 
     }
 

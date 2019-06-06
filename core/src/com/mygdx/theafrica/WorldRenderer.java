@@ -20,19 +20,19 @@ public class WorldRenderer {
     public void init(){
         batch = new SpriteBatch();
         shapeRender = new ShapeRenderer();
-        controller.helper.camera.position.set(0,0,0);
-        controller.helper.camera.update();
+        controller.ch.camera.position.set(0,0,0);
+        controller.ch.camera.update();
     }
 
     public void render(){
 
-        batch.setProjectionMatrix(controller.helper.camera.combined);
+        batch.setProjectionMatrix(controller.ch.camera.combined);
         elapsedTime += Gdx.graphics.getDeltaTime();
         long t0 = System.nanoTime();
 
         controller.levelManager.render(batch, elapsedTime);
 
-        shapeRender.setProjectionMatrix(controller.helper.camera.combined);
+        shapeRender.setProjectionMatrix(controller.ch.camera.combined);
         shapeRender.begin(ShapeRenderer.ShapeType.Line);
 
         //controller.levelManager.drawDebug(shapeRender);
@@ -49,6 +49,6 @@ public class WorldRenderer {
     }
 
     public void resize(int width, int height){
-        controller.helper.resize(width,height);
+        controller.ch.resize(width,height);
     }
 }
