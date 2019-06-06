@@ -135,10 +135,6 @@ public class SCREEN_MENU implements Screen {
 
         bg.draw(batch);
 
-
-        //font.draw(batch,"Click Anywhere to start",-camera.viewportWidth/2,0,camera.viewportWidth, Align.center,true);
-        font.draw(batch,"WELCOME, CLICK START TO START",-camera.viewportWidth/2.1F,camera.viewportHeight/8,camera.viewportWidth, Align.center,true);
-
         batch.end();
 
 

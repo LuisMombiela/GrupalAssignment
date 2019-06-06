@@ -1,6 +1,7 @@
 package com.mygdx.theafrica;
 
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
@@ -68,12 +69,17 @@ public class Player extends GameObject {
     {
         if(inputs.keySelectCard)
         {
-            //
+            Gdx.app.debug("PLAYER", "WORKER PUT");
         }
 
         if(inputs.keyAccelerateWorker)
         {
-            //
+            Gdx.app.debug("PLAYER", "WORKER ACCELERATED");
+        }
+
+        if(inputs.keyEndTurn)
+        {
+            Gdx.app.debug("PLAYER", "TURN ENDED");
         }
     }
 
