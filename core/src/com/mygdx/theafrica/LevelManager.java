@@ -182,14 +182,14 @@ public class LevelManager {
         return go;
     }
 
-    public GameObject getGrid()
+    public Grid getGrid()
     {
-        GameObject go = null;
+        Grid go = null;
         for (Layer L: Layers)
         {
             if(L.name == Layer.LayerNames.BACKGROUND)
             {
-                go = L.list.get(1);
+                go = (Grid)L.list.get(1);
             }
         }
         if(go==null) System.out.println("There is no background object");

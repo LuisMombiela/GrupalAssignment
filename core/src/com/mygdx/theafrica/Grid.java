@@ -55,11 +55,6 @@ public class Grid extends GameObject{
                     WorldController.instance.levelManager.Instantiate(new GameCard(GetCardType(), positions[i][j].x, positions[i][j].y));
                 }
 
-
-
-
-
-
                 hasCard[i][j] = true;
 
                 Gdx.app.debug("GRID","Position: " + positions[i][j].x + ", "+ positions[i][j].y + ", Index: " + index + ", Name: "+ name);
