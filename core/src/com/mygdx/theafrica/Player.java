@@ -19,6 +19,7 @@ public class Player extends GameObject {
     public int currentBandages;
     public int currentBooks;
     public int currentSeeds;
+
     public int currentWorkers;
 
     public int actionNumber;
@@ -39,7 +40,7 @@ public class Player extends GameObject {
 
         scale = new Vector2(1,1);
 
-
+        isTurn = false;
         number = num; //1 or 2
         layerTag = Layer.LayerNames.CARD;
         rectangle = new Rectangle();
