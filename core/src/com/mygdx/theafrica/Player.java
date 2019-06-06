@@ -61,9 +61,9 @@ public class Player extends GameObject {
 
     void spawnWorkers()
     {
-        WorldController.instance.levelManager.Instantiate(new Player(0,0, 1));//REPLACE THESE POSITION LATER WITH EACH CARD'S BOX FOR PLAYERS IN THE BASE CARDS
-        WorldController.instance.levelManager.Instantiate(new Player(0,0, 1));
-        WorldController.instance.levelManager.Instantiate(new Player(0,0, 1));
+        WorldController.instance.levelManager.Instantiate(new GameWorker(number));//REPLACE THESE POSITION LATER WITH EACH CARD'S BOX FOR PLAYERS IN THE BASE CARDS
+        WorldController.instance.levelManager.Instantiate(new GameWorker(number));
+        WorldController.instance.levelManager.Instantiate(new GameWorker(number));
     }
 
 }

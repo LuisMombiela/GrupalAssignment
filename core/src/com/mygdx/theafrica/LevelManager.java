@@ -43,7 +43,10 @@ public class LevelManager {
 
         //bg= GOFactory.generateBG(-Gdx.graphics.getWidth()/2,-Gdx.graphics.getHeight()/2,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
         bgWall = GOFactory.generateBGWall(-Gdx.graphics.getWidth()/2,-Gdx.graphics.getHeight()/2,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
-        spawnPlayers();
+
+
+        //ARREGLAR LO DE LOS PLAYERS
+        //spawnPlayers();
 
         grid = new Grid();
         Layers.get(0).list.add(grid);
