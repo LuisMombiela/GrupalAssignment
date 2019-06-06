@@ -20,7 +20,9 @@ public class LevelManager {
 
 
     public Background bg;
+
     public Grid grid;
+
 
     public Background bgWall;
 
@@ -49,8 +51,9 @@ public class LevelManager {
         //spawnPlayers();
 
         grid = new Grid();
-
         Layers.get(0).list.add(grid);
+
+
 
 
 
