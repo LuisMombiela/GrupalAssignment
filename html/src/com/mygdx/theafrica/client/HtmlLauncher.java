@@ -3,6 +3,7 @@ package com.mygdx.theafrica.client;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
+import com.mygdx.theafrica.MAIN_GAME;
 import com.mygdx.theafrica.SCREEN_MAIN;
 
 public class HtmlLauncher extends GwtApplication {
@@ -46,6 +47,6 @@ public class HtmlLauncher extends GwtApplication {
 
         @Override
         public ApplicationListener createApplicationListener () {
-                return new SCREEN_MAIN();
+                return new MAIN_GAME();
         }
 }
