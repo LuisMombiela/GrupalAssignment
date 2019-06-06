@@ -22,6 +22,9 @@ public class GameCard extends GameObject {
         y = posY;
         ctype = type;
         layerTag = Layer.LayerNames.CARD;
+        width = 96;
+        height = 96;
+        scale = new Vector2(2.5f,2.5f);
 
     }
 

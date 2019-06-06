@@ -18,12 +18,12 @@ public class Background extends GameObject {
 
     @Override
     public void draw(SpriteBatch batch) {
-
+        batch.draw(Assets.getInstance().bgWallTR,x,y,width,height);
     }
 
     @Override
     public void draw(SpriteBatch batch, float staTime) {
-        batch.draw(Assets.getInstance().bgWallTR,x,y,width,height);
+
     }
 
     @Override

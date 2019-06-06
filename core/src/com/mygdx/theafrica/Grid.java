@@ -26,9 +26,9 @@ public class Grid extends GameObject{
         hasCard = new boolean[size][size];
 
         layerTag = Layer.LayerNames.BACKGROUND;
-        cardSize = 96;
-        originalX = 400;
-        originalY = 800;
+        cardSize = (int)(96 * 2.5f);
+        originalX = (int)(-Constants.VIEWPORT_WIDTH/4)+100;
+        originalY = (int)Constants.VIEWPORT_HEIGHT/4;
 
         for(int i = 0; i < size; i++)
         {

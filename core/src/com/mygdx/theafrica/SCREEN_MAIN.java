@@ -17,16 +17,16 @@ public class SCREEN_MAIN implements Screen {
 
 
 	public SCREEN_MAIN(MAIN_GAME gameMain) {
-		this.gameMain= gameMain;
+		this.gameMain = gameMain;
 	}
 
 	@Override
 	public void show() {
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
 		Gdx.app.debug(TAG_LIFECYCLE, "Created");
-		CameraHelper helper = new CameraHelper();
+
 		controller = new WorldController();
-		levelManager = new LevelManager();
+
 		renderer = new WorldRenderer(controller);
 
 	}

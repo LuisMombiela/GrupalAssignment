@@ -98,7 +98,7 @@ public class Assets {
 
         for(int i = 0; i<cardsNumber; i++)
         {
-            cardsReg[i] = SpriteHelper.textureFromTextureAtlas("cards"+(i), icons);
+            cardsReg[i] = SpriteHelper.textureFromTextureAtlas("cards"+(i), cards);
         }
 
     }

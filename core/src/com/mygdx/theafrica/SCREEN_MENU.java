@@ -133,7 +133,7 @@ public class SCREEN_MENU implements Screen {
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
 
-        bg.draw(batch, delta);
+        bg.draw(batch);
 
 
         //font.draw(batch,"Click Anywhere to start",-camera.viewportWidth/2,0,camera.viewportWidth, Align.center,true);

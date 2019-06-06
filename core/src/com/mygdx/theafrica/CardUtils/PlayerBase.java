@@ -12,8 +12,8 @@ public class PlayerBase {
     public boolean hasHospital;
     public boolean hasSchool;
     public Vector2 greenhousePos; //Pillar la greenhouse pos
-    public Vector2 schoolPos; //Pillar la school pos
-    public Vector2 hospitalPos; //Pillar la hospital pos
+    public Vector2 schoolPos;     //Pillar la school pos
+    public Vector2 hospitalPos;   //Pillar la hospital pos
 
     public PlayerBase(int playerNumber)
     {

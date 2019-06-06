@@ -42,8 +42,8 @@ public class LevelManager {
         bgWall = GOFactory.generateBGWall(-Gdx.graphics.getWidth()/2,-Gdx.graphics.getHeight()/2,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
         Layers.get(0).list.add(bgWall);
 
-        grid = new Grid();
-        Layers.get(0).list.add(grid);
+
+
 
         //ARREGLAR LO DE LOS PLAYERS
         //spawnPlayers();
@@ -71,18 +71,7 @@ public class LevelManager {
         addGos();
     }
 
-    public void render(SpriteBatch batch, float staTime) {
 
-
-        batch.begin();
-        batch.setColor(1,1,1,1);
-       // bg.draw(batch);
-        bgWall.draw(batch,staTime);
-        batch.end();
-
-
-
-    }
 
     void ManageGameState()
     {
