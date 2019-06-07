@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Align;
+import com.mygdx.theafrica.CardUtils.GameCard;
 
 public class TurnManager extends GameObject {
 
@@ -81,6 +82,14 @@ public class TurnManager extends GameObject {
 
                 p1.turnPassed = false;
                 p1.isTurn = false;
+                if(p1.getWorkingCards().size()!=0)
+                {
+                    for(GameCard gc : p1.getWorkingCards())
+                    {
+                        if(gc!=null)
+                        gc.decreaseCardTurn();
+                    }
+                }
                 giveActions(p2);
                 p2.isTurn = true;
                 activePlayer = p2;
@@ -95,6 +104,14 @@ public class TurnManager extends GameObject {
             {
                 p2.turnPassed = false;
                 p2.isTurn=false;
+                if(p2.getWorkingCards().size()!=0)
+                {
+                    for(GameCard gc : p2.getWorkingCards())
+                    {
+                        if(gc!=null)
+                        gc.decreaseCardTurn();
+                    }
+                }
                 giveActions(p1);
                 p1.isTurn=true;
                 activePlayer = p1;

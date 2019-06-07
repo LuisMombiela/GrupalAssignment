@@ -9,6 +9,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.mygdx.theafrica.CardUtils.GameCard;
 import com.mygdx.theafrica.CardUtils.PlayerBase;
 
+import java.util.ArrayList;
+
 
 public class Player extends GameObject {
     public int number;
@@ -105,6 +107,17 @@ public class Player extends GameObject {
     boolean isMarkerOnBase()
     {
         return ((WorldController.instance.levelManager.getMark().row ==0 && WorldController.instance.levelManager.getMark().column ==0) || (WorldController.instance.levelManager.getMark().row ==3 && WorldController.instance.levelManager.getMark().column ==3));
+    }
+
+    ArrayList<GameCard> getWorkingCards()
+    {
+        ArrayList<GameCard>  temp = new ArrayList<GameCard>();
+        for(GameWorker gw: gwArray)
+        {
+            temp.add(gw.gameCard);
+        }
+
+        return temp;
     }
 
     public void Actions()

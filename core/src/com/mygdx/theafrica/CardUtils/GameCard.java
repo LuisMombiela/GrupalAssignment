@@ -77,7 +77,7 @@ public class GameCard extends GameObject {
                 break;
             case SEED: player.currentSeeds++;
                 break;
-            
+
         }
     }
 
@@ -96,6 +96,7 @@ public class GameCard extends GameObject {
     @Override
     public void draw(SpriteBatch batch) {
         batch.draw(texRegionToDraw(ctype.getValue()),x,y,0,0,width,height,scale.x,scale.y,rotation);
+        if(usageTurns>=0)
         batch.draw(texRegionToDrawDICE(usageTurns), turnPosition.x, turnPosition.y,0,0,15,15,scale.x,scale.y,rotation);
     }
     TextureRegion texRegionToDraw(int i)

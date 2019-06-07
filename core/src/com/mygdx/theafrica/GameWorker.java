@@ -91,7 +91,7 @@ public class GameWorker extends GameObject{
     {
         gc.player = p;
         working = true;
-
+        gameCard = gc;
         x = gc.playerPosition.x;
         y = gc.playerPosition.y;
     }
