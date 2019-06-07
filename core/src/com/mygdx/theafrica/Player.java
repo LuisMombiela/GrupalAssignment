@@ -29,7 +29,7 @@ public class Player extends GameObject {
     {
         for(int i=0; i<maxWorkers; i++)
         {
-          GameWorker gw = new GameWorker(this.number);
+          GameWorker gw = new GameWorker(this.number,i+1);
           gwArray[i] = gw;
         }
     }
@@ -124,9 +124,9 @@ public class Player extends GameObject {
 
     void spawnWorkers()
     {
-        WorldController.instance.levelManager.Instantiate(new GameWorker(number));//REPLACE THESE POSITION LATER WITH EACH CARD'S BOX FOR PLAYERS IN THE BASE CARDS
-        WorldController.instance.levelManager.Instantiate(new GameWorker(number));
-        WorldController.instance.levelManager.Instantiate(new GameWorker(number));
+        WorldController.instance.levelManager.Instantiate(new GameWorker(number,1));//REPLACE THESE POSITION LATER WITH EACH CARD'S BOX FOR PLAYERS IN THE BASE CARDS
+        WorldController.instance.levelManager.Instantiate(new GameWorker(number,2));
+        WorldController.instance.levelManager.Instantiate(new GameWorker(number,3));
     }
 
 }
