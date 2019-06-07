@@ -20,6 +20,7 @@ public class TurnManager extends GameObject {
 
     public void giveActions(Player p){
        p.actionNumber= (int) (Math.random()*6+0);
+
     }
 
     public void chooseInitialTurn(){
