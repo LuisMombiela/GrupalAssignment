@@ -22,6 +22,7 @@ public class PlayerBase extends GameObject {
     public Vector2 greenhousePos; //Pillar la greenhouse pos
     public Vector2 schoolPos; //Pillar la school pos
     public Vector2 hospitalPos; //Pillar la hospital pos
+    public Vector2[] playerPositions;
 
     public PlayerBase(int playerNumber, float posX, float posY)
     {
@@ -34,7 +35,15 @@ public class PlayerBase extends GameObject {
         width = 96;
         height = 96;
         scale = new Vector2(2.5f,2.5f);
-        //Necesito pillar la referencia del player porque--> Player 1.playerBase.canbuildHospital()
+
+    }
+    public void updateCardPositions()
+    {
+        hospitalPos = new Vector2(x + 20*scale.x, y-31*scale.y);
+        schoolPos = new Vector2(x + 41*scale.x, y-53*scale.y);
+        greenhousePos = new Vector2(x + 62*scale.x, y-31*scale.y);
+
+        playerPositions = new Vector2[]{new Vector2(x + 20*scale.x, y-7*scale.y), new Vector2(x + 41*scale.x, y-7*scale.y), new Vector2(x + 62*scale.x, y-7*scale.y)};
     }
 
     public void canBuild(Hospital h)
