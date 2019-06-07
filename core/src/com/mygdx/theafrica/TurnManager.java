@@ -45,11 +45,7 @@ public class TurnManager extends GameObject {
             p2.isTurn = false;
             activePlayer = p1;
             WorldController.instance.levelManager.getMark().setMarkerOnPlayer(1);
-
-
-
         }
-
         else
         {
             p2.actionNumber = (int) ((Math.random()*100*5)/100 +2);

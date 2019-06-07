@@ -7,11 +7,12 @@ import com.badlogic.gdx.math.Vector2;
 import com.mygdx.theafrica.Assets;
 import com.mygdx.theafrica.GameObject;
 import com.mygdx.theafrica.Layer;
+import com.mygdx.theafrica.Player;
 
 public class GameCard extends GameObject {
 
     public Vector2 index; //Lo adquiere del index de la casilla de la grid
-    public boolean hasWorker;
+    public Player player;
     public int usageTurns; //Numero de turnos que le queda a una carta que esta siendo usada
     public Vector2 playerPosition; //Saves the position it shows either player 1 or 2 controls that casilla with the imagen of the jugador
     public Vector2 turnPosition;//Saves the position of the image where the image of the turns that casilla has left
@@ -48,6 +49,11 @@ public class GameCard extends GameObject {
     {
         playerPosition = new Vector2(x+75*scale.x, y+3*scale.y);
         turnPosition = new Vector2(x+75*scale.x, y+75*scale.y);
+    }
+
+    public boolean hasWorker()
+    {
+        return(player != null);
     }
 
     @Override

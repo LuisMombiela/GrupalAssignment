@@ -86,7 +86,7 @@ public class GameWorker extends GameObject{
 
     public void goToCard(GameCard gc)
     {
-        gc.hasWorker = true;
+        gc.player = p;
         working = true;
 
         x = gc.playerPosition.x;
