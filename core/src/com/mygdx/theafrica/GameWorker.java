@@ -31,50 +31,50 @@ public class GameWorker extends GameObject{
     {
         int paddingX = 45;
         int paddingY = 10;
-      for(int i = 0; i<3; i++)
-      {
-        if(p.number == 1)
+        for(int i = 0; i<3; i++)
         {
-            if(workerNumber == 1)
+            if(p.number == 1)
             {
-                targetPos.x =  WorldController.instance.levelManager.getGrid().positions[0][0].x+paddingX;
-                targetPos.y = WorldController.instance.levelManager.getGrid().positions[0][0].y+paddingY;
+                if(workerNumber == 1)
+                {
+                    targetPos.x =  WorldController.instance.levelManager.getGrid().positions[0][0].x+paddingX;
+                    targetPos.y = WorldController.instance.levelManager.getGrid().positions[0][0].y+paddingY;
+                }
+
+                else if(workerNumber == 2)
+                {
+                    targetPos.x =  WorldController.instance.levelManager.getGrid().positions[0][0].x+paddingX*2+5;
+                    targetPos.y = WorldController.instance.levelManager.getGrid().positions[0][0].y+paddingY;
+                }
+
+                else if(workerNumber == 3)
+                {
+                    targetPos.x =  WorldController.instance.levelManager.getGrid().positions[0][0].x+paddingX*3+10;
+                    targetPos.y = WorldController.instance.levelManager.getGrid().positions[0][0].y+paddingY;
+                }
             }
 
-            else if(workerNumber == 2)
+            if(p.number == 2)
             {
-                targetPos.x =  WorldController.instance.levelManager.getGrid().positions[0][0].x+paddingX*2+5;
-                targetPos.y = WorldController.instance.levelManager.getGrid().positions[0][0].y+paddingY;
-            }
+                if(workerNumber == 1)
+                {
+                    targetPos.x =  WorldController.instance.levelManager.getGrid().positions[3][3].x+paddingX;
+                    targetPos.y = WorldController.instance.levelManager.getGrid().positions[3][3].y+paddingY;
+                }
 
-            else if(workerNumber == 3)
-            {
-                targetPos.x =  WorldController.instance.levelManager.getGrid().positions[0][0].x+paddingX*3+10;
-                targetPos.y = WorldController.instance.levelManager.getGrid().positions[0][0].y+paddingY;
+                else if(workerNumber == 2)
+                {
+                    targetPos.x =  WorldController.instance.levelManager.getGrid().positions[3][3].x+paddingX*2+5;
+                    targetPos.y = WorldController.instance.levelManager.getGrid().positions[3][3].y+paddingY;
+                }
+
+                else if(workerNumber == 3)
+                {
+                    targetPos.x =  WorldController.instance.levelManager.getGrid().positions[3][3].x+paddingX*3+10;
+                    targetPos.y = WorldController.instance.levelManager.getGrid().positions[3][3].y+paddingY;
+                }
             }
         }
-
-        if(p.number == 2)
-        {
-            if(workerNumber == 1)
-            {
-                targetPos.x =  WorldController.instance.levelManager.getGrid().positions[3][3].x+paddingX;
-                targetPos.y = WorldController.instance.levelManager.getGrid().positions[3][3].y+paddingY;
-            }
-
-            else if(workerNumber == 2)
-            {
-                targetPos.x =  WorldController.instance.levelManager.getGrid().positions[3][3].x+paddingX*2+5;
-                targetPos.y = WorldController.instance.levelManager.getGrid().positions[3][3].y+paddingY;
-            }
-
-            else if(workerNumber == 3)
-            {
-                targetPos.x =  WorldController.instance.levelManager.getGrid().positions[3][3].x+paddingX*3+10;
-                targetPos.y = WorldController.instance.levelManager.getGrid().positions[3][3].y+paddingY;
-            }
-        }
-      }
 
     }
     public void getBackToBase()
