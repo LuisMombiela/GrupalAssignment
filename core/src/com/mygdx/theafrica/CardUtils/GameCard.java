@@ -55,9 +55,30 @@ public class GameCard extends GameObject {
         SoundManager.reproduceSounds(4);
         WorldController.instance.levelManager.getGrid().replaceCard((int)index.x, (int)index.y);
         player.gwArray[workerIndex].getBackToBase();
+        giveRessourceToPlayer();
         player = null;
         WorldController.instance.levelManager.Despawn(this);
 
+    }
+
+    void giveRessourceToPlayer()
+    {
+        switch (ctype)
+        {
+            case WHEAT: player.currentWheat++;
+            break;
+            case WOOD: player.currentWood++;
+                break;
+            case IRON: player.currentIron++;
+                break;
+            case BOOK: player.currentBooks++;
+                break;
+            case BANDAGE: player.currentBandages++;
+                break;
+            case SEED: player.currentSeeds++;
+                break;
+            
+        }
     }
 
 

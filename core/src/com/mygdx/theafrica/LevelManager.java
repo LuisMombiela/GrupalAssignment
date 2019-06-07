@@ -218,7 +218,7 @@ public class LevelManager {
                     if(!(L.list.get(i) instanceof PlayerBase))
                     go = (GameCard)L.list.get(i);
                     else continue;//Moui importante
-                    
+
                     if ((int)go.index.x == row && (int)go.index.y == column)
                     {
                         System.out.println("Card returned with row:" + go.index.x + ", column: " +go.index.y );
