@@ -25,9 +25,9 @@ public class Assets {
     public TextureRegion[] cardsReg;
 
     public TextureRegion[] player; //Decidir luego en la clase player si se dibuja la ficha de player 1 o de player 2
-    public Texture hospital;
-    public Texture greenhouse;
-    public Texture school;
+    public TextureRegion hospital;
+    public TextureRegion greenhouse;
+    public TextureRegion school;
 
     public TextureRegion[] dice;
     //Marker
@@ -96,9 +96,9 @@ public class Assets {
             dice[(i-2)] = SpriteHelper.textureFromTextureAtlas("icon"+(i), icons);
         }
 
-        hospital = SpriteHelper.textureFromTextureAtlas("icon"+(9), icons).getTexture();
-        greenhouse = SpriteHelper.textureFromTextureAtlas("icon"+(10), icons).getTexture();
-        school = SpriteHelper.textureFromTextureAtlas("icon"+(11), icons).getTexture();
+        hospital = SpriteHelper.textureFromTextureAtlas("icon"+(9), icons);
+        greenhouse = SpriteHelper.textureFromTextureAtlas("icon"+(10), icons);
+        school = SpriteHelper.textureFromTextureAtlas("icon"+(11), icons);
 
 
         //CARDS--------------------------------------------------------------------------------------------------------------------------
@@ -121,8 +121,6 @@ public class Assets {
         {
             turnsTR[i] = SpriteHelper.textureFromTextureAtlas("Turn"+(i), turns);
         }
-
-
     }
 
     private Texture createButtonTexture() {
