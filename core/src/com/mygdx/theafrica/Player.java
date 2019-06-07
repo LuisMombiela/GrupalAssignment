@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.theafrica.CardUtils.GameCard;
 import com.mygdx.theafrica.CardUtils.PlayerBase;
 
@@ -21,7 +22,7 @@ public class Player extends GameObject {
     public int currentBooks;
     public int currentSeeds;
     public int maxWorkers = 3;
-    public int actionNumber;
+    public int actionNumber;//number of moves the player has
 
     public GameWorker[] gwArray;
 
@@ -47,10 +48,10 @@ public class Player extends GameObject {
         y=posY;
         rotation = 0;
 
-        width= 7;
-        height=7;
+        width= 15;
+        height=15;
 
-        scale = new Vector2(1,1);
+        scale = new Vector2(2.5f,2.5f);
 
         isTurn = false;
         number = num; //1 or 2
@@ -66,7 +67,22 @@ public class Player extends GameObject {
     @Override
     public void draw(SpriteBatch batch) {
 
+        if(actionNumber != 0)
+        {
+            System.out.println("Action Number: " +actionNumber);
+            if(number == 1)
+                batch.draw(texRegionToDraw(actionNumber), -WorldController.instance.levelManager.getBg().width/2 +150, 100,0,0,width,height,scale.x,scale.y,rotation);
+            else
+                batch.draw(texRegionToDraw(actionNumber), WorldController.instance.levelManager.getBg().width/2 -150 -width*scale.x, 100,0,0,width,height,scale.x,scale.y,rotation);
 
+        }
+
+
+
+    }
+    TextureRegion texRegionToDraw(int i)
+    {
+        return Assets.getInstance().dice[i];
     }
 
     @Override
@@ -98,7 +114,7 @@ public class Player extends GameObject {
                     if(!gwArray[i].working) {
                         gwArray[i].goToCard(gc);
                         SoundManager.reproduceSounds(1);
-                        actionNumber -= 1;
+                        actionNumber --;
                         break;
                     }
                 }

@@ -10,34 +10,51 @@ public class TurnManager extends GameObject {
     int turnsToGive;
     float padding = 150;
 
+    Player activePlayer;
+    public static TurnManager instance;
+
     public TurnManager()
     {
+        if(TurnManager.instance ==null)
+        {
+            instance = this;
+        }
+        else if(TurnManager.instance != this)
+        {
+            WorldController.instance = null;
+        }
+
         p1 = null;
         p2 = null;
-
-        layerTag = Layer.LayerNames.DEFAULT;
+        activePlayer = null;
+        layerTag = Layer.LayerNames.PLAYER;
     }
 
     public void giveActions(Player p){
-       p.actionNumber= (int) (Math.random()*6+0);
+       p.actionNumber= (int) ((Math.random()*100*6)/100);
 
     }
 
     public void chooseInitialTurn(){
-        int randomNum=(int) (Math.random()*2+0);
+        int randomNum=(int) ((Math.random()*100*2)/100);
         if(randomNum==1)
         {
-            p1.actionNumber= (int) (Math.random()*6+0);
+            p1.actionNumber= (int) ((Math.random()*100*6)/100);
             p1.isTurn = true;
             p2.isTurn = false;
+            WorldController.instance.levelManager.getMark().setMarkerOnPlayer(1);
+            activePlayer = p1;
+
 
         }
 
         else
         {
-            p2.actionNumber= (int) (Math.random()*6+0);
+            p2.actionNumber= (int) ((Math.random()*100*6)/100);
             p2.isTurn = true;
             p1.isTurn = false;
+            WorldController.instance.levelManager.getMark().setMarkerOnPlayer(2);
+            activePlayer = p2;
 
         }
     }
@@ -57,10 +74,13 @@ public class TurnManager extends GameObject {
         {
             if(p1.actionNumber<=0 || p1.turnPassed)
             {
+
                 p1.turnPassed = false;
                 p1.isTurn = false;
                 giveActions(p2);
                 p2.isTurn = true;
+                WorldController.instance.levelManager.getMark().setMarkerOnPlayer(2);
+                activePlayer = p2;
             }
         }
 
@@ -72,6 +92,8 @@ public class TurnManager extends GameObject {
                 p2.isTurn=false;
                 giveActions(p1);
                 p1.isTurn=true;
+                WorldController.instance.levelManager.getMark().setMarkerOnPlayer(1);
+                activePlayer = p1;
             }
         }
     }

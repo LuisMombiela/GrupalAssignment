@@ -24,6 +24,9 @@ public class GameWorker extends GameObject{
         pNumber = number;
         layerTag = Layer.LayerNames.ICONS;
         targetPos = new Vector2();
+        width = 15;
+        height = 15;
+        scale = new Vector2(2.5f, 2.5f);
     }
 
 
@@ -93,7 +96,7 @@ public class GameWorker extends GameObject{
 
     @Override
     public void draw(SpriteBatch batch) {
-        batch.draw(texRegionToDraw(pNumber),x,y,0,0,15,15,3,3,rotation);
+        batch.draw(texRegionToDraw(pNumber),x,y,0,0,width,height,scale.x,scale.y,rotation);
     }
 
     @Override

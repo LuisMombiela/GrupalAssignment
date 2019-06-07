@@ -122,7 +122,7 @@ public class WorldController extends InputAdapter {
     {
         Grid grid = new Grid();
         levelManager.Instantiate(grid);
-        levelManager.Instantiate(new Mark(grid));
+        levelManager.Instantiate(new Marker(grid));
         levelManager.Instantiate(new TurnManager());
     }
 

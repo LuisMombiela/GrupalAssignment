@@ -84,20 +84,20 @@ public class Assets {
         //ICONS--------------------------------------------------------------------------------------------------------------------------
         icons = new TextureAtlas("Icons.atlas");
         player = new TextureRegion[2];
-        dice = new TextureRegion[5];
+        dice = new TextureRegion[6];
 
         for(int i = 0; i<2; i++)
         {
             player[i] = SpriteHelper.textureFromTextureAtlas("icon"+(i), icons);
         }
-        for(int i = 2; i<7; i++)
+        for(int i = 2; i<8; i++)
         {
             dice[i-2] = SpriteHelper.textureFromTextureAtlas("icon"+(i), icons);
         }
 
-        hospital = SpriteHelper.textureFromTextureAtlas("icon"+(7), icons).getTexture();
-        greenhouse = SpriteHelper.textureFromTextureAtlas("icon"+(8), icons).getTexture();
-        school = SpriteHelper.textureFromTextureAtlas("icon"+(9), icons).getTexture();
+        hospital = SpriteHelper.textureFromTextureAtlas("icon"+(8), icons).getTexture();
+        greenhouse = SpriteHelper.textureFromTextureAtlas("icon"+(9), icons).getTexture();
+        school = SpriteHelper.textureFromTextureAtlas("icon"+(10), icons).getTexture();
 
 
         //CARDS--------------------------------------------------------------------------------------------------------------------------
