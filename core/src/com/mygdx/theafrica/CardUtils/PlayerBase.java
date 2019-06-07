@@ -41,6 +41,9 @@ public class PlayerBase extends GameObject {
         localPlayer = player;
 
     }
+
+
+
     public void updateCardPositions()
     {
         hospitalPos = new Vector2(x + 20*scale.x, y-31*scale.y);
