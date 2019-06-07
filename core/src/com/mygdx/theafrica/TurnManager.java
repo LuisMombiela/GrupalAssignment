@@ -139,11 +139,11 @@ public class TurnManager extends GameObject {
             {
                 batch.draw(Assets.getInstance().turnsTR[1], WorldController.instance.levelManager.getBg().width/2 - padding -102*2.5f,400,0,0,102,50,2.5f,2.5f,0);
             }
-            //PLAYER 1
+            batch.draw(Assets.getInstance().greenhouse,-WorldController.instance.levelManager.getBg().width/2 +padding,+paddingResources*10,15*scale.x,15*scale.y);
             font.draw(batch,"BUILDINGS PLAYER 1",-WorldController.instance.levelManager.getBg().width/2 +padding,+paddingResources*10,200, Align.center,true);
             font.draw(batch,"- HOSPITAL: IRON: "+p1.currentIron+"/5 SEEDS: "+p1.currentSeeds+"/5 BONDAGES: "+p1.currentBandages+"/2",-WorldController.instance.levelManager.getBg().width/2 +padding/2,+paddingResources*8,400, Align.left,true);
             font.draw(batch,"- SCHOOL: WOOD: "+p1.currentWood+"/5 METAL: "+p1.currentIron+"/5 BOOKS: "+p1.currentBooks+"/2",-WorldController.instance.levelManager.getBg().width/2 +padding/2,+paddingResources*7,400, Align.left,true);
-            font.draw(batch,"- HOSPITAL: WOOD: "+p1.currentWood+"/5 SEEDS: "+p1.currentSeeds+"/5 WHEATS: "+p1.currentWheat+"/2",-WorldController.instance.levelManager.getBg().width/2 +padding/2,+paddingResources*6,400, Align.left,true);
+            font.draw(batch,"- GREENHOUSE: WOOD: "+p1.currentWood+"/5 SEEDS: "+p1.currentSeeds+"/5 WHEATS: "+p1.currentWheat+"/2",-WorldController.instance.levelManager.getBg().width/2 +padding/2,+paddingResources*6,400, Align.left,true);
             font.draw(batch,"RESOURCES PLAYER 1",-WorldController.instance.levelManager.getBg().width/2 +padding,0,102, Align.center,true);
             font.draw(batch,"- Wood: "+p1.currentWood,-WorldController.instance.levelManager.getBg().width/2 +padding,-paddingResources*2,102, Align.left,true);
             font.draw(batch,"- Iron: "+p1.currentIron,-WorldController.instance.levelManager.getBg().width/2 +padding,-paddingResources*3,102, Align.left,true);
@@ -156,7 +156,7 @@ public class TurnManager extends GameObject {
             font.draw(batch,"BUILDINGS PLAYER 2",WorldController.instance.levelManager.getBg().width/2 -padding*2,+paddingResources*10,200, Align.center,true);
             font.draw(batch,"- HOSPITAL: IRON: "+p2.currentIron+"/5 SEEDS: "+p2.currentSeeds+"/5 BONDAGES: "+p2.currentBandages+"/2",WorldController.instance.levelManager.getBg().width/2 -padding*2.5f,+paddingResources*8,400, Align.left,true);
             font.draw(batch,"- SCHOOL: WOOD: "+p2.currentWood+"/5 METAL: "+p2.currentIron+"/5 BOOKS: "+p2.currentBooks+"/2",WorldController.instance.levelManager.getBg().width/2 -padding*2.5f,+paddingResources*7,400, Align.left,true);
-            font.draw(batch,"- HOSPITAL: WOOD: "+p2.currentWood+"/5 SEEDS: "+p2.currentSeeds+"/5 WHEATS: "+p2.currentWheat+"/2",WorldController.instance.levelManager.getBg().width/2 -padding*2.5f,+paddingResources*6,400, Align.left,true);
+            font.draw(batch,"- GREENHOUSE: WOOD: "+p2.currentWood+"/5 SEEDS: "+p2.currentSeeds+"/5 WHEATS: "+p2.currentWheat+"/2",WorldController.instance.levelManager.getBg().width/2 -padding*2.5f,+paddingResources*6,400, Align.left,true);
             font.draw(batch,"RESOURCES PLAYER 2",WorldController.instance.levelManager.getBg().width/2 -padding*2,0,102, Align.center,true);
             font.draw(batch,"- Wood: "+p2.currentWood,WorldController.instance.levelManager.getBg().width/2 -padding*2,-paddingResources*2,102, Align.left,true);
             font.draw(batch,"- Iron: "+p2.currentIron,WorldController.instance.levelManager.getBg().width/2 -padding*2,-paddingResources*3,102, Align.left,true);
