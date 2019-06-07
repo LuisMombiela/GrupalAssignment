@@ -1,33 +1,34 @@
 package com.mygdx.theafrica.CardUtils;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
-import com.mygdx.theafrica.Assets;
-import com.mygdx.theafrica.GameObject;
-import com.mygdx.theafrica.Layer;
-import com.mygdx.theafrica.Player;
+import com.mygdx.theafrica.*;
 
 public class PlayerBase extends GameObject {
 
     public int baseIndex;
-    public Player myPlayer;
+    public Player localPlayer;
     public int currentWorkers = 3;
     public boolean hasGreenHouse = false;
+    boolean ghBuilt = false;
     public boolean hasHospital = false;
+    boolean hBuilt = false;
     public boolean hasSchool = false;
-
+    boolean sBuilt = false;
+    Hospital h = new Hospital();
+    School s =  new School();
+    Greenhouse gh = new Greenhouse();
 
     public Vector2 greenhousePos; //Pillar la greenhouse pos
     public Vector2 schoolPos; //Pillar la school pos
     public Vector2 hospitalPos; //Pillar la hospital pos
     public Vector2[] playerPositions;
 
-    public PlayerBase(int playerNumber, float posX, float posY)
+    public PlayerBase(int playerNumber, float posX, float posY, Player player)
     {
         super();
-        this.baseIndex = playerNumber;
+        baseIndex = playerNumber;
         x = posX;
         y = posY;
 
@@ -37,8 +38,7 @@ public class PlayerBase extends GameObject {
         scale = new Vector2(2.5f,2.5f);
 
         updateCardPositions();
-
-
+        localPlayer = player;
 
     }
     public void updateCardPositions()
@@ -50,24 +50,25 @@ public class PlayerBase extends GameObject {
         playerPositions = new Vector2[]{new Vector2(x + 20*scale.x, y-7*scale.y), new Vector2(x + 41*scale.x, y-7*scale.y), new Vector2(x + 62*scale.x, y-7*scale.y)};
     }
 
-    public void canBuild(Hospital h)
+    public void canBuildH()
     {
-        if(myPlayer.currentWood >= h.requiredWood && myPlayer.currentIron >= h.requiredIron && myPlayer.currentBandages >= h.requiredBandages && !hasHospital)
-            h.build(myPlayer);
+
+        if(localPlayer.currentWood >= h.requiredWood && localPlayer.currentIron >= h.requiredIron && localPlayer.currentBandages >= h.requiredBandages && !hasHospital)
+            h.build(localPlayer);
         hasHospital = true;
         System.out.println("Player x hospital has been built");
     }
-    public void canBuild(School s)
+    public void canBuildS()
     {
-        if(myPlayer.currentWood >= s.requiredWood && myPlayer.currentIron >= s.requiredIron && myPlayer.currentBooks >= s.requiredBooks && !hasSchool)
-            s.build(myPlayer);
+        if(localPlayer.currentSeeds >= s.requiredSeeds && localPlayer.currentIron >= s.requiredIron && localPlayer.currentBooks >= s.requiredBooks && !hasSchool)
+            s.build(localPlayer);
         hasSchool = true;
         System.out.println("Player x School has been built");
     }
-    public void canBuild(Greenhouse gh)
+    public void canBuildG()
     {
-        if(myPlayer.currentWood >= gh.requiredWood && myPlayer.currentWheat >= gh.requiredWheat && myPlayer.currentSeeds >= gh.requiredSeeds && !hasGreenHouse)
-            gh.build(myPlayer);
+        if(localPlayer.currentWood >= gh.requiredWood && localPlayer.currentWheat >= gh.requiredWheat && localPlayer.currentSeeds >= gh.requiredSeeds && !hasGreenHouse)
+            gh.build(localPlayer);
         hasGreenHouse = true;
         System.out.println("Player x Greenhouse has been built");
     }
@@ -75,6 +76,19 @@ public class PlayerBase extends GameObject {
     @Override
     public void draw(SpriteBatch batch) {
         batch.draw(texRegionToDraw(5+baseIndex),x,y,0,0,width,height,scale.x,scale.y,rotation);
+
+        if(hasGreenHouse)
+        {
+            batch.draw(Assets.getInstance().greenhouse,greenhousePos.x,greenhousePos.y,15*scale.x,15*scale.y);
+        }
+        if(hasHospital)
+        {
+            batch.draw(Assets.getInstance().hospital,hospitalPos.x,hospitalPos.y,15*scale.x,15*scale.y);
+        }
+        if(hasSchool)
+        {
+            batch.draw(Assets.getInstance().school,schoolPos.x,schoolPos.y,15*scale.x,15*scale.y);
+        }
     }
     TextureRegion texRegionToDraw(int i)
     {
@@ -88,6 +102,24 @@ public class PlayerBase extends GameObject {
 
     @Override
     public void update(float delta) {
+
+        canBuildG();canBuildH();canBuildS();
+
+        if(hasGreenHouse && !ghBuilt)
+        {
+            SoundManager.reproduceSounds(5);
+            ghBuilt = true;
+        }
+        if(hasHospital && !hBuilt)
+        {
+            SoundManager.reproduceSounds(5);
+            hBuilt = true;
+        }
+        if(hasSchool && !sBuilt)
+        {
+            SoundManager.reproduceSounds(5);
+            sBuilt = true;
+        }
 
     }
 

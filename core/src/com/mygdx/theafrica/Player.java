@@ -73,10 +73,14 @@ public class Player extends GameObject {
     @Override
     public void draw(SpriteBatch batch)
     {
-        if(number == 1)
-            batch.draw(texRegionToDraw(actionNumber), -WorldController.instance.levelManager.getBg().width/2 +150, 250,0,0,width,height,scale.x,scale.y,rotation);
-        else
-            batch.draw(texRegionToDraw(actionNumber), WorldController.instance.levelManager.getBg().width/2 -150 -width*scale.x, 250,0,0,width,height,scale.x,scale.y,rotation);
+        if(actionNumber>=0)
+        {
+            if(number == 1)
+                batch.draw(texRegionToDraw(actionNumber), -WorldController.instance.levelManager.getBg().width/2 +150, 250,0,0,width,height,scale.x,scale.y,rotation);
+            else
+                batch.draw(texRegionToDraw(actionNumber), WorldController.instance.levelManager.getBg().width/2 -150 -width*scale.x, 250,0,0,width,height,scale.x,scale.y,rotation);
+
+        }
 
     }
     TextureRegion texRegionToDraw(int i)

@@ -7,15 +7,15 @@ public class School extends Upgrades {
     public School(){
         requiredWood = 5;
         requiredIron = 5;
-        requiredBooks = 10;
+        requiredBooks = 2;
     }
 
     @Override
     public void build(Player p) {
 
-        p.currentWood -= this.requiredWood;
-        p.currentIron -= this.requiredIron;
-        p.currentBooks -= this.requiredBooks;
+        p.currentWood -= requiredWood;
+        p.currentIron -= requiredIron;
+        p.currentBooks -= requiredBooks;
     }
 
 

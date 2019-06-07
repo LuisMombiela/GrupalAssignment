@@ -7,14 +7,14 @@ public class Greenhouse extends Upgrades{
     public Greenhouse(){
         requiredWood = 5;
         requiredWheat = 5;
-        requiredSeeds = 10;
+        requiredSeeds = 2;
     }
 
     @Override
     public void build(Player p) {
-        p.currentWood -= this.requiredWood;
-        p.currentWheat -= this.requiredWheat;
-        p.currentSeeds -= this.requiredSeeds;
+        p.currentWood -= requiredWood;
+        p.currentWheat -= requiredWheat;
+        p.currentSeeds -= requiredSeeds;
 
     }
 }
