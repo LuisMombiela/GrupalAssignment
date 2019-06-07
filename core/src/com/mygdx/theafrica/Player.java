@@ -63,7 +63,7 @@ public class Player extends GameObject {
         number = num; //1 or 2
         layerTag = Layer.LayerNames.PLAYER;
         rectangle = new Rectangle();
-        base = new PlayerBase(number, posX, posY);
+        base = new PlayerBase(number, posX, posY, this);
         WorldController.instance.levelManager.Instantiate(base);
         gwArray = new GameWorker[maxWorkers];
         initializeWorkers();
