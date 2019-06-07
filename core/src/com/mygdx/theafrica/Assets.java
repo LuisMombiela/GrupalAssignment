@@ -93,7 +93,7 @@ public class Assets {
 
         for(int i = 2; i<9; i++)
         {
-            dice[(i-2)] = SpriteHelper.textureFromTextureAtlas("icon"+(i-2), icons);
+            dice[(i-2)] = SpriteHelper.textureFromTextureAtlas("icon"+(i), icons);
         }
 
         hospital = SpriteHelper.textureFromTextureAtlas("icon"+(9), icons).getTexture();

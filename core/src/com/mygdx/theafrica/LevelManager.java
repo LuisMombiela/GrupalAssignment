@@ -210,6 +210,7 @@ public class LevelManager {
         {
             if(L.name == Layer.LayerNames.CARD)
             {
+                if(4*row + column != 0 && 4*row + column  !=15)
                 go = (GameCard)L.list.get(4 * row + column);
             }
         }

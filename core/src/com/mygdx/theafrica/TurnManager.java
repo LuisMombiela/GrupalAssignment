@@ -35,8 +35,9 @@ public class TurnManager extends GameObject {
         layerTag = Layer.LayerNames.DEFAULT;
     }
 
+    //THE FORMULA FOR RANDOMS IN A RANGE IS: (Math.random() * ((max - min) + 1)) + min;
     public void giveActions(Player p){
-       p.actionNumber= (int) ((Math.random()*100*6+1)/100);
+       p.actionNumber= (int) ((Math.random()*100*5)/100 +2);
 
     }
 
@@ -44,7 +45,7 @@ public class TurnManager extends GameObject {
         int randomNum=(int) ((Math.random()*100*2)/100);
         if(randomNum==1)
         {
-            p1.actionNumber= (int) ((Math.random()*100*6+1)/100);
+            p1.actionNumber = (int) ((Math.random()*100*5)/100 +2);
             p1.isTurn = true;
             p2.isTurn = false;
             activePlayer = p1;
@@ -56,7 +57,7 @@ public class TurnManager extends GameObject {
 
         else
         {
-            p2.actionNumber= (int) ((Math.random()*100*6+1)/100);
+            p2.actionNumber = (int) ((Math.random()*100*5)/100 +2);
             p2.isTurn = true;
             p1.isTurn = false;
             activePlayer = p2;
