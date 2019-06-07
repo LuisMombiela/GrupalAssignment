@@ -32,6 +32,7 @@ public class SoundManager {
                 endTurn.play();
                 break;
             case 4:
+                resourceObtained.setVolume(4,0.5f);
                 resourceObtained.play();
                 break;
             case 5:
