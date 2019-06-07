@@ -1,8 +1,10 @@
 package com.mygdx.theafrica;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
 public class WorldRenderer {
@@ -13,6 +15,7 @@ public class WorldRenderer {
     public float elapsedTime;
     public ShapeRenderer shapeRender;
     public FitViewport viewport;
+    public BitmapFont font;
 
     public WorldRenderer(WorldController wc){
         this.controller = wc;
@@ -46,6 +49,7 @@ public class WorldRenderer {
         batch.begin();
         updateArrays();
         batch.end();
+
 
         batch.setProjectionMatrix(controller.ch.hudCamera.combined);
         batch.begin();

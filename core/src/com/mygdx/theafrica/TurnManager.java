@@ -2,13 +2,17 @@ package com.mygdx.theafrica;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Align;
 
 public class TurnManager extends GameObject {
 
     Player p1, p2;
     int turnsToGive;
     float padding = 150;
+    float paddingResources=20;
+    public BitmapFont font;
 
     Player activePlayer;
     public static TurnManager instance;
@@ -24,6 +28,7 @@ public class TurnManager extends GameObject {
             WorldController.instance = null;
         }
 
+        font = new BitmapFont();
         p1 = null;
         p2 = null;
         activePlayer = null;
@@ -112,11 +117,30 @@ public class TurnManager extends GameObject {
         if(p1!=null && p2 != null)
         {
             if(p1.isTurn)
+            {
                 batch.draw(Assets.getInstance().turnsTR[0], -WorldController.instance.levelManager.getBg().width/2 + padding ,400,0,0,102,50,2.5f,2.5f,0);
+                font.draw(batch,"RESOURCES PLAYER 1",-WorldController.instance.levelManager.getBg().width/2 +padding,0,102, Align.center,true);
+                font.draw(batch,"- Wood: "+p1.currentWood,-WorldController.instance.levelManager.getBg().width/2 +padding,-paddingResources*2,102, Align.left,true);
+                font.draw(batch,"- Iron: "+p1.currentIron,-WorldController.instance.levelManager.getBg().width/2 +padding,-paddingResources*3,102, Align.left,true);
+                font.draw(batch,"- Seeds: "+p1.currentWheat,-WorldController.instance.levelManager.getBg().width/2 +padding,-paddingResources*4,102, Align.left,true);
+                font.draw(batch,"- Books: "+p1.currentBooks,-WorldController.instance.levelManager.getBg().width/2 +padding,-paddingResources*5,102, Align.left,true);
+                font.draw(batch,"- Bandages: "+p1.currentSeeds,-WorldController.instance.levelManager.getBg().width/2 +padding,-paddingResources*6,102, Align.left,true);
+                font.draw(batch,"- Seeds: "+p1.currentBandages,-WorldController.instance.levelManager.getBg().width/2 +padding,-paddingResources*7,102, Align.left,true);
+            }
 
             if(p2.isTurn)
+            {
                 batch.draw(Assets.getInstance().turnsTR[1], WorldController.instance.levelManager.getBg().width/2 - padding -102*2.5f,400,0,0,102,50,2.5f,2.5f,0);
-                                                                                                                            //The "TURN" banner width multiplied by its scale
+                font.draw(batch,"RESOURCES PLAYER 2",WorldController.instance.levelManager.getBg().width/2 -padding*2,0,102, Align.center,true);
+                font.draw(batch,"- Wood: "+p2.currentWood,WorldController.instance.levelManager.getBg().width/2 -padding*2,-paddingResources*2,102, Align.left,true);
+                font.draw(batch,"- Iron: "+p2.currentIron,WorldController.instance.levelManager.getBg().width/2 -padding*2,-paddingResources*3,102, Align.left,true);
+                font.draw(batch,"- Seeds: "+p2.currentWheat,WorldController.instance.levelManager.getBg().width/2 -padding*2,-paddingResources*4,102, Align.left,true);
+                font.draw(batch,"- Books: "+p2.currentBooks,WorldController.instance.levelManager.getBg().width/2 -padding*2,-paddingResources*5,102, Align.left,true);
+                font.draw(batch,"- Bandages: "+p2.currentSeeds,WorldController.instance.levelManager.getBg().width/2 -padding*2,-paddingResources*6,102, Align.left,true);
+                font.draw(batch,"- Seeds: "+p2.currentBandages,WorldController.instance.levelManager.getBg().width/2 -padding*2,-paddingResources*7,102, Align.left,true);
+
+            }
+
         }
     }
 }

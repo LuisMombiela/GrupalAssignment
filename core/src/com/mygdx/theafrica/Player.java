@@ -47,6 +47,13 @@ public class Player extends GameObject {
         y=posY;
         rotation = 0;
 
+        currentWood=0;
+        currentWheat=0;
+        currentIron=0;
+        currentBandages=0;
+        currentBooks=0;
+        currentSeeds=0;
+
         width= 15;
         height=15;
 
@@ -69,9 +76,9 @@ public class Player extends GameObject {
 
 
             if(number == 1)
-                batch.draw(texRegionToDraw(actionNumber+1), -WorldController.instance.levelManager.getBg().width/2 +150, 100,0,0,width,height,scale.x,scale.y,rotation);
+                batch.draw(texRegionToDraw(actionNumber+1), -WorldController.instance.levelManager.getBg().width/2 +150, +300,0,0,width,height,scale.x,scale.y,rotation);
             else
-                batch.draw(texRegionToDraw(actionNumber+1), WorldController.instance.levelManager.getBg().width/2 -150 -width*scale.x, 100,0,0,width,height,scale.x,scale.y,rotation);
+                batch.draw(texRegionToDraw(actionNumber+1), WorldController.instance.levelManager.getBg().width/2 -150 -width*scale.x, +300,0,0,width,height,scale.x,scale.y,rotation);
 
         }
 
