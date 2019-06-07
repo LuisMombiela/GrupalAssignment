@@ -27,11 +27,11 @@ public class TurnManager extends GameObject {
         p1 = null;
         p2 = null;
         activePlayer = null;
-        layerTag = Layer.LayerNames.PLAYER;
+        layerTag = Layer.LayerNames.DEFAULT;
     }
 
     public void giveActions(Player p){
-       p.actionNumber= (int) ((Math.random()*100*6)/100);
+       p.actionNumber= (int) ((Math.random()*100*6+1)/100);
 
     }
 
@@ -39,22 +39,24 @@ public class TurnManager extends GameObject {
         int randomNum=(int) ((Math.random()*100*2)/100);
         if(randomNum==1)
         {
-            p1.actionNumber= (int) ((Math.random()*100*6)/100);
+            p1.actionNumber= (int) ((Math.random()*100*6+1)/100);
             p1.isTurn = true;
             p2.isTurn = false;
-            WorldController.instance.levelManager.getMark().setMarkerOnPlayer(1);
             activePlayer = p1;
+            WorldController.instance.levelManager.getMark().setMarkerOnPlayer(1);
+
 
 
         }
 
         else
         {
-            p2.actionNumber= (int) ((Math.random()*100*6)/100);
+            p2.actionNumber= (int) ((Math.random()*100*6+1)/100);
             p2.isTurn = true;
             p1.isTurn = false;
-            WorldController.instance.levelManager.getMark().setMarkerOnPlayer(2);
             activePlayer = p2;
+            WorldController.instance.levelManager.getMark().setMarkerOnPlayer(2);
+
 
         }
     }
@@ -79,8 +81,9 @@ public class TurnManager extends GameObject {
                 p1.isTurn = false;
                 giveActions(p2);
                 p2.isTurn = true;
-                WorldController.instance.levelManager.getMark().setMarkerOnPlayer(2);
                 activePlayer = p2;
+                WorldController.instance.levelManager.getMark().setMarkerOnPlayer(2);
+
             }
         }
 
@@ -92,8 +95,9 @@ public class TurnManager extends GameObject {
                 p2.isTurn=false;
                 giveActions(p1);
                 p1.isTurn=true;
-                WorldController.instance.levelManager.getMark().setMarkerOnPlayer(1);
                 activePlayer = p1;
+                WorldController.instance.levelManager.getMark().setMarkerOnPlayer(1);
+
             }
         }
     }

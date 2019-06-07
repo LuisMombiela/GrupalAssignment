@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.theafrica.CardUtils.GameCard;
 import com.mygdx.theafrica.CardUtils.PlayerBase;
 
@@ -42,8 +41,8 @@ public class Player extends GameObject {
     public boolean isTurn;
 
     public Player(int num, float posX, float posY) {
+        super();
         inputs  = WorldController.instance.inputMgr;
-
         x=posX;
         y=posY;
         rotation = 0;
@@ -67,19 +66,18 @@ public class Player extends GameObject {
     @Override
     public void draw(SpriteBatch batch) {
 
-        if(actionNumber != 0)
-        {
-            System.out.println("Action Number: " +actionNumber);
+
+
             if(number == 1)
-                batch.draw(texRegionToDraw(actionNumber), -WorldController.instance.levelManager.getBg().width/2 +150, 100,0,0,width,height,scale.x,scale.y,rotation);
+                batch.draw(texRegionToDraw(actionNumber+1), -WorldController.instance.levelManager.getBg().width/2 +150, 100,0,0,width,height,scale.x,scale.y,rotation);
             else
-                batch.draw(texRegionToDraw(actionNumber), WorldController.instance.levelManager.getBg().width/2 -150 -width*scale.x, 100,0,0,width,height,scale.x,scale.y,rotation);
+                batch.draw(texRegionToDraw(actionNumber+1), WorldController.instance.levelManager.getBg().width/2 -150 -width*scale.x, 100,0,0,width,height,scale.x,scale.y,rotation);
 
         }
 
 
 
-    }
+
     TextureRegion texRegionToDraw(int i)
     {
         return Assets.getInstance().dice[i];
