@@ -9,13 +9,9 @@ public class PlayerBase extends GameObject {
 
     public int baseIndex;
     public Player localPlayer;
-    public int currentWorkers = 3;
     public boolean hasGreenHouse = false;
-    boolean ghBuilt = false;
     public boolean hasHospital = false;
-    boolean hBuilt = false;
     public boolean hasSchool = false;
-    boolean sBuilt = false;
     Hospital h = new Hospital();
     School s =  new School();
     Greenhouse gh = new Greenhouse();
@@ -53,24 +49,29 @@ public class PlayerBase extends GameObject {
     public void canBuildH()
     {
 
-        if(localPlayer.currentWood >= h.requiredWood && localPlayer.currentIron >= h.requiredIron && localPlayer.currentBandages >= h.requiredBandages && !hasHospital)
+        if(localPlayer.currentWheat >= h.requiredWheat && localPlayer.currentIron >= h.requiredIron && localPlayer.currentBandages >= h.requiredBandages && !hasHospital)
+        {
             h.build(localPlayer);
-        hasHospital = true;
-        System.out.println("Player x hospital has been built");
+            SoundManager.reproduceSounds(5);
+            hasHospital = true;
+            System.out.println("Player " + baseIndex + " hospital has been built");
+        }
     }
     public void canBuildS()
     {
         if(localPlayer.currentSeeds >= s.requiredSeeds && localPlayer.currentIron >= s.requiredIron && localPlayer.currentBooks >= s.requiredBooks && !hasSchool)
-            s.build(localPlayer);
+        {s.build(localPlayer); SoundManager.reproduceSounds(5);
         hasSchool = true;
-        System.out.println("Player x School has been built");
+        System.out.println("Player"+baseIndex+" School has been built");
+        }
     }
     public void canBuildG()
     {
         if(localPlayer.currentWood >= gh.requiredWood && localPlayer.currentWheat >= gh.requiredWheat && localPlayer.currentSeeds >= gh.requiredSeeds && !hasGreenHouse)
-            gh.build(localPlayer);
+        { gh.build(localPlayer);SoundManager.reproduceSounds(5);
         hasGreenHouse = true;
-        System.out.println("Player x Greenhouse has been built");
+        System.out.println("Player "+baseIndex+" Greenhouse has been built");
+        }
     }
 
     @Override
@@ -79,15 +80,15 @@ public class PlayerBase extends GameObject {
 
         if(hasGreenHouse)
         {
-            batch.draw(Assets.getInstance().greenhouse,greenhousePos.x,greenhousePos.y,15*scale.x,15*scale.y);
+            batch.draw(Assets.getInstance().greenhouse,greenhousePos.x,greenhousePos.y, 0, 0,15,15, scale.x,scale.y,rotation);
         }
         if(hasHospital)
         {
-            batch.draw(Assets.getInstance().hospital,hospitalPos.x,hospitalPos.y,15*scale.x,15*scale.y);
+            batch.draw(Assets.getInstance().hospital,greenhousePos.x,greenhousePos.y, 0, 0,15,15, scale.x,scale.y,rotation);
         }
         if(hasSchool)
         {
-            batch.draw(Assets.getInstance().school,schoolPos.x,schoolPos.y,15*scale.x,15*scale.y);
+            batch.draw(Assets.getInstance().school,greenhousePos.x,greenhousePos.y, 0, 0,15,15, scale.x,scale.y,rotation);
         }
     }
     TextureRegion texRegionToDraw(int i)
@@ -105,21 +106,7 @@ public class PlayerBase extends GameObject {
 
         canBuildG();canBuildH();canBuildS();
 
-        if(hasGreenHouse && !ghBuilt)
-        {
-            SoundManager.reproduceSounds(5);
-            ghBuilt = true;
-        }
-        if(hasHospital && !hBuilt)
-        {
-            SoundManager.reproduceSounds(5);
-            hBuilt = true;
-        }
-        if(hasSchool && !sBuilt)
-        {
-            SoundManager.reproduceSounds(5);
-            sBuilt = true;
-        }
+
 
     }
 
