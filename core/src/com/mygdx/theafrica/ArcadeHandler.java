@@ -86,7 +86,6 @@ public class ArcadeHandler implements ControllerListener {
                 }
                 //center
                 else if(value <0.1 && value>-0.1){
-
                     return true;
                 }
 
