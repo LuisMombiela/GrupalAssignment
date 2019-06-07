@@ -2,6 +2,7 @@ package com.mygdx.theafrica;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.physics.box2d.World;
 
 public class TurnManager extends GameObject {
 
@@ -80,7 +81,15 @@ public class TurnManager extends GameObject {
 
     @Override
     public void draw(SpriteBatch batch) {
+        if(p1!=null && p2 != null)
+        {
+            if(p1.isTurn)
+                batch.draw(Assets.getInstance().turnsTR[0],-900,400,0,0,102,50,2.5f,2.5f,0);
 
+            if(p2.isTurn)
+                batch.draw(Assets.getInstance().turnsTR[1],600,400,0,0,102,50,2.5f,2.5f,0);
+
+        }
     }
 }
 
