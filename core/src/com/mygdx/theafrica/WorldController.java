@@ -1,6 +1,7 @@
 package com.mygdx.theafrica;
 
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
@@ -19,10 +20,13 @@ public class WorldController extends InputAdapter {
     public int selectedSprite;
     public ArrayList<GameObject> objects;
     public CameraHelper ch;
+
     HUD hud;
+
     public LevelManager levelManager = new LevelManager();
     public Background background;
     public InputManager inputMgr;
+    public TextButton bUp, bDown, bLeft, bRight, bSelect, bAccel, bEndTurn;
     public static WorldController instance;
 
 
@@ -36,20 +40,76 @@ public class WorldController extends InputAdapter {
             WorldController.instance = null;
         }
 
-        inputMgr = new InputManager();
+        inputMgr = new InputManager(this);
         Gdx.input.setInputProcessor(inputMgr);
 
         ch = new CameraHelper();
 
         hud = new HUD();
-        TextButton b1 = new TextButton("Hacer algo",10,10,240,50){
-            @Override
-            public void click() {
-                //Aqui iria lo que quisieses meter como nueva accion
-            }
-        };
 
-        hud.add(b1);
+        if(Gdx.app.getType() == Application.ApplicationType.Android)
+        {
+
+            bUp = new TextButton("UP",1750,10,100,100){
+                @Override
+                public void click() {
+                    inputMgr.keyUp = true;
+                }
+            };
+
+            bDown = new TextButton("DWN",1750,-210,100,100){
+                @Override
+                public void click() {
+                    Gdx.app.debug("INPUT","Touched Down");
+                    levelManager.getMark().isTouchedDown = true;
+                }
+            };
+
+            bLeft = new TextButton("LF",1650,-100,100,100){
+                @Override
+                public void click() {
+                    inputMgr.keyLeft = true;
+                }
+            };
+
+
+            bRight = new TextButton("RG",1850,-100,100,100){
+                @Override
+                public void click() {
+                    inputMgr.keyRight = true;
+                }
+            };
+
+
+            bSelect = new TextButton("SEL",250,10,100,100){
+                @Override
+                public void click() {
+                    inputMgr.keySelectCard = true;
+                }
+            };
+
+            bAccel = new TextButton("ACC",250,-110,100,100){
+                @Override
+                public void click() {
+                    inputMgr.keyAccelerateWorker = true;
+                }
+            };
+
+            bEndTurn = new TextButton("END",250,-220,100,100){
+                @Override
+                public void click() {
+                    inputMgr.keyEndTurn = true;
+                }
+            };
+
+            hud.add(bUp);
+            hud.add(bDown);
+            hud.add(bLeft);
+            hud.add(bRight);
+            hud.add(bSelect);
+            hud.add(bAccel);
+            hud.add(bEndTurn);
+        }
 
         ArcadeHandler arcade = new ArcadeHandler(this.levelManager);
         Controllers.addListener(arcade);
@@ -69,9 +129,10 @@ public class WorldController extends InputAdapter {
     public void update(float delta){
 
         levelManager.update(delta);
-
+        ch.hudCamera.update();
         //ch.followGO(levelManager.player, levelManager.bg);
         ch.moveCamera(delta);
+
 
     }
 

@@ -2,6 +2,8 @@ package com.mygdx.theafrica;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.physics.box2d.World;
 
 public class InputManager implements InputProcessor {
 
@@ -14,6 +16,14 @@ public class InputManager implements InputProcessor {
     public boolean keyEndTurn = false;
     public boolean keyDeny = false;
 
+    public Vector3 pointBut;
+
+    WorldController wc;
+
+    public InputManager(WorldController w)
+    {
+        wc = w;
+    }
 
 
     public void resetBools()
@@ -83,7 +93,14 @@ public class InputManager implements InputProcessor {
     }
 
     public boolean touchDown (int x, int y, int pointer, int button) {
-        return false;
+
+        pointBut = new Vector3(x,y,0);
+        //check if the click is for the HUD
+        wc.ch.hudCamera.unproject(pointBut);
+        if(!wc.hud.click(pointBut.x,pointBut.y)){
+            System.out.println("Aqui deberian saltar moendos");
+        }
+        return true;
     }
 
     public boolean touchUp (int x, int y, int pointer, int button) {

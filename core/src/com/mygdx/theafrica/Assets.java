@@ -67,7 +67,7 @@ public class Assets {
         bg.setWrap(Texture.TextureWrap.Repeat,Texture.TextureWrap.Repeat);
 
         //MARKER
-        marker = new Texture(Gdx.files.internal("marker.png"));
+        marker = new Texture(Gdx.files.internal("Marker.png"));
         markerReg = new TextureRegion[1];
         markerReg[0]= new TextureRegion(marker);
 
