@@ -46,7 +46,12 @@ public class Player extends GameObject {
         x=posX;
         y=posY;
         rotation = 0;
-
+        currentWood=0;
+        currentWheat=0;
+        currentIron=0;
+        currentBandages=0;
+        currentBooks=0;
+        currentSeeds=0;
         width= 15;
         height=15;
 
