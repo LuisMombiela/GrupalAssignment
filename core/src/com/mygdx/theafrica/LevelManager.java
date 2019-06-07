@@ -210,8 +210,22 @@ public class LevelManager {
         {
             if(L.name == Layer.LayerNames.CARD)
             {
-                if(4*row + column != 0 && 4*row + column  !=15)
-                go = (GameCard)L.list.get(4 * row + column);
+
+                for(GameObject c: L.list)
+                {
+                    if((row==0 && column ==0) || (row==3 && column == 3))
+                    {
+
+                    }
+                    else go = (GameCard)c;
+
+                    if ((int)go.index.x == row && (int)go.index.y == column)
+                    {
+                        System.out.println("Card returned with row:" + go.index.x + ", column: " +go.index.y );
+                        break;
+                    }
+                }
+
             }
         }
         if(go==null) System.out.println("There is no Marker object");

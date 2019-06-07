@@ -82,6 +82,9 @@ public class GameWorker extends GameObject{
     public void getBackToBase()
     {
         working = false;
+        //getInitialPos();
+        x = targetPos.x;
+        y = targetPos.y;
     }
 
     public void goToCard(GameCard gc)

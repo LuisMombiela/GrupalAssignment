@@ -4,10 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.mygdx.theafrica.Assets;
-import com.mygdx.theafrica.GameObject;
-import com.mygdx.theafrica.Layer;
-import com.mygdx.theafrica.Player;
+import com.mygdx.theafrica.*;
 
 public class GameCard extends GameObject {
 
@@ -17,6 +14,8 @@ public class GameCard extends GameObject {
     public Vector2 playerPosition; //Saves the position it shows either player 1 or 2 controls that casilla with the imagen of the jugador
     public Vector2 turnPosition;//Saves the position of the image where the image of the turns that casilla has left
     public CardType ctype;
+    boolean isDeleting = false;
+    public int workerIndex;
 
     public GameCard(CardType type, float posX, float posY, int indexRow, int indexColumn)
     {
@@ -28,15 +27,16 @@ public class GameCard extends GameObject {
         height = 96;
         scale = new Vector2(2.5f,2.5f);
 
+
         updateCardPositions();
 
         if(ctype == CardType.BANDAGE || ctype ==  CardType.BOOK || ctype == CardType.SEED)
         {
-            usageTurns = 7;
+            usageTurns = 6;
         }
         else if (ctype == CardType.WHEAT || ctype == CardType.WOOD || ctype == CardType.IRON)
         {
-            usageTurns = 4;
+            usageTurns = 3;
         }
 
         //playerPosition = new Vector2(x+15, y+15);
@@ -44,11 +44,27 @@ public class GameCard extends GameObject {
 
     }
 
+    public void decreaseCardTurn()
+    {
+        usageTurns --;
+    }
+
+    void handleExhaustedTurns()
+    {
+        isDeleting = true;
+        SoundManager.reproduceSounds(4);
+        WorldController.instance.levelManager.getGrid().replaceCard((int)index.x, (int)index.y);
+        player.gwArray[workerIndex].getBackToBase();
+        player = null;
+        WorldController.instance.levelManager.Despawn(this);
+
+    }
+
 
     public void updateCardPositions()
     {
         playerPosition = new Vector2(x+75*scale.x, y+3*scale.y);
-        turnPosition = new Vector2(x+75*scale.x, y+75*scale.y);
+        turnPosition = new Vector2(x+76*scale.x, y+76*scale.y);
     }
 
     public boolean hasWorker()
@@ -59,17 +75,27 @@ public class GameCard extends GameObject {
     @Override
     public void draw(SpriteBatch batch) {
         batch.draw(texRegionToDraw(ctype.getValue()),x,y,0,0,width,height,scale.x,scale.y,rotation);
+        batch.draw(texRegionToDrawDICE(usageTurns), turnPosition.x, turnPosition.y,0,0,15,15,scale.x,scale.y,rotation);
     }
     TextureRegion texRegionToDraw(int i)
     {
         return Assets.getInstance().cardsReg[i];
     }
+    TextureRegion texRegionToDrawDICE(int i)
+    {
+        return Assets.getInstance().dice[i];
+    }
 
     @Override
     public void update(float delta) {
 
+        if(usageTurns <=0 && !isDeleting)
+        {
+            handleExhaustedTurns();
+        }
 
     }
+
 
     @Override
     public void draw(SpriteBatch batch, float staTime) {

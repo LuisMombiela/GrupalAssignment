@@ -72,15 +72,11 @@ public class Player extends GameObject {
     public void draw(SpriteBatch batch)
     {
         if(number == 1)
-            batch.draw(texRegionToDraw(actionNumber), -WorldController.instance.levelManager.getBg().width/2 +150, 100,0,0,width,height,scale.x,scale.y,rotation);
+            batch.draw(texRegionToDraw(actionNumber), -WorldController.instance.levelManager.getBg().width/2 +150, 250,0,0,width,height,scale.x,scale.y,rotation);
         else
-            batch.draw(texRegionToDraw(actionNumber), WorldController.instance.levelManager.getBg().width/2 -150 -width*scale.x, 100,0,0,width,height,scale.x,scale.y,rotation);
+            batch.draw(texRegionToDraw(actionNumber), WorldController.instance.levelManager.getBg().width/2 -150 -width*scale.x, 250,0,0,width,height,scale.x,scale.y,rotation);
 
     }
-
-
-
-
     TextureRegion texRegionToDraw(int i)
     {
         return Assets.getInstance().dice[i];
@@ -120,13 +116,14 @@ public class Player extends GameObject {
 
             if(gc.hasWorker())
             {
-                //if the worker is one of the current turn' player, accelerate
+                //if the worker is one of the current turn's player, accelerate
                 if(gc.player==this)
                 {
                     Gdx.app.debug("PLAYER", "WORKER ACCELERATED");
                     SoundManager.reproduceSounds(2);
                     actionNumber --;
                     //make card have one less turn too
+                    gc.decreaseCardTurn();
                 }
                 else return;
             }
@@ -138,6 +135,7 @@ public class Player extends GameObject {
                 {
                     if(!gwArray[i].working) {
                         gwArray[i].goToCard(gc);
+                        gc.workerIndex = i;
                         SoundManager.reproduceSounds(1);
                         actionNumber --;
                         break;

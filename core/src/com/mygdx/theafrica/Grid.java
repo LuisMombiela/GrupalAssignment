@@ -71,6 +71,11 @@ public class Grid extends GameObject{
 
     }
 
+    public void replaceCard(int row, int column)
+    {
+        WorldController.instance.levelManager.Instantiate(new GameCard(GetCardType(), positions[row][column].x, positions[row][column].y, row, column));
+    }
+
     CardType GetCardType()
     {
         float randomizer = (float)Math.random()*100;
