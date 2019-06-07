@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.theafrica.CardUtils.GameCard;
 import com.mygdx.theafrica.CardUtils.PlayerBase;
 
 
@@ -80,9 +81,22 @@ public class Player extends GameObject {
     {
         if(inputs.keySelectCard)
         {
-            Gdx.app.debug("PLAYER", "WORKER PUT by Player "+number);
-            SoundManager.reproduceSounds(1);
-            actionNumber -= 1;
+            Gdx.app.debug("MARK", "Row: " +WorldController.instance.levelManager.getMark().row + " , Column: " + WorldController.instance.levelManager.getMark().column);
+            GameCard gc = WorldController.instance.levelManager.getCard(WorldController.instance.levelManager.getMark().row,WorldController.instance.levelManager.getMark().column);
+
+            if(gc.hasWorker)
+                return;
+
+            else{
+                //Hacer las movidas de colocar al worker
+
+                Gdx.app.debug("PLAYER", "WORKER PUT by Player "+number);
+                SoundManager.reproduceSounds(1);
+                actionNumber -= 1;
+                inputs.keySelectCard = false;
+            }
+
+
         }
 
         if(inputs.keyAccelerateWorker)
@@ -90,6 +104,7 @@ public class Player extends GameObject {
             Gdx.app.debug("PLAYER", "WORKER ACCELERATED");
             SoundManager.reproduceSounds(2);
             actionNumber -= 2;
+            inputs.keyAccelerateWorker = false;
         }
 
         if(inputs.keyEndTurn)
@@ -98,6 +113,7 @@ public class Player extends GameObject {
             SoundManager.reproduceSounds(3);
             actionNumber = 0;
             turnPassed = true;
+            inputs.keyEndTurn = false;
         }
     }
 

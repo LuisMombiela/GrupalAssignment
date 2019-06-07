@@ -25,7 +25,7 @@ public class Mark extends GameObject {
         x = gr.positions[0][1].x;
         y = gr.positions[0][1].y;
 
-        layerTag = Layer.LayerNames.CARD;
+        layerTag = Layer.LayerNames.DEFAULT ;
         width = 106;
         height = 106;
         scale = new Vector2(2.5f,2.5f);
@@ -61,6 +61,7 @@ public class Mark extends GameObject {
             }else
             {
                 row-=1;
+                SoundManager.reproduceSounds(6);
             }
         }
         else if(inputs.keyDown)
@@ -75,6 +76,7 @@ public class Mark extends GameObject {
             }else
             {
                 row+=1;
+                SoundManager.reproduceSounds(6);
             }
         }
         else if(inputs.keyLeft)
@@ -89,6 +91,7 @@ public class Mark extends GameObject {
             }else
             {
                 column-=1;
+                SoundManager.reproduceSounds(6);
             }
         }
         else if(inputs.keyRight)
@@ -103,6 +106,7 @@ public class Mark extends GameObject {
             }else
             {
                 column+=1;
+                SoundManager.reproduceSounds(6);
             }
         }
 

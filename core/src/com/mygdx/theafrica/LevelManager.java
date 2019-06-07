@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.mygdx.theafrica.CardUtils.GameCard;
 import com.mygdx.theafrica.HUD.HUD;
 import com.mygdx.theafrica.HUD.TextButton;
 
@@ -183,9 +184,9 @@ public class LevelManager {
         Mark go = null;
         for (Layer L: Layers)
         {
-            if(L.name == Layer.LayerNames.CARD)
+            if(L.name == Layer.LayerNames.DEFAULT)
             {
-                go = (Mark)L.list.get(1);
+                go = (Mark)L.list.get(0);
             }
         }
         if(go==null) System.out.println("There is no Mark object");
@@ -200,6 +201,20 @@ public class LevelManager {
             if(L.name == Layer.LayerNames.PLAYER)
             {
                 go = (Player)L.list.get(pNumber-1);
+            }
+        }
+        if(go==null) System.out.println("There is no Mark object");
+        return go;
+    }
+
+    public GameCard getCard(int row, int column)
+    {
+        GameCard go = null;
+        for (Layer L: Layers)
+        {
+            if(L.name == Layer.LayerNames.CARD)
+            {
+                go = (GameCard)L.list.get(4 * row + column);
             }
         }
         if(go==null) System.out.println("There is no Mark object");

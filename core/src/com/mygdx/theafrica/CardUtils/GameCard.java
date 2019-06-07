@@ -10,14 +10,14 @@ import com.mygdx.theafrica.Layer;
 
 public class GameCard extends GameObject {
 
-    public int index; //Lo adquiere del index de la casilla de la grid
-    public boolean hasPlayer;
+    public Vector2 index; //Lo adquiere del index de la casilla de la grid
+    public boolean hasWorker;
     public int usageTurns; //Numero de turnos que le queda a una carta que esta siendo usada
     public Vector2 playerPosition; //Saves the position it shows either player 1 or 2 controls that casilla with the imagen of the jugador
     public Vector2 turnPosition;//Saves the position of the image where the image of the turns that casilla has left
     public CardType ctype;
 
-    public GameCard(CardType type, float posX, float posY)
+    public GameCard(CardType type, float posX, float posY, int indexRow, int indexColumn)
     {
         x = posX;
         y = posY;
@@ -26,12 +26,17 @@ public class GameCard extends GameObject {
         width = 96;
         height = 96;
         scale = new Vector2(2.5f,2.5f);
+
         updateCardPositions();
 
         if(ctype == CardType.BANDAGE || ctype ==  CardType.BOOK || ctype == CardType.SEED)
         {
             
         }
+
+
+        playerPosition = new Vector2(x+15, y+15);
+        index = new Vector2(indexRow, indexColumn);
 
     }
 

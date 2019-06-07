@@ -118,7 +118,7 @@ public class Assets {
 
         for(int i = 0; i<turnsNumber; i++)
         {
-            turnsTR[i] = SpriteHelper.textureFromTextureAtlas("turn"+(i), turns);
+            turnsTR[i] = SpriteHelper.textureFromTextureAtlas("Turn"+(i), turns);
         }
 
 
