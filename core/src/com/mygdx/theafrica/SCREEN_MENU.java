@@ -44,6 +44,7 @@ public class SCREEN_MENU implements Screen {
         hudCamera = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 
         hud = new HUD();
+
         b1 = new TextButton("START ",Gdx.graphics.getWidth()/2.5f,Gdx.graphics.getHeight()/4,320,70)
         {
             @Override

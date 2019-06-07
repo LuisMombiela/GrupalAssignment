@@ -21,11 +21,10 @@ public class GameWorker extends GameObject{
         super();
 
         pNumber = number;
+        p = WorldController.instance.levelManager.getPlayer(pNumber);
         layerTag = Layer.LayerNames.ICONS;
 
     }
-
-
 
 
     public void getInitialPos()
