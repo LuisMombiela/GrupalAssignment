@@ -31,9 +31,12 @@ public class GameCard extends GameObject {
 
         if(ctype == CardType.BANDAGE || ctype ==  CardType.BOOK || ctype == CardType.SEED)
         {
-            
+            usageTurns = 7;
         }
-
+        else if (ctype == CardType.WHEAT || ctype == CardType.WOOD || ctype == CardType.IRON)
+        {
+            usageTurns = 4;
+        }
 
         playerPosition = new Vector2(x+15, y+15);
         index = new Vector2(indexRow, indexColumn);

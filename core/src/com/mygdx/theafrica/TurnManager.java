@@ -1,13 +1,14 @@
 package com.mygdx.theafrica;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.physics.box2d.World;
 
 public class TurnManager extends GameObject {
 
     Player p1, p2;
     int turnsToGive;
+    float padding = 150;
 
     public TurnManager()
     {
@@ -84,11 +85,11 @@ public class TurnManager extends GameObject {
         if(p1!=null && p2 != null)
         {
             if(p1.isTurn)
-                batch.draw(Assets.getInstance().turnsTR[0],-900,400,0,0,102,50,2.5f,2.5f,0);
+                batch.draw(Assets.getInstance().turnsTR[0], -WorldController.instance.levelManager.getBg().width/2 + padding ,400,0,0,102,50,2.5f,2.5f,0);
 
             if(p2.isTurn)
-                batch.draw(Assets.getInstance().turnsTR[1],600,400,0,0,102,50,2.5f,2.5f,0);
-
+                batch.draw(Assets.getInstance().turnsTR[1], WorldController.instance.levelManager.getBg().width/2 - padding -102*2.5f,400,0,0,102,50,2.5f,2.5f,0);
+                                                                                                                            //The "TURN" banner width multiplied by its scale
         }
     }
 }

@@ -3,6 +3,7 @@ package com.mygdx.theafrica;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 
 public class WorldRenderer {
 
@@ -11,6 +12,7 @@ public class WorldRenderer {
     public String TAG_TIME = "TIMES";
     public float elapsedTime;
     public ShapeRenderer shapeRender;
+    public FitViewport viewport;
 
     public WorldRenderer(WorldController wc){
         this.controller = wc;
@@ -20,6 +22,8 @@ public class WorldRenderer {
     public void init(){
         batch = new SpriteBatch();
         shapeRender = new ShapeRenderer();
+        viewport = new FitViewport(1920,1080, controller.ch.camera);
+        viewport.apply();
         controller.ch.camera.position.set(0,0,0);
         controller.ch.camera.update();
     }
@@ -68,7 +72,9 @@ public class WorldRenderer {
         }
     }
 
-    public void resize(int width, int height){
+    public void resize(int width, int height)
+    {
+        viewport.update(width,height);
         controller.ch.resize(width,height);
     }
 }
