@@ -42,6 +42,7 @@ public class WorldController extends InputAdapter {
         ch = new CameraHelper();
 
         hud = new HUD();
+        
         TextButton b1 = new TextButton("Hacer algo",10,10,240,50){
             @Override
             public void click() {
