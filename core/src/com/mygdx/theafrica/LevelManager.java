@@ -3,6 +3,7 @@ package com.mygdx.theafrica;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.mygdx.theafrica.CardUtils.GameCard;
+import com.mygdx.theafrica.CardUtils.PlayerBase;
 
 import java.util.ArrayList;
 
@@ -211,14 +212,13 @@ public class LevelManager {
             if(L.name == Layer.LayerNames.CARD)
             {
 
-                for(GameObject c: L.list)
+                for(int i = 0; i < L.list.size(); i++)
                 {
-                    if((row==0 && column ==0) || (row==3 && column == 3))
-                    {
 
-                    }
-                    else go = (GameCard)c;
-
+                    if(!(L.list.get(i) instanceof PlayerBase))
+                    go = (GameCard)L.list.get(i);
+                    else continue;//Moui importante
+                    
                     if ((int)go.index.x == row && (int)go.index.y == column)
                     {
                         System.out.println("Card returned with row:" + go.index.x + ", column: " +go.index.y );

@@ -38,6 +38,8 @@ public class PlayerBase extends GameObject {
 
         updateCardPositions();
 
+
+
     }
     public void updateCardPositions()
     {
