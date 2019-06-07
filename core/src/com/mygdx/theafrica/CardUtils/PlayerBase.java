@@ -33,15 +33,15 @@ public class PlayerBase extends GameObject {
         height = 96;
         scale = new Vector2(2.5f,2.5f);
 
-        updateCardPositions();
         localPlayer = player;
+        updateCardPositions();
 
     }
     public void updateCardPositions()
     {
-        hospitalPos = new Vector2(x + 20*scale.x, y-31*scale.y);
-        schoolPos = new Vector2(x + 41*scale.x, y-53*scale.y);
-        greenhousePos = new Vector2(x + 62*scale.x, y-31*scale.y);
+        hospitalPos = new Vector2(x + 19*scale.x, y+30*scale.y);
+        schoolPos = new Vector2(x + 40*scale.x, y+52*scale.y);
+        greenhousePos = new Vector2(x + 61*scale.x, y+30*scale.y);
 
         playerPositions = new Vector2[]{new Vector2(x + 20*scale.x, y-7*scale.y), new Vector2(x + 41*scale.x, y-7*scale.y), new Vector2(x + 62*scale.x, y-7*scale.y)};
     }
@@ -55,22 +55,27 @@ public class PlayerBase extends GameObject {
             SoundManager.reproduceSounds(5);
             hasHospital = true;
             System.out.println("Player " + baseIndex + " hospital has been built");
+            localPlayer.buildingsNumber++;
         }
     }
     public void canBuildS()
     {
         if(localPlayer.currentSeeds >= s.requiredSeeds && localPlayer.currentIron >= s.requiredIron && localPlayer.currentBooks >= s.requiredBooks && !hasSchool)
-        {s.build(localPlayer); SoundManager.reproduceSounds(5);
-        hasSchool = true;
-        System.out.println("Player"+baseIndex+" School has been built");
+        {
+            s.build(localPlayer); SoundManager.reproduceSounds(5);
+            hasSchool = true;
+            System.out.println("Player"+baseIndex+" School has been built");
+            localPlayer.buildingsNumber++;
         }
     }
     public void canBuildG()
     {
         if(localPlayer.currentWood >= gh.requiredWood && localPlayer.currentWheat >= gh.requiredWheat && localPlayer.currentSeeds >= gh.requiredSeeds && !hasGreenHouse)
-        { gh.build(localPlayer);SoundManager.reproduceSounds(5);
-        hasGreenHouse = true;
-        System.out.println("Player "+baseIndex+" Greenhouse has been built");
+        {
+            gh.build(localPlayer);SoundManager.reproduceSounds(5);
+            hasGreenHouse = true;
+            System.out.println("Player "+baseIndex+" Greenhouse has been built");
+            localPlayer.buildingsNumber++;
         }
     }
 
@@ -84,11 +89,11 @@ public class PlayerBase extends GameObject {
         }
         if(hasHospital)
         {
-            batch.draw(Assets.getInstance().hospital,greenhousePos.x,greenhousePos.y, 0, 0,15,15, scale.x,scale.y,rotation);
+            batch.draw(Assets.getInstance().hospital,hospitalPos.x,hospitalPos.y, 0, 0,15,15, scale.x,scale.y,rotation);
         }
         if(hasSchool)
         {
-            batch.draw(Assets.getInstance().school,greenhousePos.x,greenhousePos.y, 0, 0,15,15, scale.x,scale.y,rotation);
+            batch.draw(Assets.getInstance().school,schoolPos.x,schoolPos.y, 0, 0,15,15, scale.x,scale.y,rotation);
         }
     }
     TextureRegion texRegionToDraw(int i)
@@ -104,12 +109,14 @@ public class PlayerBase extends GameObject {
     @Override
     public void update(float delta) {
 
-        canBuildG();canBuildH();canBuildS();
+        canBuildG();
+        canBuildH();
+        canBuildS();
+
 
 
 
     }
 
-    //Caso en el que el jugador tiene suficientes recursos tanto para el hospital como para la escuela pero le falta madera y la recoge. Cual se construye?
 
 }

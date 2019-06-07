@@ -24,6 +24,7 @@ public class Player extends GameObject {
     public int currentSeeds;
     public int maxWorkers = 3;
     public int actionNumber;//number of moves the player has
+    public int buildingsNumber = 0;
 
     public GameWorker[] gwArray;
 
@@ -48,12 +49,12 @@ public class Player extends GameObject {
         x=posX;
         y=posY;
         rotation = 0;
-        currentWood=    10;
-        currentWheat=   10;
-        currentIron=    10;
-        currentBandages=10;
-        currentBooks=   10;
-        currentSeeds=   10;
+        currentWood=    0;
+        currentWheat=   0;
+        currentIron=    0;
+        currentBandages=0;
+        currentBooks=   0;
+        currentSeeds=   0;
         width= 15;
         height=15;
 
