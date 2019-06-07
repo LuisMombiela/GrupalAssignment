@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.theafrica.CardUtils.GameCard;
-import javafx.concurrent.Worker;
 
 public class GameWorker extends GameObject{
 
@@ -26,7 +25,7 @@ public class GameWorker extends GameObject{
         targetPos = new Vector2();
         width = 15;
         height = 15;
-        scale = new Vector2(2.5f, 2.5f);
+        scale = new Vector2(3, 3);
     }
 
 

@@ -50,7 +50,7 @@ public class Player extends GameObject {
         width= 15;
         height=15;
 
-        scale = new Vector2(2.5f,2.5f);
+        scale = new Vector2(5f,5f);
 
         isTurn = false;
         number = num; //1 or 2
@@ -64,16 +64,14 @@ public class Player extends GameObject {
     }
 
     @Override
-    public void draw(SpriteBatch batch) {
+    public void draw(SpriteBatch batch)
+    {
+        if(number == 1)
+            batch.draw(texRegionToDraw(actionNumber), -WorldController.instance.levelManager.getBg().width/2 +150, 100,0,0,width,height,scale.x,scale.y,rotation);
+        else
+            batch.draw(texRegionToDraw(actionNumber), WorldController.instance.levelManager.getBg().width/2 -150 -width*scale.x, 100,0,0,width,height,scale.x,scale.y,rotation);
 
-
-
-            if(number == 1)
-                batch.draw(texRegionToDraw(actionNumber+1), -WorldController.instance.levelManager.getBg().width/2 +150, 100,0,0,width,height,scale.x,scale.y,rotation);
-            else
-                batch.draw(texRegionToDraw(actionNumber+1), WorldController.instance.levelManager.getBg().width/2 -150 -width*scale.x, 100,0,0,width,height,scale.x,scale.y,rotation);
-
-        }
+    }
 
 
 
@@ -87,11 +85,25 @@ public class Player extends GameObject {
     public void update(float delta) {
 
 
-        if(isTurn)
+
+        if(isTurn )
         {
-            Actions();
+            if(inputs.keyEndTurn)
+            {
+                Gdx.app.debug("PLAYER", "TURN ENDED");
+                SoundManager.reproduceSounds(3);
+                actionNumber = 0;
+                turnPassed = true;
+                inputs.keyEndTurn = false;
+            }
+            if(!isMarkerOnBase())
+                    Actions();
         }
 
+    }
+    boolean isMarkerOnBase()
+    {
+        return ((WorldController.instance.levelManager.getMark().row ==0 && WorldController.instance.levelManager.getMark().column ==0) || (WorldController.instance.levelManager.getMark().row ==3 && WorldController.instance.levelManager.getMark().column ==3));
     }
 
     public void Actions()
@@ -102,9 +114,11 @@ public class Player extends GameObject {
             GameCard gc = WorldController.instance.levelManager.getCard(WorldController.instance.levelManager.getMark().row,WorldController.instance.levelManager.getMark().column);
 
             if(gc.hasWorker)
-                return;
-
-            else{
+            {
+                //if the worker is one of the current turn' player, accelerate
+            }
+            else
+            {
                 //Hacer las movidas de colocar al worker
 
                 for(int i = 0; i < maxWorkers; i++)
