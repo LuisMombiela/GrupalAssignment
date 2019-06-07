@@ -21,9 +21,7 @@ public class GameWorker extends GameObject{
         super();
 
         pNumber = number;
-        p = WorldController.instance.levelManager.getPlayer(pNumber);
         layerTag = Layer.LayerNames.ICONS;
-
     }
 
 
@@ -72,6 +70,11 @@ public class GameWorker extends GameObject{
 
     @Override
     public void update(float delta) {
+
+        if(p == null)
+        {
+            p = WorldController.instance.levelManager.getPlayer(pNumber);
+        }
 
     }
     TextureRegion texRegionToDraw(int i)
