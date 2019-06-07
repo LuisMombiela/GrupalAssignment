@@ -39,6 +39,7 @@ public class SCREEN_MENU implements Screen {
         font = new BitmapFont();
         batch = new SpriteBatch();
         camera = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+
         //HUD THINGS
         hudCamera = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 
@@ -136,8 +137,6 @@ public class SCREEN_MENU implements Screen {
         bg.draw(batch);
 
         batch.end();
-
-
 
         batch.setProjectionMatrix(hudCamera.combined);
         batch.begin();

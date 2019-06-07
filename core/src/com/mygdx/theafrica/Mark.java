@@ -16,6 +16,8 @@ public class Mark extends GameObject {
     Grid grid;
     int padding = 15;
 
+    public boolean isTouchedDown = false;
+
     public Mark(Grid gr)
     {
         inputs=WorldController.instance.inputMgr;
@@ -64,8 +66,9 @@ public class Mark extends GameObject {
                 SoundManager.reproduceSounds(6);
             }
         }
-        else if(inputs.keyDown)
+        else if(inputs.keyDown || isTouchedDown)
         {
+            isTouchedDown = false;
             if(row+1>=3 && column == 3)
             {
                 return;

@@ -19,10 +19,13 @@ public class WorldController extends InputAdapter {
     public int selectedSprite;
     public ArrayList<GameObject> objects;
     public CameraHelper ch;
+
     HUD hud;
+
     public LevelManager levelManager = new LevelManager();
     public Background background;
     public InputManager inputMgr;
+    public TextButton bUp, bDown, bLeft, bRight;
     public static WorldController instance;
 
 
@@ -43,14 +46,41 @@ public class WorldController extends InputAdapter {
 
         hud = new HUD();
 
-        TextButton b1 = new TextButton("Hacer algo",10,10,240,50){
+        bUp = new TextButton("UP",1650,10,100,100){
             @Override
             public void click() {
-                //Aqui iria lo que quisieses meter como nueva accion
+                inputMgr.keyUp = true;
             }
         };
 
-        hud.add(b1);
+        bDown = new TextButton("DWN",1650,-210,100,100){
+            @Override
+            public void click() {
+                Gdx.app.debug("INPUT","Touched Down");
+                levelManager.getMark().isTouchedDown = true;
+            }
+        };
+
+        bLeft = new TextButton("LF",1550,-100,100,100){
+            @Override
+            public void click() {
+                inputMgr.keyLeft = true;
+            }
+        };
+
+
+        bRight = new TextButton("RG",1750,-100,100,100){
+            @Override
+            public void click() {
+                inputMgr.keyRight = true;
+            }
+        };
+
+
+        hud.add(bUp);
+        hud.add(bDown);
+        hud.add(bLeft);
+        hud.add(bRight);
 
         ArcadeHandler arcade = new ArcadeHandler(this.levelManager);
         Controllers.addListener(arcade);
