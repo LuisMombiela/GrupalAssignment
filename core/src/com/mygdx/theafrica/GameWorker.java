@@ -1,5 +1,6 @@
 package com.mygdx.theafrica;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
@@ -18,21 +19,15 @@ public class GameWorker extends GameObject{
     public GameWorker(int number)
     {
         super();
+
         pNumber = number;
+        layerTag = Layer.LayerNames.ICONS;
+
     }
 
-   /* public void updateWorkerState()
-    {
-        if(!working && *//*player chooses a unoccupied card*//*)
-        {
-          this.getToWork();
-        }
 
-        if(working && *//*cardturn value is == 0*//*)
-        {
-            this.getBackToBase();
-        }
-    }*/
+
+
     public void getInitialPos()
     {
       for(int i = 0; i<3; i++)
@@ -53,7 +48,7 @@ public class GameWorker extends GameObject{
     }
     public void getBackToBase()
     {
-        
+
         working = false;
     }
 
