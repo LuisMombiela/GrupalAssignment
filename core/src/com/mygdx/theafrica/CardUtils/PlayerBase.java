@@ -36,6 +36,8 @@ public class PlayerBase extends GameObject {
         height = 96;
         scale = new Vector2(2.5f,2.5f);
 
+        updateCardPositions();
+
     }
     public void updateCardPositions()
     {
