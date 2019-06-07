@@ -2,6 +2,7 @@ package com.mygdx.theafrica.CardUtils;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.theafrica.Assets;
 import com.mygdx.theafrica.GameObject;
@@ -25,10 +26,21 @@ public class GameCard extends GameObject {
         width = 96;
         height = 96;
         scale = new Vector2(2.5f,2.5f);
-        playerPosition = new Vector2(x+15, y+15);
+        updateCardPositions();
+
+        if(ctype == CardType.BANDAGE || ctype ==  CardType.BOOK || ctype == CardType.SEED)
+        {
+            
+        }
 
     }
 
+
+    public void updateCardPositions()
+    {
+        playerPosition = new Vector2(x+77*scale.x, y-5*scale.y);
+        turnPosition = new Vector2(x + 77*scale.x, y-5*scale.y);
+    }
 
     @Override
     public void draw(SpriteBatch batch) {
@@ -41,6 +53,7 @@ public class GameCard extends GameObject {
 
     @Override
     public void update(float delta) {
+
 
     }
 
