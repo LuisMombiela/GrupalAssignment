@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.mygdx.theafrica.HUD.HUD;
 import com.mygdx.theafrica.HUD.TextButton;
 
+import javax.naming.ldap.Control;
 import java.util.ArrayList;
 
 public class WorldController extends InputAdapter {
@@ -111,8 +112,12 @@ public class WorldController extends InputAdapter {
             hud.add(bEndTurn);
         }
 
-        ArcadeHandler arcade = new ArcadeHandler(this.levelManager);
-        Controllers.addListener(arcade);
+        if(Controllers.getControllers().size > 0)
+        {
+            ArcadeHandler arcade = new ArcadeHandler(this);
+            Controllers.addListener(arcade);
+
+        }
         init();
 
 

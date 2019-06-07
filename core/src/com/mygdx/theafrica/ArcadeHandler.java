@@ -10,11 +10,11 @@ import com.badlogic.gdx.math.Vector3;
 
 public class ArcadeHandler implements ControllerListener {
 
-    public LevelManager lvl;
+    public WorldController wc;
 
-    public  ArcadeHandler(LevelManager levelManager)
+    public  ArcadeHandler(WorldController worldc)
     {
-        lvl= levelManager;
+        wc = worldc;
     }
 
     @Override
@@ -23,10 +23,10 @@ public class ArcadeHandler implements ControllerListener {
         //CONTROLLER 1
         if(Controllers.getControllers().indexOf(controller,true) == 0) {
             if(buttonCode == 0)
-
+                wc.inputMgr.keySelectCard = true;
 
             if(buttonCode == 1)
-
+                wc.inputMgr.keyEndTurn = true;
 
             if(buttonCode == 9)
                 Gdx.app.exit();
@@ -35,20 +35,6 @@ public class ArcadeHandler implements ControllerListener {
             return true;
         }
 
-        //CONTROLLER 2
-        if(Controllers.getControllers().indexOf(controller,true) == 1) {
-            if(buttonCode == 0)
-
-
-            if(buttonCode == 1)
-
-
-            if(buttonCode == 9)
-                Gdx.app.exit();
-
-            //man.switchColor(buttonCode);
-            return true;
-        }
         return false;
     }
 
@@ -70,12 +56,12 @@ public class ArcadeHandler implements ControllerListener {
 
                 //up
                 if(value == -1){
-
+                    wc.inputMgr.keyUp = true;
                     return true;
                 }
                 //down
                 else if(value == 1){
-
+                    wc.inputMgr.keyDown = true;
                     return true;
                 }
                 //center
@@ -90,68 +76,23 @@ public class ArcadeHandler implements ControllerListener {
 
                 //left
                 if(value == -1){
-
+                    wc.inputMgr.keyLeft = true;
                     return true;
                 }
-                //rigth
+                //right
                 else if(value == 1){
-
+                    wc.inputMgr.keyRight = true;
                     return true;
                 }
                 //center
                 else if(value <0.1 && value>-0.1){
-
                     return true;
                 }
 
             }
 
         }
-        //Controller 2
-        if(Controllers.getControllers().indexOf(controller,true) == 1){
 
-            //y axis
-            if(axisCode == 0){
-
-                //up
-                if(value == -1){
-
-                    return true;
-                }
-                //down
-                else if(value == 1){
-
-                    return true;
-                }
-                //center
-                else if(value <0.1 && value>-0.1){
-
-                    return true;
-                }
-
-            }
-            //x axis
-            else if(axisCode == 1){
-
-                //left
-                if(value == -1){
-
-                    return true;
-                }
-                //rigth
-                else if(value == 1){
-
-                    return true;
-                }
-                //center
-                else if(value <0.1 && value>-0.1){
-
-                    return true;
-                }
-
-            }
-
-        }
         return false;
     }
 
