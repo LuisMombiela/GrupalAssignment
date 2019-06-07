@@ -113,9 +113,17 @@ public class Player extends GameObject {
             Gdx.app.debug("MARK", "Row: " +WorldController.instance.levelManager.getMark().row + " , Column: " + WorldController.instance.levelManager.getMark().column);
             GameCard gc = WorldController.instance.levelManager.getCard(WorldController.instance.levelManager.getMark().row,WorldController.instance.levelManager.getMark().column);
 
-            if(gc.hasWorker)
+            if(gc.hasWorker())
             {
                 //if the worker is one of the current turn' player, accelerate
+                if(gc.player==this)
+                {
+                    Gdx.app.debug("PLAYER", "WORKER ACCELERATED");
+                    SoundManager.reproduceSounds(2);
+                    actionNumber --;
+                    //make card have one less turn too
+                }
+                else return;
             }
             else
             {
@@ -130,18 +138,12 @@ public class Player extends GameObject {
                         break;
                     }
                 }
-                inputs.keySelectCard = false;
+
             }
-
+            inputs.keySelectCard = false;
         }
 
-        if(inputs.keyAccelerateWorker)
-        {
-            Gdx.app.debug("PLAYER", "WORKER ACCELERATED");
-            SoundManager.reproduceSounds(2);
-            actionNumber -= 2;
-            inputs.keyAccelerateWorker = false;
-        }
+
 
         if(inputs.keyEndTurn)
         {
