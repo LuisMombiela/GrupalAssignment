@@ -22,6 +22,7 @@ public class Player extends GameObject {
     public int currentSeeds;
     public int maxWorkers = 3;
     public int actionNumber;
+    public int firstAvailableWorker;
 
     public GameWorker[] gwArray;
 
@@ -31,6 +32,7 @@ public class Player extends GameObject {
         {
           GameWorker gw = new GameWorker(this.number,i+1);
           gwArray[i] = gw;
+          WorldController.instance.levelManager.Instantiate(gwArray[i]);
         }
     }
 
@@ -57,7 +59,8 @@ public class Player extends GameObject {
         rectangle = new Rectangle();
         base = new PlayerBase(number, posX, posY);
         WorldController.instance.levelManager.Instantiate(base);
-        spawnWorkers();
+        gwArray = new GameWorker[maxWorkers];
+        initializeWorkers();
 
     }
 
@@ -69,6 +72,7 @@ public class Player extends GameObject {
 
     @Override
     public void update(float delta) {
+
 
         if(isTurn)
         {
