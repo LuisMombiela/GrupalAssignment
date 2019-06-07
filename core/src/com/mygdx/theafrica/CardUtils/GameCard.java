@@ -38,7 +38,7 @@ public class GameCard extends GameObject {
             usageTurns = 4;
         }
 
-        playerPosition = new Vector2(x+15, y+15);
+        //playerPosition = new Vector2(x+15, y+15);
         index = new Vector2(indexRow, indexColumn);
 
     }
@@ -46,8 +46,8 @@ public class GameCard extends GameObject {
 
     public void updateCardPositions()
     {
-        playerPosition = new Vector2(x+77*scale.x, y-5*scale.y);
-        turnPosition = new Vector2(x + 77*scale.x, y-5*scale.y);
+        playerPosition = new Vector2(x+75*scale.x, y+3*scale.y);
+        turnPosition = new Vector2(x+75*scale.x, y+75*scale.y);
     }
 
     @Override

@@ -22,7 +22,6 @@ public class Player extends GameObject {
     public int currentSeeds;
     public int maxWorkers = 3;
     public int actionNumber;
-    public int firstAvailableWorker;
 
     public GameWorker[] gwArray;
 
@@ -94,12 +93,17 @@ public class Player extends GameObject {
             else{
                 //Hacer las movidas de colocar al worker
 
-                Gdx.app.debug("PLAYER", "WORKER PUT by Player "+number);
-                SoundManager.reproduceSounds(1);
-                actionNumber -= 1;
+                for(int i = 0; i < maxWorkers; i++)
+                {
+                    if(!gwArray[i].working) {
+                        gwArray[i].goToCard(gc);
+                        SoundManager.reproduceSounds(1);
+                        actionNumber -= 1;
+                        break;
+                    }
+                }
                 inputs.keySelectCard = false;
             }
-
 
         }
 
@@ -125,12 +129,4 @@ public class Player extends GameObject {
     public void draw(SpriteBatch batch, float staTime) {
 
     }
-
-    void spawnWorkers()
-    {
-        WorldController.instance.levelManager.Instantiate(new GameWorker(number,1));//REPLACE THESE POSITION LATER WITH EACH CARD'S BOX FOR PLAYERS IN THE BASE CARDS
-        WorldController.instance.levelManager.Instantiate(new GameWorker(number,2));
-        WorldController.instance.levelManager.Instantiate(new GameWorker(number,3));
-    }
-
 }

@@ -84,13 +84,13 @@ public class GameWorker extends GameObject{
 
     public void goToCard(GameCard gc)
     {
-
-        x= gc.playerPosition.x;
-        y= gc.playerPosition.y;
-
+        gc.hasWorker = true;
         working = true;
 
+        x = gc.playerPosition.x;
+        y = gc.playerPosition.y;
     }
+
     @Override
     public void draw(SpriteBatch batch) {
         batch.draw(texRegionToDraw(pNumber),x,y,0,0,15,15,3,3,rotation);
