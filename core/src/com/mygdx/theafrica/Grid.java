@@ -31,8 +31,8 @@ public class Grid extends GameObject{
         originalY = - cardSize;
         int index = 0;
 
-        Player player1 = new Player(1,0,0);
-        Player player2 = new Player(2,0,0);
+        Player player1;
+        Player player2;
 
         for(int i = 0; i < size; i++)
         {
@@ -59,7 +59,7 @@ public class Grid extends GameObject{
                 else if((i!=0 && j!=0) || (i!=size && j!=size))
                 {
                     name = "Normal card";
-                    WorldController.instance.levelManager.Instantiate(new GameCard(GetCardType(), positions[i][j].x, positions[i][j].y));
+                    WorldController.instance.levelManager.Instantiate(new GameCard(GetCardType(), positions[i][j].x, positions[i][j].y, i, j));
                 }
 
                 hasCard[i][j] = true;
