@@ -21,7 +21,21 @@ public class ArcadeHandler implements ControllerListener {
     public boolean buttonDown(Controller controller, int buttonCode) {
 
         //CONTROLLER 1
-        if(Controllers.getControllers().indexOf(controller,true) == 0) {
+        if(Controllers.getControllers().indexOf(controller,true) == 0 && wc.levelManager.getPlayer(1).isTurn) {
+            if(buttonCode == 0)
+                wc.inputMgr.keySelectCard = true;
+
+            if(buttonCode == 1)
+                wc.inputMgr.keyEndTurn = true;
+
+            if(buttonCode == 9)
+                Gdx.app.exit();
+
+            //man.switchColor(buttonCode);
+            return true;
+        }
+
+        if(Controllers.getControllers().indexOf(controller,true) == 1 && wc.levelManager.getPlayer(2).isTurn) {
             if(buttonCode == 0)
                 wc.inputMgr.keySelectCard = true;
 
@@ -49,7 +63,7 @@ public class ArcadeHandler implements ControllerListener {
 
 
         //Controller 1
-        if(Controllers.getControllers().indexOf(controller,true) == 0){
+        if(Controllers.getControllers().indexOf(controller,true) == 0 && wc.levelManager.getPlayer(1).isTurn){
 
             //y axis
             if(axisCode == 0){
@@ -90,7 +104,51 @@ public class ArcadeHandler implements ControllerListener {
                 }
 
             }
+        }
 
+
+        //Controller 2
+        if(Controllers.getControllers().indexOf(controller,true) == 1 && wc.levelManager.getPlayer(2).isTurn){
+
+            //y axis
+            if(axisCode == 0){
+
+                //up
+                if(value == -1){
+                    wc.inputMgr.keyUp = true;
+                    return true;
+                }
+                //down
+                else if(value == 1){
+                    wc.inputMgr.keyDown = true;
+                    return true;
+                }
+                //center
+                else if(value <0.1 && value>-0.1){
+
+                    return true;
+                }
+
+            }
+            //x axis
+            else if(axisCode == 1){
+
+                //left
+                if(value == -1){
+                    wc.inputMgr.keyLeft = true;
+                    return true;
+                }
+                //right
+                else if(value == 1){
+                    wc.inputMgr.keyRight = true;
+                    return true;
+                }
+                //center
+                else if(value <0.1 && value>-0.1){
+                    return true;
+                }
+
+            }
         }
 
         return false;
