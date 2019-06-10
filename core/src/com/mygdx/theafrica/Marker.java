@@ -43,7 +43,8 @@ public class Marker extends GameObject {
 
     @Override
     public void update(float delta) {
-        moveMarker();
+        //(TurnManager.instance.activePlayer.actionNumber>1)
+            moveMarker();
         x = grid.positions[row][column].x-padding;
         y = grid.positions[row][column].y-padding;
     }

@@ -7,12 +7,21 @@ import com.badlogic.gdx.controllers.Controllers;
 
 public class MAIN_GAME extends Game {
 
-    SCREEN_MENU mainScreen;
+    SCREEN_MENU menuScreen;
     SCREEN_MAIN gameScreen;
+    public static MAIN_GAME instance;
 
     @Override
     public void create() {
-        mainScreen = new SCREEN_MENU(this);
+        if(MAIN_GAME.instance ==null)
+        {
+            instance = this;
+        }
+        else if(MAIN_GAME.instance != this)
+        {
+            WorldController.instance = null;
+        }
+        menuScreen = new SCREEN_MENU(this);
 
         if(Gdx.app.getType() == Application.ApplicationType.Android)
             System.out.println("Estoy en android");
@@ -23,7 +32,7 @@ public class MAIN_GAME extends Game {
             }
         }
 
-        setScreen(mainScreen);
+        setScreen(menuScreen);
     }
 
     public void InitializeGame()
